@@ -1,0 +1,58 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://levels/rooms/floating_dungeon_tileset.tres" type="TileSet" id=1]
+[ext_resource path="res://Main.gd" type="Script" id=2]
+[ext_resource path="res://levels/rooms/tileset_invisible_walls.tres" type="TileSet" id=3]
+[ext_resource path="res://player/Player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://levels/rooms/RoomA.tscn" type="PackedScene" id=5]
+[ext_resource path="res://levels/rooms/RoomD.tscn" type="PackedScene" id=6]
+[ext_resource path="res://levels/rooms/RoomB.tscn" type="PackedScene" id=7]
+[ext_resource path="res://levels/rooms/RoomC.tscn" type="PackedScene" id=8]
+[ext_resource path="res://levels/background/BackgroundBlueSky.tscn" type="PackedScene" id=9]
+[ext_resource path="res://interface/bars/UIHealthBar.tscn" type="PackedScene" id=10]
+
+[node name="Main" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Bridges" type="TileMap" parent="."]
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 128, 128 )
+collision_layer = 0
+collision_mask = 0
+format = 1
+tile_data = PoolIntArray( -589803, 5, 4, -524267, 5, 4, -458731, 5, 4, -393195, 5, 4, -327659, 5, 3, -327658, 5, 2, -327657, 5, 2, -327656, 5, 2, -327655, 5, 0, -262119, 5, 4, -196583, 5, 4, -131047, 5, 4, -65511, 5, 4, 262155, 5, 0, 262156, 5, 2, 262157, 5, 2, 262158, 5, 2, 262159, 5, 2, 262160, 5, 2, 262161, 5, 1, 458775, 5, 4, 524311, 5, 4, 589847, 5, 4, 655367, 5, 4, 655383, 5, 4, 720903, 5, 4, 720919, 5, 4, 786439, 5, 4, 786455, 5, 4, 851975, 5, 4, 851991, 5, 4, 917511, 5, 3, 917512, 5, 2, 917513, 5, 2, 917514, 5, 2, 917515, 5, 2, 917516, 5, 0, 917527, 5, 4, 983052, 5, 4, 983063, 5, 4, 1048588, 5, 4, 1048599, 5, 4, 1114135, 5, 4, 1179671, 5, 4, 1245207, 5, 4, 1310743, 5, 4, 1376273, 5, 0, 1376274, 5, 2, 1376275, 5, 2, 1376276, 5, 2, 1376277, 5, 2, 1376278, 5, 2, 1376279, 5, 5 )
+
+[node name="InvisibleWalls" type="TileMap" parent="."]
+tile_set = ExtResource( 3 )
+cell_size = Vector2( 128, 128 )
+show_collision = true
+collision_layer = 64
+collision_mask = 0
+format = 1
+tile_data = PoolIntArray( -524268, 0, 0, -524266, 0, 0, -458732, 0, 0, -458730, 0, 0, -393196, 0, 0, -393194, 0, 0, -393193, 0, 0, -393192, 0, 0, -393191, 0, 0, -393190, 0, 0, -327660, 0, 0, -327654, 0, 0, -262124, 0, 0, -262123, 0, 0, -262122, 0, 0, -262121, 0, 0, -262120, 0, 0, -262118, 0, 0, -196584, 0, 0, -196582, 0, 0, -131048, 0, 0, -131046, 0, 0, 196620, 0, 0, 196621, 0, 0, 196622, 0, 0, 196623, 0, 0, 196624, 0, 0, 327692, 0, 0, 327693, 0, 0, 327694, 0, 0, 327695, 0, 0, 327696, 0, 0, 524310, 0, 0, 524312, 0, 0, 589846, 0, 0, 589848, 0, 0, 655382, 0, 0, 655384, 0, 0, 720902, 0, 0, 720904, 0, 0, 720918, 0, 0, 720920, 0, 0, 786438, 0, 0, 786440, 0, 0, 786454, 0, 0, 786456, 0, 0, 851974, 0, 0, 851976, 0, 0, 851977, 0, 0, 851978, 0, 0, 851979, 0, 0, 851980, 0, 0, 851981, 0, 0, 851990, 0, 0, 851992, 0, 0, 917510, 0, 0, 917517, 0, 0, 917526, 0, 0, 917528, 0, 0, 983046, 0, 0, 983047, 0, 0, 983048, 0, 0, 983049, 0, 0, 983050, 0, 0, 983051, 0, 0, 983053, 0, 0, 983062, 0, 0, 983064, 0, 0, 1048598, 0, 0, 1048600, 0, 0, 1114134, 0, 0, 1114136, 0, 0, 1179670, 0, 0, 1179672, 0, 0, 1245206, 0, 0, 1245208, 0, 0, 1310738, 0, 0, 1310739, 0, 0, 1310740, 0, 0, 1310741, 0, 0, 1310742, 0, 0, 1310744, 0, 0, 1376280, 0, 0, 1441810, 0, 0, 1441811, 0, 0, 1441812, 0, 0, 1441813, 0, 0, 1441814, 0, 0, 1441815, 0, 0, 1441816, 0, 0 )
+
+[node name="UILayer" type="CanvasLayer" parent="."]
+layer = 100
+
+[node name="UIHealthBar" parent="UILayer" instance=ExtResource( 10 )]
+margin_left = 32.0
+margin_top = 44.0
+margin_right = 381.0
+margin_bottom = 117.0
+
+[node name="Player" parent="." instance=ExtResource( 4 )]
+position = Vector2( 640, 640 )
+
+[node name="RoomA" parent="." instance=ExtResource( 5 )]
+position = Vector2( -1.90735e-06, 0 )
+
+[node name="RoomB" parent="." instance=ExtResource( 7 )]
+position = Vector2( 2304, 0 )
+
+[node name="RoomC" parent="." instance=ExtResource( 8 )]
+position = Vector2( 1536, -2560 )
+
+[node name="RoomD" parent="." instance=ExtResource( 6 )]
+position = Vector2( 768, 2176 )
+
+[node name="BackgroundBlueSky" parent="." instance=ExtResource( 9 )]
