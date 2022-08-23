@@ -10,6 +10,8 @@ var credits := [
 	{"role": "Programming", "name": "Jane Romero"},
 	# Add Bonnie Petersen with the Level Design role and Judy Prince with the Composer role.
 	# Be sure to capitalize the names and roles!
+	{"role": "Level Design", "name": "Bonnie Petersen"},
+	{"role": "Composer", "name": "Judy Prince"},
 ]
 
 
