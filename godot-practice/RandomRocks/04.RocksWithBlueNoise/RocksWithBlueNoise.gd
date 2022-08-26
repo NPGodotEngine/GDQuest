@@ -18,6 +18,6 @@ func add_rocks_with_blue_noise(columns: int, rows: int) -> void:
 			var rock_size := rock.texture.get_size() * rock.scale
 
 			# Complete this line to calculate a random offset within each rock's grid cell.
-			var random_offset
+			var random_offset := (CELL_SIZE - rock_size) * Vector2(randf(), randf()) 
 			# Take the random offset into account when placing the rock.
-			rock.position = cell * CELL_SIZE
+			rock.position = cell * CELL_SIZE + random_offset

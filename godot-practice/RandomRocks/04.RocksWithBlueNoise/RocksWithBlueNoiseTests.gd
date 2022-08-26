@@ -51,12 +51,13 @@ func test_each_rock_fits_in_a_grid_cell() -> String:
 			)
 
 		var rock_offset: Vector2 = rock.position - min_position
-		last_offset = rock_offset
+#		last_offset = rock_offset
 		if last_offset.distance_to(rock_offset) < 0.1:
 			rocks_with_same_offset_count += 1
 		else:
 			rocks_with_same_offset_count = 0
-
+		last_offset = rock_offset
+		
 		if rocks_with_same_offset_count == 10:
 			return tr(
 				"It seems that rocks are not offset randomly. Did you add random_offset to each rock's position?"

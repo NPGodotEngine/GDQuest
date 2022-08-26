@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://TopDownMovement/05.Collisions/Collisions.gd" type="Script" id=1]
 [ext_resource path="res://TopDownMovement/shadow_circle.png" type="Texture" id=2]
@@ -36,6 +36,9 @@ tracks/0/keys = {
 "update": 0,
 "values": [ Vector2( 0, 0 ), Vector2( 0, -5 ) ]
 }
+
+[sub_resource type="CircleShape2D" id=4]
+radius = 37.0
 
 [node name="Collisions" type="Node2D"]
 script = ExtResource( 1 )
@@ -80,3 +83,7 @@ vframes = 2
 autoplay = "hover"
 anims/RESET = SubResource( 2 )
 anims/hover = SubResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Godot"]
+position = Vector2( 0, -43 )
+shape = SubResource( 4 )

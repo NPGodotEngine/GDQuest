@@ -17,7 +17,8 @@ var gems_count := GEMS.size()
 func calculate_random_position(max_offset: Vector2) -> Vector2:
 	# Complete this function to return a random position, with a maximum output 
 	# value of `max_offset`.
-	return Vector2(0, 0)
+	var rand_pos = Vector2(randf(), randf()) * max_offset
+	return Vector2(rand_pos.x, rand_pos.y)
 
 
 # Generates `count` gems, placing them at random, even if some overlap.

@@ -30,8 +30,10 @@ func generate_gems(columns: int, rows: int) -> void:
 	# You'll need to indent the lines below to be inside the inner loop block.
 	# You can select the lines with the mouse and press Tab to do so.
 	# Update the cell value to represent the cell coordinates on each loop iteration.
-	var cell := Vector2(0, 0)
-	generate_one_gem(cell)
+	for column in range(columns):
+		for row in range(rows):
+			var cell := Vector2(column, row)
+			generate_one_gem(cell)
 
 
 # Generates one gem, offsets and rotates it randomly, and places it at the desired `cell` coordinates.
