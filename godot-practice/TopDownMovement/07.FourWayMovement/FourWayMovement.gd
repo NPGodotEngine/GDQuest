@@ -17,11 +17,11 @@ func _physics_process(_delta: float) -> void:
 		direction.x = 1.0
 	# complete the lines below for the other 4 directions
 	elif Input.is_action_pressed("move_left"):
-		pass
+		direction.x = -1.0
 	elif Input.is_action_pressed("move_up"):
-		pass
+		direction.y = -1.0
 	elif Input.is_action_pressed("move_down"):
-		pass
+		direction.y = 1.0
 	
 	player.move_and_slide(SPEED * direction)
 

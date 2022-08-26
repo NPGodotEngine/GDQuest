@@ -29,3 +29,4 @@ func _physics_process(_delta: float) -> void:
 	if direction_to_frame_key in DIRECTION_TO_FRAME:
 		player_sprite.frame = DIRECTION_TO_FRAME[direction_to_frame_key]
 		# Flip the sprite depending on the input direction.
+		player_sprite.flip_h = sign(direction.x) == -1

@@ -5,11 +5,11 @@ const SPEED := 700
 # The keys are mapped to the wrong frames. Correct the values to get the correct
 # sprite to show in every direction.
 const DIRECTION_TO_FRAME := {
-	Vector2.DOWN: 4,
-	Vector2.DOWN + Vector2.RIGHT: 2,
-	Vector2.RIGHT: 1,
-	Vector2.UP + Vector2.RIGHT: 4,
-	Vector2.UP: 5,
+	Vector2.DOWN: 0,
+	Vector2.DOWN + Vector2.RIGHT: 1,
+	Vector2.RIGHT: 2,
+	Vector2.UP + Vector2.RIGHT: 3,
+	Vector2.UP: 4,
 }
 
 onready var player: KinematicBody2D = $Godot

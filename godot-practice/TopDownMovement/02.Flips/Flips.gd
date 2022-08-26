@@ -20,9 +20,9 @@ func _on_HSlider_value_changed(value: float) -> void:
 
 func _on_CheckButtonFlipH_toggled(toggled: bool) -> void:
 	# Flip the sprite horizontally based on the toggled value.
-	pass
+	sprite.flip_h = toggled
 
 
 func _on_CheckButtonFlipV_toggled(toggled: bool) -> void:
 	# Flip the sprite vertically based on the toggled value.
-	pass
+	sprite.flip_v = toggled

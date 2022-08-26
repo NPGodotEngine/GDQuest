@@ -15,10 +15,16 @@ onready var player_sprite: Sprite = $Godot/Sprite
 
 
 func _physics_process(_delta: float) -> void:
-	var direction := Vector2(
-		Input.get_axis("move_left", "move_right"),
-		Input.get_axis("move_up", "move_down")
-	).normalized()
+	var direction := Vector2.ZERO
+	if Input.is_action_pressed("move_right"):
+		direction.x = 1.0
+	elif Input.is_action_pressed("move_left"):
+		direction.x = -1.0
+	elif Input.is_action_pressed("move_up"):
+		direction.y = -1.0
+	elif Input.is_action_pressed("move_down"):
+		direction.y = 1.0
+		
 	player.move_and_slide(SPEED * direction)
 
 	var direction_key := direction.round()

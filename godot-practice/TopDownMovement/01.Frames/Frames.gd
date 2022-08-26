@@ -14,3 +14,4 @@ func _ready() -> void:
 func _on_HSlider_value_changed(value: float) -> void:
 	label.text = str(value)
 	# Change the sprite's frame based on the slider's value.
+	sprite.frame = int(value)
