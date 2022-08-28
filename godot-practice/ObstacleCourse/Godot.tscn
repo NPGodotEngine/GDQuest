@@ -39,6 +39,7 @@ tracks/0/keys = {
 }
 
 [node name="Godot" type="KinematicBody2D"]
+collision_layer = 2
 script = ExtResource( 3 )
 
 [node name="Shadow" type="Sprite" parent="."]

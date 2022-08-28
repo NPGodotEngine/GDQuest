@@ -123,7 +123,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Learn to Code with Godot: Practices"
-run/main_scene="res://RandomRocks/04.RocksWithBlueNoise/RocksWithBlueNoise.tscn"
+run/main_scene="res://ObstacleCourse/02.PickingTheGems/PickingTheGems.tscn"
 config/icon="res://icon.png"
 
 [autoload]
