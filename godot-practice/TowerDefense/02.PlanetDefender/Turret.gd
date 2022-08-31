@@ -31,7 +31,7 @@ func _physics_process(_delta: float) -> void:
 	target_angle = PI / 2
 	if target:
 		# Make the turret find the angle to the mob here.
-		pass
+		target_angle = target.global_position.angle_to_point(global_position)
 	sprite.rotation = lerp_angle(sprite.rotation, target_angle, rotation_factor)
 
 
@@ -58,4 +58,4 @@ func _on_Timer_timeout() -> void:
 	var rocket := preload("../common/Rocket.tscn").instance()
 	add_child(rocket)
 	# Make sure the rocket is aligned with the cannon.
-	pass
+	rocket.global_transform = cannon.global_transform

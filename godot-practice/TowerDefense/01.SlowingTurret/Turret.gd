@@ -8,9 +8,9 @@ func _ready() -> void:
 
 func _on_body_entered(body: Node) -> void:
 	# Divide the body's speed by 2.
-	pass
+	body.speed /= 2.0
 
 
 func _on_body_exited(body: Node) -> void:
 	# Multiply the body's speed by 2 to restore its original speed.
-	pass
+	body.speed *= 2.0
