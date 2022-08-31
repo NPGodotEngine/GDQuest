@@ -8,8 +8,12 @@ onready var finish_screen: Control = $CanvasLayer/FinishScreen
 
 
 func _ready() -> void:
-	pass
+	robot_statue.connect("body_entered", self, "_on_RobotStatue_body_entered")
 
 
 func _on_RobotStatue_body_entered(body: Node) -> void:
-	pass
+	finish_game()
+
+func finish_game():
+	godot.set_physics_process(false)
+	finish_screen.show()
