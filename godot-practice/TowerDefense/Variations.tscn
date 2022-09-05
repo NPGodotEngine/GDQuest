@@ -1,12 +1,24 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://TowerDefense/common/Turret.tscn" type="PackedScene" id=1]
 [ext_resource path="res://TowerDefense/common/DraggableMob.tscn" type="PackedScene" id=2]
+[ext_resource path="res://TowerDefense/Turret.gd" type="Script" id=3]
+[ext_resource path="res://TowerDefense/TurretMultishot.gd" type="Script" id=4]
+[ext_resource path="res://TowerDefense/TurretWeakPicker.gd" type="Script" id=5]
 
 [node name="Variations" type="Node2D"]
 
 [node name="Turret" parent="." instance=ExtResource( 1 )]
 position = Vector2( 360, 522 )
+script = ExtResource( 3 )
+
+[node name="TurretMultishot" parent="." instance=ExtResource( 1 )]
+position = Vector2( 993, 520 )
+script = ExtResource( 4 )
+
+[node name="TurretWeakPicker" parent="." instance=ExtResource( 1 )]
+position = Vector2( 1640, 504 )
+script = ExtResource( 5 )
 
 [node name="DraggableMob" parent="." instance=ExtResource( 2 )]
 position = Vector2( 333, 862 )
