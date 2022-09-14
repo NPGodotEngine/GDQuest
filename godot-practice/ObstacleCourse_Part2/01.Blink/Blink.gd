@@ -14,4 +14,7 @@ func _on_button_toggled(is_on: bool) -> void:
 	# If the button is toggled, play the blink animation, otherwise,
 	# stop the animation player.
 	# To stop the animation, call the animation_player.stop() function.
-	pass
+	if is_on:
+		animation_player.play("blink")
+	else:
+		animation_player.stop()

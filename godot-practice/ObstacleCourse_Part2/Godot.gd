@@ -15,8 +15,26 @@ var drag_factor := 0.13
 var velocity := Vector2.ZERO
 
 onready var sprite := $Sprite
+onready var anim_ghost := $AnimationPlayerGhost
+onready var timer_ghost := $TimerGhost
 
+var start_collision_layer := collision_layer
+var start_collision_mask := collision_mask
 
+func toggle_ghost_effect(is_on:bool):
+	if is_on:
+		timer_ghost.start()
+		collision_layer = 0
+		collision_mask = 0
+		anim_ghost.play("ghost")
+	else:
+		collision_layer = start_collision_layer
+		collision_mask = start_collision_mask
+		anim_ghost.stop()
+
+func _ready():
+	timer_ghost.connect("timeout", self, "toggle_ghost_effect", [false])
+	
 func _physics_process(delta: float) -> void:
 	var direction := Input.get_vector("move_left", "move_right", "move_up", "move_down")
 
