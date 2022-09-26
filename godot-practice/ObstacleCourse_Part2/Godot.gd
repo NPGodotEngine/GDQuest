@@ -10,6 +10,7 @@ const DIRECTION_TO_FRAME := {
 }
 
 const SPEED_SLOW := 100.0
+const SPEED_FAST := 1100.0
 const SPEED_DEFAULT := 700.0 
 var speed := SPEED_DEFAULT
 
@@ -34,6 +35,9 @@ func toggle_ghost_effect(is_on:bool):
 		collision_layer = start_collision_layer
 		collision_mask = start_collision_mask
 		anim_ghost.stop()
+		
+func apply_speed_effect() -> void:
+	speed = SPEED_FAST
 
 func _ready():
 	timer_ghost.connect("timeout", self, "toggle_ghost_effect", [false])
@@ -62,3 +66,9 @@ func _physics_process(delta: float) -> void:
 	if direction_key in DIRECTION_TO_FRAME:
 		sprite.frame = DIRECTION_TO_FRAME[direction_key]
 		sprite.flip_h = sign(direction.x) == -1
+	
+	var is_speed_boost_active := is_equal_approx(speed, SPEED_FAST)
+	var is_colliding := get_slide_count() > 0
+	
+	if is_speed_boost_active and is_colliding:
+		speed = SPEED_DEFAULT

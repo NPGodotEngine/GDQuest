@@ -274,6 +274,8 @@ shape = SubResource( 14 )
 [node name="Info" type="Label" parent="UI"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_right = 1920.0
+margin_bottom = 1080.0
 rect_min_size = Vector2( 1920, 1080 )
 rect_scale = Vector2( 3, 3 )
 rect_pivot_offset = Vector2( 960, 540 )
