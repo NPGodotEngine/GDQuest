@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://ObstacleCourse_Part2/pickup/Pickup.tscn" type="PackedScene" id=1]
+[ext_resource path="res://ObstacleCourse_Part2/pickup/PickupGhost.gd" type="Script" id=2]
+
+[node name="PickupGhost" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
