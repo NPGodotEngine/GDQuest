@@ -220,8 +220,7 @@ position = Vector2( 960, 2816 )
 [node name="PushWall2" parent="Course/Obstacles" instance=ExtResource( 6 )]
 position = Vector2( 3136, 1920 )
 
-[node name="OffCourse" type="StaticBody2D" parent="Course"]
-collision_layer = 0
+[node name="OffCourse" type="Area2D" parent="Course" groups=["offcourse"]]
 collision_mask = 2
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Course/OffCourse"]

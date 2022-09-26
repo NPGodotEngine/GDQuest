@@ -9,7 +9,9 @@ const DIRECTION_TO_FRAME := {
 	Vector2.UP: 4,
 }
 
-const SPEED := 700.0
+const SPEED_SLOW := 100.0
+const SPEED_DEFAULT := 700.0 
+var speed := SPEED_DEFAULT
 
 var drag_factor := 0.13
 var velocity := Vector2.ZERO
@@ -17,6 +19,7 @@ var velocity := Vector2.ZERO
 onready var sprite := $Sprite
 onready var anim_ghost := $AnimationPlayerGhost
 onready var timer_ghost := $TimerGhost
+onready var slowdown_area := $Area2D
 
 var start_collision_layer := collision_layer
 var start_collision_mask := collision_mask
@@ -34,11 +37,21 @@ func toggle_ghost_effect(is_on:bool):
 
 func _ready():
 	timer_ghost.connect("timeout", self, "toggle_ghost_effect", [false])
+	slowdown_area.connect("area_entered", self, "_on_Area2D_area_entered")
+	slowdown_area.connect("area_exited", self, "_on_Area2D_area_exited")
+	
+func _on_Area2D_area_entered(area:Area2D) -> void:
+	if area.is_in_group("offcourse"):
+		speed = SPEED_SLOW
+
+func _on_Area2D_area_exited(area:Area2D) -> void:
+	if area.is_in_group("offcourse"):
+		speed = SPEED_DEFAULT
 	
 func _physics_process(delta: float) -> void:
 	var direction := Input.get_vector("move_left", "move_right", "move_up", "move_down")
 
-	var desired_velocity := SPEED * direction
+	var desired_velocity := speed * direction
 	var steering_vector := desired_velocity - velocity
 	velocity += steering_vector * drag_factor
 
