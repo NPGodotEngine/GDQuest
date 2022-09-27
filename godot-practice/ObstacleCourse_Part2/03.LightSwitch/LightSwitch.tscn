@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://ObstacleCourse_Part2/assets/dungeon_tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://ObstacleCourse_Part2/02.GemCounter/Godot.tscn" type="PackedScene" id=2]
+[ext_resource path="res://ObstacleCourse_Part2/03.LightSwitch/Light.tscn" type="PackedScene" id=3]
 [ext_resource path="res://ObstacleCourse_Part2/03.LightSwitch/LightSwitch.gd" type="Script" id=4]
 [ext_resource path="res://ObstacleCourse_Part2/03.LightSwitch/Switch.tscn" type="PackedScene" id=5]
 
@@ -31,3 +32,6 @@ collision_mask = 1
 
 [node name="Switch" parent="." instance=ExtResource( 5 )]
 position = Vector2( 599.976, 426.657 )
+
+[node name="Light" parent="Switch" instance=ExtResource( 3 )]
+position = Vector2( 50.024, 199.343 )

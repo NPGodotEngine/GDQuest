@@ -58,7 +58,6 @@ tracks/0/keys = {
 radius = 29.0
 
 [node name="Godot" type="KinematicBody2D"]
-modulate = Color( 1, 1, 1, 0.435564 )
 collision_layer = 2
 script = ExtResource( 3 )
 
