@@ -18,7 +18,6 @@ func _ready() -> void:
 
 	ui_remaining_time.text = get_remaining_time_text(true)
 
-
 func _process(delta: float) -> void:
 	ui_remaining_time.text = get_remaining_time_text(false)
 

@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://ObstacleCourse_Part2/assets/shadow_circle.png" type="Texture" id=1]
 [ext_resource path="res://ObstacleCourse_Part2/assets/godot.png" type="Texture" id=2]
 [ext_resource path="res://ObstacleCourse_Part2/Godot.gd" type="Script" id=3]
+[ext_resource path="res://ObstacleCourse_Part2/assets/smoke.png" type="Texture" id=4]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 30.0
@@ -57,6 +58,34 @@ tracks/0/keys = {
 [sub_resource type="CircleShape2D" id=5]
 radius = 29.0
 
+[sub_resource type="Gradient" id=6]
+offsets = PoolRealArray( 0, 0.148594, 0.558233, 1 )
+colors = PoolColorArray( 0.886275, 0.854902, 0.854902, 0, 0.83252, 0.783727, 0.783727, 1, 0.762207, 0.714744, 0.714744, 0.966981, 1, 1, 1, 0 )
+
+[sub_resource type="GradientTexture" id=7]
+gradient = SubResource( 6 )
+
+[sub_resource type="Curve" id=8]
+_data = [ Vector2( 0, 0.167045 ), 0.0, 0.0, 0, 0, Vector2( 0.242647, 0.839773 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.176136 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=9]
+curve = SubResource( 8 )
+
+[sub_resource type="ParticlesMaterial" id=10]
+flag_disable_z = true
+direction = Vector3( 0, -1, 0 )
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 136.36
+initial_velocity_random = 0.21
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+damping = 73.65
+damping_random = 0.17
+scale = 0.5
+scale_random = 0.35
+scale_curve = SubResource( 9 )
+color_ramp = SubResource( 7 )
+
 [node name="Godot" type="KinematicBody2D"]
 collision_layer = 2
 script = ExtResource( 3 )
@@ -92,3 +121,10 @@ anims/ghost = SubResource( 4 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2( 0, -30 )
 shape = SubResource( 5 )
+
+[node name="SmokeParticle" type="Particles2D" parent="."]
+show_behind_parent = true
+amount = 20
+local_coords = false
+process_material = SubResource( 10 )
+texture = ExtResource( 4 )

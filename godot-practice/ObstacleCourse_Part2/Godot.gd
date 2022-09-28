@@ -21,6 +21,7 @@ onready var sprite := $Sprite
 onready var anim_ghost := $AnimationPlayerGhost
 onready var timer_ghost := $TimerGhost
 onready var slowdown_area := $Area2D
+onready var smoke_particle := $SmokeParticle
 
 var start_collision_layer := collision_layer
 var start_collision_mask := collision_mask
@@ -66,6 +67,8 @@ func _physics_process(delta: float) -> void:
 	if direction_key in DIRECTION_TO_FRAME:
 		sprite.frame = DIRECTION_TO_FRAME[direction_key]
 		sprite.flip_h = sign(direction.x) == -1
+		
+	smoke_particle.emitting = velocity.length() > SPEED_DEFAULT / 2.0
 	
 	var is_speed_boost_active := is_equal_approx(speed, SPEED_FAST)
 	var is_colliding := get_slide_count() > 0
