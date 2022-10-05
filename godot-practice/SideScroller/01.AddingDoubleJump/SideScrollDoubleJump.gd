@@ -17,12 +17,14 @@ func _physics_process(delta: float) -> void:
 	var is_jump_cancelled := Input.is_action_just_released("jump") and velocity.y < 0.0
 	# Make sure the character can only jump twice.
 	# Hint: you will need to add "and" to the if, and a new condition
-	if is_jumping:
+	if is_jumping and jump_number < jump_strengths.size():
 		# Make sure the current jump is applied here
+		velocity.y = -jump_strengths[jump_number]
 		# Make also sure the jump number is increased
+		jump_number += 1
 		pass
 	elif is_jump_cancelled:
 		velocity.y = 0.0
 	elif is_on_floor():
-		pass
+		jump_number = 0
 	velocity = move_and_slide(velocity, Vector2.UP)
