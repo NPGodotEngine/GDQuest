@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://SideScroller/SideScrollTileMap/SideScrollTileMap.tscn" type="PackedScene" id=1]
 [ext_resource path="res://SideScroller/Robot.tscn" type="PackedScene" id=2]
 [ext_resource path="res://SideScroller/SideScrollTileMap/TileMapCave.tscn" type="PackedScene" id=3]
 [ext_resource path="res://SideScroller/SideScrollTileMap/CaveBackground.tscn" type="PackedScene" id=4]
+[ext_resource path="res://SideScroller/DisappearingPlarform.tscn" type="PackedScene" id=5]
 
 [node name="Level" type="Node2D"]
 
@@ -17,3 +18,9 @@ tile_data = PoolIntArray( 65539, 2, 0, 65546, 2, 0, 65552, 2, 0, 65556, 2, 0, 19
 
 [node name="Robot" parent="." instance=ExtResource( 2 )]
 position = Vector2( 593, 627 )
+
+[node name="StaticBody2D" parent="." instance=ExtResource( 5 )]
+position = Vector2( 1094, 731 )
+
+[node name="StaticBody2D2" parent="." instance=ExtResource( 5 )]
+position = Vector2( 1333, 574 )

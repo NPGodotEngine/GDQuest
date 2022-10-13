@@ -8,6 +8,7 @@ extents = Vector2( 46, 76 )
 
 [node name="Robot" type="KinematicBody2D"]
 position = Vector2( 945, 899 )
+collision_layer = 2
 script = ExtResource( 3 )
 
 [node name="Skin" parent="." instance=ExtResource( 1 )]
