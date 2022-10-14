@@ -9,4 +9,4 @@ func _ready() -> void:
 
 func _on_DragArea_requested_move(impulse: Vector2) -> void:
 	# apply the impulse here
-	pass
+	apply_central_impulse(impulse)

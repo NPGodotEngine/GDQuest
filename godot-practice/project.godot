@@ -123,7 +123,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Learn to Code with Godot: Practices"
-run/main_scene="res://SideScroller/02.CreatingAJumpPad/CreatingAJumpPad.tscn"
+run/main_scene="res://SideScroller/03.Marbles/Marbles.tscn"
 config/icon="res://icon.png"
 
 [autoload]

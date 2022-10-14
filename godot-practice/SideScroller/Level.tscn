@@ -5,7 +5,7 @@
 [ext_resource path="res://SideScroller/SideScrollTileMap/TileMapCave.tscn" type="PackedScene" id=3]
 [ext_resource path="res://SideScroller/SideScrollTileMap/CaveBackground.tscn" type="PackedScene" id=4]
 [ext_resource path="res://SideScroller/DisappearingPlarform.tscn" type="PackedScene" id=5]
-[ext_resource path="res://SideScroller/Bat.tscn" type="PackedScene" id=6]
+[ext_resource path="res://SideScroller/Rock.tscn" type="PackedScene" id=6]
 
 [node name="Level" type="Node2D"]
 
@@ -21,10 +21,11 @@ tile_data = PoolIntArray( 65539, 2, 0, 65544, 4, 0, 65549, 1610612739, 0, 65553,
 position = Vector2( 545, 938 )
 
 [node name="StaticBody2D" parent="." instance=ExtResource( 5 )]
-position = Vector2( 1050, 788 )
+position = Vector2( 1050, 756 )
 
 [node name="StaticBody2D2" parent="." instance=ExtResource( 5 )]
 position = Vector2( 1333, 574 )
 
-[node name="Bat" parent="." instance=ExtResource( 6 )]
-position = Vector2( 1029, 305 )
+[node name="RigidBody2D" parent="." instance=ExtResource( 6 )]
+position = Vector2( 832, 905 )
+gravity_scale = 20.0

@@ -22,4 +22,10 @@ func _physics_process(delta:float) -> void:
 	elif is_on_floor():
 		jump_number = 0
 		
-	velocity = move_and_slide(velocity, Vector2.UP)
+	velocity = move_and_slide(velocity, Vector2.UP, false, 4, PI/4, false)
+	
+	for index in get_slide_count():
+		var collision := get_slide_collision(index)
+		if collision.collider is RigidBody2D:
+			var impulse := - collision.normal * 5000.0 * delta
+			collision.collider.apply_central_impulse(impulse)
