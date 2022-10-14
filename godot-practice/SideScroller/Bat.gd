@@ -7,6 +7,7 @@ var velocity := Vector2.ZERO
 var target: KinematicBody2D
 
 onready var aggro_area := $AggroArea
+onready var raycast := $RayCast2D
 
 func _ready() -> void:
 	aggro_area.connect("body_entered", self, "_on_player_entered") 
@@ -16,7 +17,11 @@ func _physics_process(delta:float) -> void:
 	var direction := Vector2.UP
 
 	if target:
-		direction = to_local(target.global_position).normalized()
+		raycast.look_at(target.global_position)
+		raycast.force_raycast_update()
+		
+		if raycast.get_collider() == target:
+			direction = to_local(target.global_position).normalized()
 		
 	
 	var desired_velocity := speed * direction
