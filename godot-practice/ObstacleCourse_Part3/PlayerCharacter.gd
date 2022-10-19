@@ -1,6 +1,8 @@
 class_name PlayerCharacter
 extends KinematicBody2D
 
+var setting: PlayerSettings
+
 const DIRECTION_TO_FRAME := {
 	Vector2.DOWN: 0,
 	Vector2.DOWN + Vector2.RIGHT: 1,
@@ -35,7 +37,13 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
-	var direction := Input.get_vector("move_left", "move_right", "move_up", "move_down")
+#	var direction := Input.get_vector("move_left", "move_right", "move_up", "move_down")
+	var direction := Input.get_vector(
+		setting.move_left_action,
+		setting.move_right_action,
+		setting.move_up_action,
+		setting.move_down_action
+	)
 	var desired_velocity := speed * direction
 	var steering_vector := desired_velocity - velocity
 	velocity += steering_vector * drag_factor

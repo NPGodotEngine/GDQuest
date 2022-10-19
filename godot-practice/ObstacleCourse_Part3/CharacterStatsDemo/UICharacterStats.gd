@@ -34,7 +34,9 @@ func _ready() -> void:
 func _update_spinboxes() -> void:
 	# Replace this with the code listed in the lesson to update the spinboxes'
 	# values.
-	pass
+	strength_spinbox.value = character_stats.strength
+	endurance_spinbox.value = character_stats.endurance
+	intelligence_spinbox.value = character_stats.intelligence
 
 
 func _on_ResetButton_pressed() -> void:

@@ -19,6 +19,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/PracticeTester/resources/Chapter.gd"
 }, {
+"base": "Resource",
+"class": "CharacterStats",
+"language": "GDScript",
+"path": "res://ObstacleCourse_Part3/CharacterStatsDemo/CharacterStats.gd"
+}, {
 "base": "Revealer",
 "class": "CheckmarkRevealer",
 "language": "GDScript",
@@ -58,6 +63,11 @@ _global_script_classes=[ {
 "class": "PlayerCharacter",
 "language": "GDScript",
 "path": "res://ObstacleCourse_Part3/PlayerCharacter.gd"
+}, {
+"base": "Resource",
+"class": "PlayerSettings",
+"language": "GDScript",
+"path": "res://ObstacleCourse_Part3/TwoPlayersDemo/PlayerSettings.gd"
 }, {
 "base": "Resource",
 "class": "Practice",
@@ -102,6 +112,7 @@ _global_script_classes=[ {
 _global_script_class_icons={
 "Book": "",
 "Chapter": "",
+"CharacterStats": "",
 "CheckmarkRevealer": "res://addons/PracticeTester/editor_ui/Revealer.svg",
 "Course": "",
 "GDQuestCollisionCircleDebugDraw": "",
@@ -110,6 +121,7 @@ _global_script_class_icons={
 "GutTest": "",
 "InventoryItem": "",
 "PlayerCharacter": "",
+"PlayerSettings": "",
 "Practice": "",
 "PracticeTests": "",
 "Revealer": "res://addons/PracticeTester/editor_ui/Revealer.svg",
@@ -123,7 +135,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Learn to Code with Godot: Practices"
-run/main_scene="res://SideScroller/03.Marbles/Marbles.tscn"
+run/main_scene="res://ObstacleCourse_Part3/practices/01.FortuneCookies/FortuneCookie.tscn"
 config/icon="res://icon.png"
 
 [autoload]
@@ -225,6 +237,26 @@ boost={
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":32,"unicode":0,"echo":false,"script":null)
  ]
 }
+move_left_p2={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":16777354,"unicode":0,"echo":false,"script":null)
+ ]
+}
+move_right_p2={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":16777356,"unicode":0,"echo":false,"script":null)
+ ]
+}
+move_up_p2={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":16777358,"unicode":0,"echo":false,"script":null)
+ ]
+}
+move_down_p2={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":16777355,"unicode":0,"echo":false,"script":null)
+ ]
+}
 
 [physics]
 
@@ -232,7 +264,6 @@ common/enable_pause_aware_picking=true
 
 [rendering]
 
-quality/driver/driver_name="GLES2"
 2d/snapping/use_gpu_pixel_snap=true
 batching/precision/uv_contract=true
 environment/default_clear_color=Color( 0.188235, 0.188235, 0.286275, 1 )

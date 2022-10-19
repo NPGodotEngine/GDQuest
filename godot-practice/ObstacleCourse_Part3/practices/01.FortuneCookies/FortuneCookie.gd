@@ -17,7 +17,8 @@ func _on_Button_pressed() -> void:
 	animation_player.play("text")
 	button.disabled = true
 	# Set the label's text using your new function from the Book resource here.
-	pass
+	randomize()
+	label.text = book.get_random_line()
 
 
 func _on_AnimationPlayer_finished(_anim_name: String) -> void:
