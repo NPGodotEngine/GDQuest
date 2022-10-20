@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://ObstacleCourse_Part3/practices/02.Items/InventoryItem.gd" type="Script" id=1]
+[ext_resource path="res://ObstacleCourse_Part3/practices/assets/boomerang_wood.png" type="Texture" id=2]
+
+[resource]
+script = ExtResource( 1 )
+display_name = "Boomerange"
+description = "Go out and come back"
+amount = 1
+icon_texture = ExtResource( 2 )

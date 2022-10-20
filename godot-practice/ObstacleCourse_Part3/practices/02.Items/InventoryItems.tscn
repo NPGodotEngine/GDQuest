@@ -1,9 +1,12 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://common/fonts/OpenSans-Regular.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://ObstacleCourse_Part3/practices/02.Items/MagicWand.tres" type="Resource" id=2]
 [ext_resource path="res://ObstacleCourse_Part3/practices/02.Items/InventoryItems.gd" type="Script" id=3]
+[ext_resource path="res://ObstacleCourse_Part3/practices/02.Items/Boomerange.tres" type="Resource" id=4]
 [ext_resource path="res://ObstacleCourse_Part3/practices/common/UITooltip.tscn" type="PackedScene" id=5]
 [ext_resource path="res://ObstacleCourse_Part3/practices/common/UIDraggedItemPreview.tscn" type="PackedScene" id=6]
+[ext_resource path="res://ObstacleCourse_Part3/practices/02.Items/Sword.tres" type="Resource" id=7]
 
 [sub_resource type="StyleBoxEmpty" id=6]
 
@@ -37,9 +40,9 @@ Button/styles/normal = SubResource( 4 )
 Button/styles/pressed = SubResource( 5 )
 Panel/styles/panel = SubResource( 2 )
 PanelContainer/styles/panel = SubResource( 2 )
-RichTextLabel/fonts/bold_font = null
-RichTextLabel/fonts/italics_font = null
-RichTextLabel/fonts/normal_font = null
+RichTextLabel/fonts/bold_font = SubResource( 7 )
+RichTextLabel/fonts/italics_font = SubResource( 7 )
+RichTextLabel/fonts/normal_font = SubResource( 7 )
 
 [node name="InventoryItems" type="Panel"]
 anchor_right = 1.0
@@ -50,6 +53,7 @@ margin_right = -384.0
 margin_bottom = -192.0
 theme = SubResource( 8 )
 script = ExtResource( 3 )
+items = [ ExtResource( 4 ), ExtResource( 2 ), ExtResource( 7 ) ]
 
 [node name="UITooltip" parent="." instance=ExtResource( 5 )]
 visible = false

@@ -1,6 +1,7 @@
-[gd_resource type="Resource" load_steps=2 format=2]
+[gd_resource type="Resource" load_steps=3 format=2]
 
 [ext_resource path="res://ObstacleCourse_Part3/TwoPlayersDemo/PlayerSettings.gd" type="Script" id=1]
+[ext_resource path="res://ObstacleCourse_Part3/assets/hand_blue_closed.png" type="Texture" id=2]
 
 [resource]
 script = ExtResource( 1 )
@@ -8,3 +9,4 @@ move_left_action = "move_left"
 move_right_action = "move_right"
 move_up_action = "move_up"
 move_down_action = "move_down"
+hand_texture = ExtResource( 2 )

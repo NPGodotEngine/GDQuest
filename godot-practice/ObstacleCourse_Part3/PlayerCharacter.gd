@@ -1,7 +1,7 @@
 class_name PlayerCharacter
 extends KinematicBody2D
 
-var setting: PlayerSettings
+var setting: PlayerSettings setget set_setting
 
 const DIRECTION_TO_FRAME := {
 	Vector2.DOWN: 0,
@@ -91,3 +91,16 @@ func _on_Area2D_area_exited(area: Area2D) -> void:
 
 func _on_TimerGhost_timeout() -> void:
 	toggle_ghost_effect(false)
+	
+func update_skin() -> void:
+	hand_sprite_left.texture = setting.hand_texture
+	hand_sprite_right.texture = setting.hand_texture
+	
+func set_setting(new_setting:PlayerSettings) -> void:
+	if setting == new_setting:
+		return 
+		
+	setting = new_setting
+	new_setting.connect("changed", self, "update_skin")
+	update_skin()
+	

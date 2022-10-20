@@ -135,7 +135,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Learn to Code with Godot: Practices"
-run/main_scene="res://ObstacleCourse_Part3/practices/01.FortuneCookies/FortuneCookie.tscn"
+run/main_scene="res://ObstacleCourse_Part3/practices/02.Items/InventoryItems.tscn"
 config/icon="res://icon.png"
 
 [autoload]
