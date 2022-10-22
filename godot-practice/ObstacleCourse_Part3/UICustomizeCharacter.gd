@@ -8,6 +8,10 @@ onready var hand_color_option := $Menu/HBoxContainer2/HandsColorOption
 
 
 func _ready() -> void:
+	if owner == null:
+		player_1.settings = preload("TwoPlayersDemo/Player_1_setting.tres")
+		player_2.settings = preload("TwoPlayersDemo/Player_2_setting.tres")
+		
 	# When selecting a new option in either drop-down menu,
 	# we call _on_hands_option_changed() to update the character's look.
 	hand_pose_option.connect("item_selected", self, "_on_hands_option_changed")
@@ -19,11 +23,22 @@ func _ready() -> void:
 	# it.
 	if "settings" in player_1 and player_1.settings == null:
 		_toggle_players_active(false)
+		
+	_update_display()
 
 
 func _on_hands_option_changed(item: int) -> void:
-	pass
-
+	var pose: String = hand_pose_option.text
+	var color: String = hand_color_option.text
+	var filename := "hand_%s_%s.png" % [color, pose]
+	
+	var folder_path: String = get_script().resource_path.get_base_dir()
+	folder_path = folder_path.plus_file("assets/")
+	
+	var texture_path := folder_path.plus_file(filename)
+	
+	var selected_player := _get_selected_player()
+	selected_player.settings.hand_texture = load(texture_path)
 
 # ---------
 # MENU CODE

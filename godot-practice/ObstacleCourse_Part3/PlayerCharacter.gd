@@ -1,7 +1,7 @@
 class_name PlayerCharacter
 extends KinematicBody2D
 
-var setting: PlayerSettings setget set_setting
+var settings: PlayerSettings setget set_setting
 
 const DIRECTION_TO_FRAME := {
 	Vector2.DOWN: 0,
@@ -39,10 +39,10 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 #	var direction := Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	var direction := Input.get_vector(
-		setting.move_left_action,
-		setting.move_right_action,
-		setting.move_up_action,
-		setting.move_down_action
+		settings.move_left_action,
+		settings.move_right_action,
+		settings.move_up_action,
+		settings.move_down_action
 	)
 	var desired_velocity := speed * direction
 	var steering_vector := desired_velocity - velocity
@@ -93,14 +93,14 @@ func _on_TimerGhost_timeout() -> void:
 	toggle_ghost_effect(false)
 	
 func update_skin() -> void:
-	hand_sprite_left.texture = setting.hand_texture
-	hand_sprite_right.texture = setting.hand_texture
+	hand_sprite_left.texture = settings.hand_texture
+	hand_sprite_right.texture = settings.hand_texture
 	
-func set_setting(new_setting:PlayerSettings) -> void:
-	if setting == new_setting:
+func set_setting(new_settings:PlayerSettings) -> void:
+	if settings == new_settings:
 		return 
 		
-	setting = new_setting
-	new_setting.connect("changed", self, "update_skin")
+	settings = new_settings
+	new_settings.connect("changed", self, "update_skin")
 	update_skin()
 	

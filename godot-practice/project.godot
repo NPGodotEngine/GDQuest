@@ -84,6 +84,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/PracticeTester/editor_ui/Revealer.gd"
 }, {
+"base": "Resource",
+"class": "SaveGame",
+"language": "GDScript",
+"path": "res://ObstacleCourse_Part3/SaveGame.gd"
+}, {
 "base": "ScrollContainer",
 "class": "SmoothScrollContainer",
 "language": "GDScript",
@@ -125,6 +130,7 @@ _global_script_class_icons={
 "Practice": "",
 "PracticeTests": "",
 "Revealer": "res://addons/PracticeTester/editor_ui/Revealer.svg",
+"SaveGame": "",
 "SmoothScrollContainer": "",
 "UIPracticeCheck": "",
 "UIPracticeHint": "",
@@ -135,7 +141,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Learn to Code with Godot: Practices"
-run/main_scene="res://ObstacleCourse_Part3/practices/02.Items/InventoryItems.tscn"
+run/main_scene="res://ObstacleCourse_Part3/practices/03.Saving/Saving.tscn"
 config/icon="res://icon.png"
 
 [autoload]

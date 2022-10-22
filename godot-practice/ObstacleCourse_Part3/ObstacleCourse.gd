@@ -20,6 +20,14 @@ onready var viewport_right := split_viewports_container.get_node("ViewportContai
 
 onready var players := [obstacle_course.get_node("PlayerCharacter"), obstacle_course.get_node("PlayerCharacter2")]
 
+var _savegame: SaveGame = null
+
+func _create_savegame() -> void:
+	_savegame = SaveGame.new()
+	_savegame.player_1 = preload("TwoPlayersDemo/Player_1_setting.tres").duplicate()
+	_savegame.player_2 = preload("TwoPlayersDemo/Player_2_setting.tres").duplicate()
+	_savegame.write_savegame()
+	
 func _ready() -> void:
 	timer.connect("timeout", self, "finish_game")
 	finish_area.connect("body_entered", self, "_on_Finish_body_entered")
@@ -35,6 +43,14 @@ func _ready() -> void:
 
 	viewport_right.world_2d = viewport_left.world_2d
 	viewport_overview.world_2d = viewport_right.world_2d
+	
+	_savegame = SaveGame.load_savegame()
+	if not _savegame:
+		_create_savegame()
+		_savegame = SaveGame.load_savegame()
+	
+	players[0].settings = _savegame.player_1
+	players[1].settings = _savegame.player_2
 
 
 func _unhandled_input(event: InputEvent) -> void:

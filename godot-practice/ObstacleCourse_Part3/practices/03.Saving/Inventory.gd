@@ -6,7 +6,9 @@ export(Array, Resource) var items := [] setget set_items
 
 # Create a new function named save. It should save this resource at the correct path.
 # To get the correct save file path, call the get_save_path() function.
-
+func save() -> void:
+	var save_path := get_save_path()
+	ResourceSaver.save(save_path, self)
 
 # Returns the correct path to save the inventory resource.
 func get_save_path() -> String:

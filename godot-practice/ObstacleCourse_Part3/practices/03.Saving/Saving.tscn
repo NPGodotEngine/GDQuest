@@ -49,9 +49,9 @@ Button/styles/normal = SubResource( 4 )
 Button/styles/pressed = SubResource( 5 )
 Panel/styles/panel = SubResource( 2 )
 PanelContainer/styles/panel = SubResource( 2 )
-RichTextLabel/fonts/bold_font = null
-RichTextLabel/fonts/italics_font = null
-RichTextLabel/fonts/normal_font = null
+RichTextLabel/fonts/bold_font = SubResource( 7 )
+RichTextLabel/fonts/italics_font = SubResource( 7 )
+RichTextLabel/fonts/normal_font = SubResource( 7 )
 
 [node name="Saving" type="Control"]
 anchor_right = 1.0
