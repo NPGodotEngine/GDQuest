@@ -20,6 +20,8 @@ onready var viewport_right := split_viewports_container.get_node("ViewportContai
 
 onready var players := [obstacle_course.get_node("PlayerCharacter"), obstacle_course.get_node("PlayerCharacter2")]
 
+onready var ui_customized_character := $Menu/UICustomizeCharacter
+
 var _savegame: SaveGame = null
 
 func _create_savegame() -> void:
@@ -51,12 +53,23 @@ func _ready() -> void:
 	
 	players[0].settings = _savegame.player_1
 	players[1].settings = _savegame.player_2
+	
+	ui_customized_character.setup(_savegame)
 
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_accept") and animation_player.current_animation == "course_overview":
 		animation_player.seek(SKIP_TIME)
 		set_process_unhandled_input(false)
+		
+func _input(event) -> void:
+	if event.is_action_pressed("toggle_options_menu"):
+		if not ui_customized_character.visible:
+			ui_customized_character.show()
+		else:
+			ui_customized_character.hide()
+			_savegame.write_savegame()
+		get_tree().paused = ui_customized_character.visible
 
 
 func _process(delta: float) -> void:

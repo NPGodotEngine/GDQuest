@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://ObstacleCourse_Part3/PlayerCharacter.tscn" type="PackedScene" id=1]
 [ext_resource path="res://ObstacleCourse_Part3/obstacles/PushWall.tscn" type="PackedScene" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://ObstacleCourse_Part3/Course.tscn" type="PackedScene" id=8]
 [ext_resource path="res://ObstacleCourse_Part3/fonts/info_font.tres" type="DynamicFont" id=9]
 [ext_resource path="res://ObstacleCourse_Part3/pickups/PickupSpeed.tscn" type="PackedScene" id=10]
+[ext_resource path="res://ObstacleCourse_Part3/UICustomizeCharacter.tscn" type="PackedScene" id=11]
 [ext_resource path="res://ObstacleCourse_Part3/fonts/remaining_time_font.tres" type="DynamicFont" id=12]
 [ext_resource path="res://ObstacleCourse_Part3/assets/Sparkle.tscn" type="PackedScene" id=13]
 [ext_resource path="res://ObstacleCourse_Part3/pickups/PickupGhost.tscn" type="PackedScene" id=14]
@@ -357,6 +358,7 @@ tracks/5/keys = {
 }
 
 [node name="ObstacleCourse" type="YSort"]
+pause_mode = 2
 script = ExtResource( 7 )
 
 [node name="ViewportsRow" type="HBoxContainer" parent="."]
@@ -383,6 +385,7 @@ position = Vector2( 395, 542 )
 current = true
 
 [node name="Course" parent="ViewportsRow/ViewportContainer/Viewport" instance=ExtResource( 8 )]
+pause_mode = 1
 
 [node name="Obstacles" type="YSort" parent="ViewportsRow/ViewportContainer/Viewport/Course"]
 
@@ -521,6 +524,7 @@ position = Vector2( 625, 472 )
 
 [node name="RemoteTransform2D2" type="RemoteTransform2D" parent="ViewportsRow/ViewportContainer/Viewport/Course/PlayerCharacter2"]
 position = Vector2( -230, 70 )
+scale = Vector2( 5, 5 )
 remote_path = NodePath("../../../../../ViewportContainer2/Viewport/Camera2D")
 
 [node name="ViewportContainer2" type="ViewportContainer" parent="ViewportsRow"]
@@ -590,6 +594,7 @@ anchor_bottom = 1.0
 color = Color( 0.0352941, 0.0392157, 0.12549, 1 )
 
 [node name="Timer" type="Timer" parent="."]
+pause_mode = 1
 wait_time = 20.0
 one_shot = true
 
@@ -599,3 +604,9 @@ anims/RESET = SubResource( 10 )
 anims/course_overview = SubResource( 15 )
 anims/finish_game = SubResource( 13 )
 anims/start_countdown = SubResource( 11 )
+
+[node name="Menu" type="CanvasLayer" parent="."]
+layer = 100
+
+[node name="UICustomizeCharacter" parent="Menu" instance=ExtResource( 11 )]
+visible = false

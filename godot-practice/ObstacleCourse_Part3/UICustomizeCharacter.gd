@@ -24,7 +24,6 @@ func _ready() -> void:
 	if "settings" in player_1 and player_1.settings == null:
 		_toggle_players_active(false)
 		
-	_update_display()
 
 
 func _on_hands_option_changed(item: int) -> void:
@@ -71,6 +70,11 @@ func show():
 func hide():
 	.hide()
 	_toggle_players_active(false)
+	
+func setup(savegame:SaveGame) -> void:
+	player_1.settings = savegame.player_1
+	player_2.settings = savegame.player_2
+	_update_display()
 
 
 func _connect_arrow_buttons() -> void:

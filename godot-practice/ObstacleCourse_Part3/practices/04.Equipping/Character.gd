@@ -9,7 +9,10 @@ onready var right_hand_anim := $Robot/RightHand/AnimationPlayer
 onready var left_hand_weapon := $Robot/LeftHand
 onready var left_hand_anim := $Robot/LeftHand/AnimationPlayer
 
-
+func _ready() -> void:
+	inventory.connect("left_hand_changed", self, "_on_Inventory_left_hand_changed")
+	inventory.connect("right_hand_changed", self, "_on_Inventory_right_hand_changed")
+	
 func set_inventory(new_inventory: Resource) -> void:
 	assert(new_inventory == null or new_inventory is Inventory, "inventory property needs to be an instance of Inventory")
 	if inventory != new_inventory:
