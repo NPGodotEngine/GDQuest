@@ -19,7 +19,7 @@ export (float, 0.0, 360.0, 1.0) var random_angle_degrees := 10.0
 # Maximum range a bullet can travel before it disappears.
 export (float, 100.0, 2000.0, 1.0) var max_range := 2000.0
 # The speed of the shot bullets.
-export (float, 100.0, 3000.0, 1.0) var max_bullet_speed := 1500.0
+export (float, 100.0, 16000.0, 1.0) var max_bullet_speed := 1500.0
 # The firing rate of bullets
 export var fire_rate := 3.0
 
