@@ -6,7 +6,6 @@
 [ext_resource path="res://bullets/fire_ball/Fireball.tscn" type="PackedScene" id=4]
 
 [node name="SpellFireRapid" instance=ExtResource( 2 )]
-position = Vector2( 277, 438 )
 script = ExtResource( 1 )
 bullet_scene = ExtResource( 4 )
 max_range = 1200.0
