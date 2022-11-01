@@ -54,6 +54,9 @@ func _physics_process(_delta: float) -> void:
 func set_health(new_health: int) -> void:
 	health = clamp(new_health, 0, max_health)
 
+# Heal robot	
+func heal(amount_health: int) -> void:
+	set_health(health + amount_health)
 
 # Called by the Teleport node when we walk over it. This jumps to the win screen
 # scene.
