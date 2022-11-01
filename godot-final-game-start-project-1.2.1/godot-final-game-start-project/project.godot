@@ -54,6 +54,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://spells/fire_basic/SpellBasicFire.gd"
 }, {
+"base": "SpellBasicFire",
+"class": "SpellFireRapid",
+"language": "GDScript",
+"path": "res://spells/fire_rapid/SpellFireRapid.gd"
+}, {
 "base": "Area2D",
 "class": "SpellHolder",
 "language": "GDScript",
@@ -84,6 +89,7 @@ _global_script_class_icons={
 "ShakingCamera2D": "",
 "Spell": "",
 "SpellBasicFire": "",
+"SpellFireRapid": "",
 "SpellHolder": "",
 "SpellIcePunch": "",
 "Teleporter": "",
