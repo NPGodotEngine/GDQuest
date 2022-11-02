@@ -4,7 +4,7 @@
 [ext_resource path="res://bullets/ice_fist/ice_trail.png" type="Texture" id=2]
 [ext_resource path="res://bullets/ice_fist/ice.png" type="Texture" id=3]
 [ext_resource path="res://bullets/ice_fist/hit_ice.wav" type="AudioStream" id=4]
-[ext_resource path="res://bullets/ice_fist/IceFist.gd" type="Script" id=5]
+[ext_resource path="res://bullets/accelerated_projectile.gd" type="Script" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 18, 18 )
@@ -216,8 +216,6 @@ tracks/3/keys = {
 collision_layer = 0
 collision_mask = 18
 script = ExtResource( 5 )
-damage = 6
-max_range = 2000.0
 acc_factor = 0.4
 
 [node name="Sprite" type="Sprite" parent="."]

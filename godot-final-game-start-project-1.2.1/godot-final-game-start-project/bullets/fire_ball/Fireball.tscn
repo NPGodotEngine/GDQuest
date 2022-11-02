@@ -3,7 +3,7 @@
 [ext_resource path="res://bullets/fire_ball/fire_trail.png" type="Texture" id=1]
 [ext_resource path="res://bullets/fire_ball/fire.png" type="Texture" id=2]
 [ext_resource path="res://bullets/particle_bullet.png" type="Texture" id=3]
-[ext_resource path="res://bullets/fire_ball/Fireball.gd" type="Script" id=4]
+[ext_resource path="res://bullets/projectile_bullet.gd" type="Script" id=4]
 [ext_resource path="res://bullets/fire_ball/hit_fire.wav" type="AudioStream" id=6]
 
 [sub_resource type="CircleShape2D" id=1]

@@ -2,7 +2,7 @@
 
 [ext_resource path="res://bullets/lightning_ray/lightning_trail.png" type="Texture" id=1]
 [ext_resource path="res://bullets/lightning_ray/lightning.png" type="Texture" id=2]
-[ext_resource path="res://bullets/ice_fist/IceFist.gd" type="Script" id=3]
+[ext_resource path="res://bullets/projectile_bullet.gd" type="Script" id=3]
 [ext_resource path="res://bullets/ice_fist/hit_ice.wav" type="AudioStream" id=4]
 [ext_resource path="res://bullets/ice_fist/IceSplashParticles2D.tscn" type="PackedScene" id=5]
 
@@ -216,9 +216,6 @@ tracks/3/keys = {
 collision_layer = 0
 collision_mask = 18
 script = ExtResource( 3 )
-damage = 6
-max_range = 2000.0
-acc_factor = 0.4
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 2 )
