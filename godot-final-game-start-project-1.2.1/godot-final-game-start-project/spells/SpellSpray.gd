@@ -1,11 +1,21 @@
 class_name SpellSpray
 extends Spell
 
+enum FIRE_MODES {
+	auto,
+	semi_auto
+}
+
 export var num_shots_per_fire := 3
+export(FIRE_MODES) var fire_mode := FIRE_MODES.auto
 
 func _physics_process(delta) -> void:
-	if Input.is_action_just_pressed("shoot") && _cooldown_timer.is_stopped():
-		shoot()
+	if fire_mode == FIRE_MODES.auto:
+		if Input.is_action_pressed("shoot") && _cooldown_timer.is_stopped():
+			shoot()
+	elif fire_mode == FIRE_MODES.semi_auto:
+		if Input.is_action_just_pressed("shoot") && _cooldown_timer.is_stopped():
+			shoot()
 		 
 func shoot() -> void:
 	_cooldown_timer.start()
