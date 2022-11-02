@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://spells/lightning_shot/shoot_lightning.wav" type="AudioStream" id=1]
+[ext_resource path="res://spells/ice_punch/SpellIcePunch.tscn" type="PackedScene" id=2]
+[ext_resource path="res://spells/lightning_shot/hand_lightning_open.png" type="Texture" id=3]
+[ext_resource path="res://bullets/lightning_ray/LightningRay.tscn" type="PackedScene" id=4]
+
+[node name="SpellLightning" instance=ExtResource( 2 )]
+bullet_scene = ExtResource( 4 )
+max_range = 1000.0
+num_shots_per_fire = 1
+fire_mode = 0
+
+[node name="Left_hand" parent="." index="0"]
+texture = ExtResource( 3 )
+
+[node name="Right_hand" parent="." index="1"]
+texture = ExtResource( 3 )
+
+[node name="AudioStreamPlayer2D" parent="." index="2"]
+stream = ExtResource( 1 )
