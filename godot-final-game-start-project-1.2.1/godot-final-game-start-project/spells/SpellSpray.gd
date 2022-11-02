@@ -1,4 +1,4 @@
-class_name SpellIcePunch
+class_name SpellSpray
 extends Spell
 
 export var num_shots_per_fire := 3

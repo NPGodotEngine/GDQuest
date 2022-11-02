@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://rooms/assets/tileset_floating_dungeon.tres" type="TileSet" id=1]
 [ext_resource path="res://robot/Robot.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://mobs/dummy/Dummy.tscn" type="PackedScene" id=5]
 [ext_resource path="res://pickups/health/PickupHealth.tscn" type="PackedScene" id=6]
 [ext_resource path="res://pickups/fire_spells/PickupFire.tscn" type="PackedScene" id=7]
+[ext_resource path="res://spells/fire_spray/SpellFireSpray.tscn" type="PackedScene" id=8]
 
 [node name="TestRoom" type="YSort"]
 
@@ -95,3 +96,4 @@ position = Vector2( 179, 612 )
 
 [node name="PickupFire" parent="." instance=ExtResource( 7 )]
 position = Vector2( 90, 401 )
+spell_scene = ExtResource( 8 )

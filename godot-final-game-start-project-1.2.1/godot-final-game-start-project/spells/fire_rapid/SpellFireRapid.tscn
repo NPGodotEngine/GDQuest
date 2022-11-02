@@ -8,6 +8,7 @@
 [node name="SpellFireRapid" instance=ExtResource( 2 )]
 script = ExtResource( 1 )
 bullet_scene = ExtResource( 4 )
+random_angle_degrees = 2.0
 max_range = 1200.0
 max_bullet_speed = 1000.0
 fire_rate = 6.0

@@ -65,9 +65,9 @@ _global_script_classes=[ {
 "path": "res://robot/SpellHolder.gd"
 }, {
 "base": "Spell",
-"class": "SpellIcePunch",
+"class": "SpellSpray",
 "language": "GDScript",
-"path": "res://spells/ice_punch/SpellIcePunch.gd"
+"path": "res://spells/SpellSpray.gd"
 }, {
 "base": "Area2D",
 "class": "Teleporter",
@@ -91,7 +91,7 @@ _global_script_class_icons={
 "SpellBasicFire": "",
 "SpellFireRapid": "",
 "SpellHolder": "",
-"SpellIcePunch": "",
+"SpellSpray": "",
 "Teleporter": "",
 "UIHealthBar": ""
 }
