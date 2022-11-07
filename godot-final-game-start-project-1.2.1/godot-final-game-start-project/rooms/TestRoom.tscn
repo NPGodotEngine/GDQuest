@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://rooms/assets/tileset_floating_dungeon.tres" type="TileSet" id=1]
 [ext_resource path="res://robot/Robot.tscn" type="PackedScene" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://spells/fire_spray/SpellFireSpray.tscn" type="PackedScene" id=8]
 [ext_resource path="res://pickups/lightnings_spells/PickupLightning.tscn" type="PackedScene" id=9]
 [ext_resource path="res://mobs/shield/Shield.tscn" type="PackedScene" id=10]
+[ext_resource path="res://mobs/bomb/Bomb.tscn" type="PackedScene" id=11]
 
 [node name="TestRoom" type="YSort"]
 
@@ -106,3 +107,9 @@ position = Vector2( 157, 198 )
 [node name="Shield" parent="." instance=ExtResource( 10 )]
 position = Vector2( 759, 192 )
 orbit_distance = 400.0
+
+[node name="Bomb" parent="." instance=ExtResource( 11 )]
+position = Vector2( 925, 738 )
+
+[node name="Bomb2" parent="." instance=ExtResource( 11 )]
+position = Vector2( 490, 1036 )
