@@ -19,7 +19,7 @@ func _on_AttackArea_body_exited(_body: Robot) -> void:
 	_body.speed += slow_speed
 	
 func _on_ShockArea_body_entered(body: Node) -> void:
-	if body.has_method("take_damage"):
+	if body and body.has_method("take_damage"):
 		body.take_damage(damage)
 
 func _on_AnimtionPlayer_finished(anim_name:String) -> void:

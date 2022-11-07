@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://rooms/assets/tileset_floating_dungeon.tres" type="TileSet" id=1]
 [ext_resource path="res://robot/Robot.tscn" type="PackedScene" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://pickups/lightnings_spells/PickupLightning.tscn" type="PackedScene" id=9]
 [ext_resource path="res://mobs/shield/Shield.tscn" type="PackedScene" id=10]
 [ext_resource path="res://mobs/bomb/Bomb.tscn" type="PackedScene" id=11]
+[ext_resource path="res://mobs/sword/Sword.tscn" type="PackedScene" id=12]
 
 [node name="TestRoom" type="YSort"]
 
@@ -109,7 +110,8 @@ position = Vector2( 759, 192 )
 orbit_distance = 400.0
 
 [node name="Bomb" parent="." instance=ExtResource( 11 )]
-position = Vector2( 925, 738 )
+position = Vector2( 811, 1209 )
 
-[node name="Bomb2" parent="." instance=ExtResource( 11 )]
-position = Vector2( 490, 1036 )
+[node name="Sword" parent="." instance=ExtResource( 12 )]
+position = Vector2( 340, 802 )
+speed = 800.0
