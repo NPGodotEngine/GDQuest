@@ -7,7 +7,7 @@ onready var hitbox := $HitBox
 
 func _ready():
 	hitbox.connect("body_entered", self, "_on_HitBox_body_entered")
-	
+			
 func _prepare_to_attack() -> void:
 	if not is_ready_to_attack():
 		return
@@ -28,12 +28,12 @@ func _disable_attack() -> void:
 	attack_position = null
 	preparing = false
 	_animation_player.play("hover")
-	
-func _on_HitBox_body_entered(body: Robot) -> void:
+		
+func _on_HitBox_body_entered(body: Node) -> void:
+	print(body)
 	if body and body.has_method("take_damage"):
 		body.take_damage(damage)
 	_disable_attack()
-	
 
 func _on_BeforeAttackTimer_timeout() -> void:
 	._on_BeforeAttackTimer_timeout()
@@ -58,3 +58,4 @@ func _physics_process(_delta) -> void:
 		var look_at_rotation = (_target.global_position - global_position).angle()
 		_sprite.rotation = look_at_rotation
 	
+

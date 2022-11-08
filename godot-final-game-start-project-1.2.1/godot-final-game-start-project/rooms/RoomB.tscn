@@ -1,0 +1,56 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://rooms/spawners/SpawnerMob.tscn" type="PackedScene" id=1]
+[ext_resource path="res://rooms/spawners/SpawnerPickup.tscn" type="PackedScene" id=2]
+[ext_resource path="res://rooms/BaseRoom.tscn" type="PackedScene" id=3]
+[ext_resource path="res://mobs/shield/Shield.tscn" type="PackedScene" id=4]
+[ext_resource path="res://mobs/sword/Sword.tscn" type="PackedScene" id=5]
+[ext_resource path="res://mobs/bomb/Bomb.tscn" type="PackedScene" id=6]
+
+[node name="RoomB" instance=ExtResource( 3 )]
+
+[node name="Details" parent="." index="2"]
+tile_data = PoolIntArray( 327689, 4, 1, 458756, 4, 65538 )
+
+[node name="Walls" parent="." index="3"]
+tile_data = PoolIntArray( 131075, -1073741823, 0, 196611, -1073741823, 0, 196615, 0, 196610, 196616, 1, 4, 196617, 1, 65537, 196618, 1, 5, 262144, 1, 196611, 262145, 1, 1, 262146, 1, 0, 262147, 1, 0, 327683, -1610612735, 0, 393219, -1610612735, 0, 458755, -1610612736, 196610 )
+
+[node name="SpawnerMob" parent="Mobs" index="0" instance=ExtResource( 1 )]
+position = Vector2( 403, 1206 )
+list = [ ExtResource( 4 ), ExtResource( 6 ), ExtResource( 5 ) ]
+
+[node name="SpawnerMob2" parent="Mobs" index="1" instance=ExtResource( 1 )]
+position = Vector2( 781, 1073 )
+list = [ ExtResource( 4 ), ExtResource( 6 ), ExtResource( 5 ) ]
+
+[node name="SpawnerMob3" parent="Mobs" index="2" instance=ExtResource( 1 )]
+position = Vector2( 834, 617 )
+list = [ ExtResource( 4 ), ExtResource( 6 ), ExtResource( 5 ) ]
+
+[node name="SpawnerMob4" parent="Mobs" index="3" instance=ExtResource( 1 )]
+position = Vector2( 904, 173 )
+list = [ ExtResource( 4 ), ExtResource( 6 ), ExtResource( 5 ) ]
+
+[node name="SpawnerMob5" parent="Mobs" index="4" instance=ExtResource( 1 )]
+position = Vector2( 646, 422 )
+list = [ ExtResource( 4 ), ExtResource( 6 ), ExtResource( 5 ) ]
+
+[node name="SpawnerMob6" parent="Mobs" index="5" instance=ExtResource( 1 )]
+position = Vector2( 514, -7 )
+list = [ ExtResource( 5 ) ]
+spawn_chance_percent = 100
+
+[node name="SpawnerPickup" parent="Items" index="0" instance=ExtResource( 2 )]
+position = Vector2( 1238, 915 )
+
+[node name="SpawnerPickup2" parent="Items" index="1" instance=ExtResource( 2 )]
+position = Vector2( 201, 833 )
+
+[node name="SpawnerPickup3" parent="Items" index="2" instance=ExtResource( 2 )]
+position = Vector2( 1276, 170 )
+
+[node name="SpawnerRobot" parent="." index="8"]
+position = Vector2( 123, 403 )
+
+[node name="SpawnerTeleporter" parent="." index="9"]
+position = Vector2( 1255, 1190 )
