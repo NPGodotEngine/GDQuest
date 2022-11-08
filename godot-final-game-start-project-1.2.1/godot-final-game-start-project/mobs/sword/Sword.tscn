@@ -33,6 +33,7 @@ tracks/0/keys = {
 
 [node name="Sword" instance=ExtResource( 4 )]
 script = ExtResource( 3 )
+speed = 800.0
 
 [node name="CollisionShape2D" parent="DetectionArea" index="0"]
 shape = SubResource( 1 )

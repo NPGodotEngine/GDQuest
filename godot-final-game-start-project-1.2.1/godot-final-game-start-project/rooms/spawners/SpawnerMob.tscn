@@ -1,0 +1,14 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://rooms/spawners/Spawner.gd" type="Script" id=1]
+[ext_resource path="res://mobs/shield/Shield.tscn" type="PackedScene" id=2]
+[ext_resource path="res://mobs/sword/Sword.tscn" type="PackedScene" id=3]
+[ext_resource path="res://mobs/bomb/Bomb.tscn" type="PackedScene" id=4]
+[ext_resource path="res://mobs/dummy/Dummy.tscn" type="PackedScene" id=5]
+[ext_resource path="res://rooms/spawners/spawner_mob.svg" type="Texture" id=6]
+
+[node name="SpawnerMob" type="Sprite"]
+texture = ExtResource( 6 )
+script = ExtResource( 1 )
+list = [ ExtResource( 5 ), ExtResource( 2 ), ExtResource( 4 ), ExtResource( 3 ) ]
+spawn_chance_percent = 95
