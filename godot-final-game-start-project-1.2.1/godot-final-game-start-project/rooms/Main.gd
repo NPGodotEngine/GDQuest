@@ -1,3 +1,4 @@
+tool
 extends YSort
 
 export (Array, PackedScene) var rooms := []
@@ -10,6 +11,16 @@ onready var ui_pause_layer := $UILayer/PauseScreen
 
 var current_room_index := 0
 var last_room_index := grid_width * grid_height - 1
+
+func _get_configuration_warning() -> String:
+	update_configuration_warning()
+	if rooms.size() == 0:
+		return "rooms must contain at least 1 scene"
+	for i in range(rooms.size()):
+		if not rooms[i]:
+			return "rooms %sth scene is empty" % [str(i+1)]
+	
+	return ""
 
 func _ready() -> void:
 	print("main ready")
