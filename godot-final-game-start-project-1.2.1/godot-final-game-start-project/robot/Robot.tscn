@@ -352,7 +352,6 @@ texture = ExtResource( 17 )
 
 [node name="DamageAudio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 4 )
-volume_db = 10.0
 bus = "SFX"
 area_mask = 0
 script = ExtResource( 12 )
@@ -360,7 +359,6 @@ sounds = [ ExtResource( 16 ), ExtResource( 11 ), ExtResource( 13 ), ExtResource(
 
 [node name="DeathAudio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 8 )
-volume_db = 10.0
 bus = "SFX"
 area_mask = 0
 script = ExtResource( 12 )
