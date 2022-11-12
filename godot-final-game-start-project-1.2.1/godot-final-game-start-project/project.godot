@@ -34,6 +34,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://music/MusicPlayer.gd"
 }, {
+"base": "AudioStreamPlayer2D",
+"class": "RandomAudioPlayer2D",
+"language": "GDScript",
+"path": "res://props/RandomAudioPlayer2D.gd"
+}, {
 "base": "KinematicBody2D",
 "class": "Robot",
 "language": "GDScript",
@@ -90,6 +95,7 @@ _global_script_class_icons={
 "Mob": "",
 "Pickup": "",
 "RandomAudioPlayer": "",
+"RandomAudioPlayer2D": "",
 "Robot": "",
 "ShakingCamera2D": "",
 "Spawner": "",

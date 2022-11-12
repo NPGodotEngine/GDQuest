@@ -21,3 +21,4 @@ rooms = [ ExtResource( 6 ), ExtResource( 5 ) ]
 [node name="OnScreenUI" parent="UILayer" instance=ExtResource( 1 )]
 
 [node name="PauseScreen" parent="UILayer" instance=ExtResource( 7 )]
+visible = false

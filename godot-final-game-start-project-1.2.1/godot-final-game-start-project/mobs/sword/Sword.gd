@@ -30,7 +30,6 @@ func _disable_attack() -> void:
 	_animation_player.play("hover")
 		
 func _on_HitBox_body_entered(body: Node) -> void:
-	print(body)
 	if body and body.has_method("take_damage"):
 		body.take_damage(damage)
 	_disable_attack()

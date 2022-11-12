@@ -23,7 +23,6 @@ func _get_configuration_warning() -> String:
 	return ""
 
 func _ready() -> void:
-	print("main ready")
 	randomize()
 	Events.connect("resume_game", self, "_on_Event_resume_game")
 	Events.connect("pause_game", self, "_on_Envent_pause_game")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://robot/Skin.gd" type="Script" id=1]
 [ext_resource path="res://robot/robot_sprites.png" type="Texture" id=2]
@@ -9,6 +9,13 @@
 [ext_resource path="res://props/shadow/Shadow.tscn" type="PackedScene" id=7]
 [ext_resource path="res://robot/death_03.wav" type="AudioStream" id=8]
 [ext_resource path="res://spells/fire_basic/SpellBasicFire.tscn" type="PackedScene" id=9]
+[ext_resource path="res://robot/death_02.wav" type="AudioStream" id=10]
+[ext_resource path="res://robot/pain_02.wav" type="AudioStream" id=11]
+[ext_resource path="res://props/RandomAudioPlayer2D.gd" type="Script" id=12]
+[ext_resource path="res://robot/pain_03.wav" type="AudioStream" id=13]
+[ext_resource path="res://robot/pain_04.wav" type="AudioStream" id=14]
+[ext_resource path="res://robot/death_01.wav" type="AudioStream" id=15]
+[ext_resource path="res://robot/pain_01.wav" type="AudioStream" id=16]
 [ext_resource path="res://robot/smoke.png" type="Texture" id=17]
 
 [sub_resource type="Animation" id=5]
@@ -345,8 +352,16 @@ texture = ExtResource( 17 )
 
 [node name="DamageAudio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 4 )
+volume_db = 10.0
 bus = "SFX"
+area_mask = 0
+script = ExtResource( 12 )
+sounds = [ ExtResource( 16 ), ExtResource( 11 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 4 ) ]
 
 [node name="DeathAudio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 8 )
+volume_db = 10.0
 bus = "SFX"
+area_mask = 0
+script = ExtResource( 12 )
+sounds = [ ExtResource( 15 ), ExtResource( 10 ), ExtResource( 8 ) ]
