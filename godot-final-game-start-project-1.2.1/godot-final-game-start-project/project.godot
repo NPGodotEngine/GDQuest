@@ -105,6 +105,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Learn to Code: final game project - start"
+run/main_scene="res://rooms/Main.tscn"
 config/icon="res://icon.png"
 
 [autoload]

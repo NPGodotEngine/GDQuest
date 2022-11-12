@@ -12,6 +12,7 @@ var current_room_index := 0
 var last_room_index := grid_width * grid_height - 1
 
 func _ready() -> void:
+	print("main ready")
 	randomize()
 	Events.connect("resume_game", self, "_on_Event_resume_game")
 	Events.connect("pause_game", self, "_on_Envent_pause_game")
