@@ -13,10 +13,28 @@ var last_room_index := grid_width * grid_height - 1
 
 func _ready() -> void:
 	randomize()
+	Events.connect("resume_game", self, "_on_Event_resume_game")
+	Events.connect("pause_game", self, "_on_Envent_pause_game")
+	Events.connect("restart_game", self, "_on_Event_restart_game")
+	Events.connect("quit_game", self, "_on_Event_quit_game")
+	
 	generate_level()
 	ui_pause_layer.hide()
 	music_player.play()
-		
+
+func _on_Event_resume_game() -> void:
+	get_tree().paused = false
+	
+func _on_Envent_pause_game() -> void:
+	get_tree().paused = true
+
+func _on_Event_restart_game() -> void:
+	get_tree().paused = false
+	get_tree().reload_current_scene()
+
+func _on_Event_quit_game() -> void:
+	get_tree().quit()
+
 func generate_level() -> void:
 	assert(rooms.size() > 0, "Main scene must have at least one room in array")
 	

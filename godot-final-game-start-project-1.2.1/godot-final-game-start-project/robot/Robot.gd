@@ -53,6 +53,7 @@ func _physics_process(_delta: float) -> void:
 # Health setter, we make sure health is always between 0 and max
 func set_health(new_health: int) -> void:
 	health = clamp(new_health, 0, max_health)
+	Events.emit_signal("player_health_changed", health)
 
 # Heal robot	
 func heal(amount_health: int) -> void:

@@ -16,25 +16,37 @@ func _ready() -> void :
 	_button_continue.connect("pressed", self, "_on_Button_continue_pressed")
 	_button_restart.connect("pressed", self, "_on_Button_restart_pressed")
 	
+	Events.connect("resume_game", self, "_on_Event_resume_game")
+	Events.connect("pause_game", self, "_on_Envent_pause_game")
+	Events.connect("restart_game", self, "_on_Event_restart_game")
+	Events.connect("quit_game", self, "_on_Event_quit_game")
+	
 func _unhandled_input(event) -> void:
 	if event.is_action_pressed("pause_toggle"):
 		if get_tree().paused:
-			get_tree().paused = false
-			self.hide()
+			Events.emit_signal("resume_game")
 		else:
-			get_tree().paused = true
-			self.show()
+			Events.emit_signal("pause_game")
 		get_tree().set_input_as_handled()
 		
 func _on_Button_quit_pressed() -> void:
-	get_tree().quit()
+	Events.emit_signal("quit_game")
 
 func _on_Button_continue_pressed() -> void:
-	get_tree().paused = false
-	self.hide()
+	Events.emit_signal("resume_game")
 	
 func _on_Button_restart_pressed() -> void:
-	get_tree().paused = false
+	Events.emit_signal("restart_game")
+	
+func _on_Event_resume_game() -> void:
 	self.hide()
-	get_tree().reload_current_scene()
+	
+func _on_Envent_pause_game() -> void:
+	self.show()
+
+func _on_Event_restart_game() -> void:
+	self.hide()
+
+func _on_Event_quit_game() -> void:
+	self.hide()
 	
