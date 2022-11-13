@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>&#39;sequencing scenes&#39;</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <link rel="stylesheet" href="data:text/css,%3Aroot%20%7B%2D%2Dcolor%2Dcaption%3A%20grey%3B%2D%2Dcolor%2Dblue%3A%20%2326bfe3%3B%2D%2Dcolor%2Dgreen%3A%20%2302e180%3B%2D%2Dcolor%2Dorange%3A%20%23f2971a%3B%2D%2Dcolor%2Dpink%3A%20%23e3266f%3B%2D%2Dcolor%2Dbg%3A%20%23fff%3B%2D%2Dcolor%2Dbg%2Dalt%3A%20%23f5f5f5%3B%2D%2Dcolor%2Dtext%2Dheader%3A%20%23fff%3B%2D%2Dcolor%2Dtext%2Dbody%3A%20%2395989a%3B%2D%2Dpadding%3A%2020px%3B%2D%2Dpadding%2Dinv%3A%20calc%28%2D1%20%2A%20var%28%2D%2Dpadding%29%29%3B%2D%2Dfonts%3A%20%27Open%20Sans%27%2C%20%2Dapple%2Dsystem%2C%20system%2Dui%2C%20%27Segoe%20UI%27%2C%20%27Roboto%27%2C%27Helvetica%20Neue%27%2C%20Arial%2C%20sans%2Dserif%3B%2D%2Dfont%2Dsize%3A%201%2E1rem%3B%7Dhtml%20%7Bfont%2Dsize%3A%20100%25%3B%7Dbody%20%7Bcolor%3A%20%23444%3Bfont%2Dfamily%3A%20var%28%2D%2Dfonts%29%3Bfont%2Dsize%3A%20var%28%2D%2Dfont%2Dsize%29%3Bline%2Dheight%3A%201%2E7%3Bpadding%3A%201em%3Bmargin%3A%20auto%3Bmax%2Dwidth%3A%20800px%3Bbackground%3A%20%23fefefe%3B%7Da%20%7Bcolor%3A%20%230645ad%3Btext%2Ddecoration%3A%20none%3B%7Da%3Avisited%20%7Bcolor%3A%20%230b0080%3B%7Da%3Ahover%20%7Bcolor%3A%20%2306e%3B%7Da%3Aactive%20%7Bcolor%3A%20%23faa700%3B%7Da%3Afocus%20%7Boutline%3A%20thin%20dotted%3B%7Da%3A%3Aselection%20%7Bbackground%3A%20rgba%28255%2C%20255%2C%200%2C%200%2E3%29%3Bcolor%3A%20%230645ad%3B%7D%2A%3A%3Aselection%20%7Bbackground%3A%20rgba%28255%2C%20255%2C%200%2C%200%2E3%29%3Bcolor%3A%20%23000%3B%7Dp%20%7Bmargin%3A%201em%200%3B%7D%2Ecaption%20%7Btext%2Dalign%3A%20center%3Bcolor%3A%20var%28%2D%2Dcolor%2Dcaption%29%3Bfont%2Dstyle%3A%20italic%3B%7D%2Enote%2C%2Etips%2C%2Ewarning%20%7Bdisplay%3A%20block%3Bwidth%3A%20calc%28100%25%20%2D%20var%28%2D%2Dpadding%29%20%2A%202%29%3Bpadding%3A%200%20var%28%2D%2Dpadding%29%3Bpadding%2Dbottom%3A%20var%28%2D%2Dpadding%29%3Bbackground%2Dcolor%3A%20var%28%2D%2Dcolor%2Dbg%2Dalt%29%3B%7D%2Enote%3Abefore%2C%2Etips%3Abefore%2C%2Ewarning%3Abefore%20%7Bdisplay%3A%20block%3Bmargin%3A%200%20var%28%2D%2Dpadding%2Dinv%29%2010px%20var%28%2D%2Dpadding%2Dinv%29%3Bpadding%2Dleft%3A%20var%28%2D%2Dpadding%29%3Bfont%2Dstyle%3A%20bold%3Bcolor%3A%20white%3B%7D%2Enote%3Abefore%20%7Bcontent%3A%20%27Note%27%3Bbackground%2Dcolor%3A%20var%28%2D%2Dcolor%2Dblue%29%3B%7D%2Etips%3Abefore%20%7Bcontent%3A%20%27Tips%27%3Bbackground%2Dcolor%3A%20var%28%2D%2Dcolor%2Dpink%29%3B%7D%2Ewarning%3Abefore%20%7Bcontent%3A%20%27Warning%27%3Bbackground%2Dcolor%3A%20var%28%2D%2Dcolor%2Dorange%29%3B%7Dimg%20%7Bmax%2Dwidth%3A%20100%25%3B%7Dh1%2Ch2%2Ch3%2Ch4%2Ch5%2Ch6%20%7Bcolor%3A%20%23111%3Bline%2Dheight%3A%20125%25%3Bmargin%2Dtop%3A%202em%3Bfont%2Dweight%3A%20normal%3B%7Dh4%2Ch5%2Ch6%20%7Bfont%2Dweight%3A%20bold%3B%7Dh1%20%7Bfont%2Dsize%3A%202%2E5em%3B%7Dh2%20%7Bfont%2Dsize%3A%202em%3B%7Dh3%20%7Bfont%2Dsize%3A%201%2E5em%3B%7Dh4%20%7Bfont%2Dsize%3A%201%2E2em%3B%7Dblockquote%20%7Bcolor%3A%20%23666666%3Bmargin%3A%200%3Bpadding%2Dleft%3A%203em%3Bborder%2Dleft%3A%200%2E5em%20%23eee%20solid%3B%7Dhr%20%7Bdisplay%3A%20block%3Bheight%3A%202px%3Bborder%3A%200%3Bborder%2Dtop%3A%201px%20solid%20%23aaa%3Bborder%2Dbottom%3A%201px%20solid%20%23eee%3Bmargin%3A%201em%200%3Bpadding%3A%200%3B%7Dpre%2Ccode%2Ckbd%2Csamp%20%7Bcolor%3A%20%230084b8%3Bfont%2Dfamily%3A%20monospace%2C%20monospace%3B%7Dpre%20%7Bpadding%3A%201em%3Bfont%2Dsize%3A%2014px%3Bwhite%2Dspace%3A%20pre%2Dwrap%3Bword%2Dwrap%3A%20break%2Dword%3B%7Dcode%20%7Bwhite%2Dspace%3A%20pre%2Dwrap%3B%7Db%2Cstrong%20%7Bfont%2Dweight%3A%20bold%3B%7Ddfn%20%7Bfont%2Dstyle%3A%20italic%3Bcolor%3A%20var%28%2D%2Dcolor%2Dblue%29%3B%7Dins%20%7Bbackground%3A%20%23ff9%3Bcolor%3A%20%23000%3Btext%2Ddecoration%3A%20none%3B%7Dul%2Col%20%7Bmargin%3A%201em%200%3Bpadding%3A%200%200%200%202em%3B%7Dli%20p%3Alast%2Dchild%20%7Bmargin%2Dbottom%3A%200%3B%7Dul%20ul%2Col%20ol%20%7Bmargin%3A%200%2E3em%200%3B%7Ddl%20%7Bmargin%2Dbottom%3A%201em%3B%7Ddt%20%7Bfont%2Dweight%3A%20bold%3Bmargin%2Dbottom%3A%200%2E8em%3B%7Ddd%20%7Bmargin%3A%200%200%200%2E8em%202em%3B%7Ddd%3Alast%2Dchild%20%7Bmargin%2Dbottom%3A%200%3B%7Dimg%20%7Bborder%3A%200%3B%2Dms%2Dinterpolation%2Dmode%3A%20bicubic%3Bvertical%2Dalign%3A%20middle%3B%7Dfigure%20%7Bdisplay%3A%20block%3Btext%2Dalign%3A%20center%3Bmargin%3A%201em%200%3B%7Dfigure%20img%20%7Bborder%3A%20none%3Bmargin%3A%200%20auto%3B%7Dfigcaption%20%7Bfont%2Dsize%3A%200%2E8em%3Bfont%2Dstyle%3A%20italic%3Bmargin%3A%200%200%200%2E8em%3B%7D%2Eauthor%20%7Bfont%2Dsize%3A%201%2E2em%3Btext%2Dalign%3A%20center%3B%7Dtag%20%7Bmin%2Dwidth%3A%203%2E2em%3Btext%2Dalign%3A%20center%3Bborder%2Dradius%3A%208px%3Bpadding%3A%200%204px%3Bmargin%2Dbottom%3A%200%3Bmargin%2Dtop%3A%204px%3Bmargin%2Dright%3A%200%2E2em%3Bdisplay%3A%20inline%2Dblock%3Bcolor%3A%20white%3B%7Dtag%2Eupdate%20%7Bbackground%3A%20var%28%2D%2Dcolor%2Dblue%29%3B%7Dtag%2Enew%20%7Bbackground%3A%20var%28%2D%2Dcolor%2Dgreen%29%3B%7Dtag%2Eupdate%3Aafter%20%7Bcontent%3A%20%27update%27%3B%7Dtag%2Enew%3Aafter%20%7Bcontent%3A%20%27new%27%3B%7Dbutton%20%7Bbackground%2Dcolor%3A%20var%28%2D%2Dcolor%2Dblue%29%3Bcolor%3A%20white%3Bborder%3A%20none%3Bcursor%3A%20pointer%3Bline%2Dheight%3A%202rem%3Bfont%2Dsize%3A%201%2E2rem%3Bmargin%3A%200%2E75rem%200%3Boverflow%3A%20visible%3Bpadding%3A%200%2E75rem%201%2E5rem%3Bborder%2Dradius%3A%201rem%3Btransition%3A%20background%2Dcolor%200%2E5%3Bwhite%2Dspace%3A%20nowrap%3B%7D%2Enode%2Dicon%20%7Bposition%3A%20relative%3Bbottom%3A%201%2E3px%3Bpadding%2Dright%3A%203px%3Bheight%3A%2018px%3B%7D%2Evideo%2Dyoutube%20%7Bbackground%2Dcolor%3A%20%23000%3Bposition%3A%20relative%3Bcursor%3A%20pointer%3B%7D%2Evideo%2Dyoutube%20%3E%20%2Eplaybutton%20%7Bpointer%2Devents%3A%20none%3Bwidth%3A%2090px%3Bheight%3A%2060px%3Bbackground%2Dcolor%3A%20%23333%3Bbox%2Dshadow%3A%200%200%2018px%20rgba%280%2C%200%2C%200%2C%200%2E6%29%3Bz%2Dindex%3A%201%3Bopacity%3A%200%2E8%3Bborder%2Dradius%3A%206px%3B%7D%2Eplaybutton%3Abefore%20%7Bcontent%3A%20%27%27%3Bborder%2Dstyle%3A%20solid%3Bborder%2Dwidth%3A%2015px%200%2015px%2026px%3Bborder%2Dcolor%3A%20transparent%20transparent%20transparent%20%23fff%3B%7D%2Evideo%2Dyoutube%20%3E%20img%2C%2Evideo%2Dyoutube%20%3E%20%2Eplaybutton%20%7Bcursor%3A%20pointer%3B%7D%2Evideo%2Dyoutube%20%3E%20img%2C%2Evideo%2Dyoutube%20%3E%20%2Eplaybutton%2C%2Evideo%2Dyoutube%20%3E%20%2Eplaybutton%3Abefore%20%7Bposition%3A%20absolute%3B%7D%2Eplaybutton%2C%2Eplaybutton%3Abefore%20%7Btop%3A%2050%25%3Bleft%3A%2050%25%3Btransform%3A%20translate3d%28%2D50%25%2C%20%2D50%25%2C%200%29%3B%7D" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<h1 id="sequencing-scenes">Sequencing scenes</h1>
+<p>In a visual novel, you will not only have one scene but instead many of them. And as our scenes are not Godot scenes, we need to write some code to load and play them one after the other.</p>
+<p>In this lesson, we will add the ability to load scenes from a text file.</p>
+<p>We’ll also code the <code>Main</code> node, which will create individual scene players and play scenes sequentially.</p>
+<h2 id="saving-and-loading-scenes">Saving and loading scenes</h2>
+<p>So far, we defined our data directly in the <code>ScenePlayer</code> script. This is convenient until we have access to a dialogue editor, as the GDScript compiler will warn us whenever our syntax is incorrect.</p>
+<p>But it’s inconvenient if we want to write many scenes. We need a way to save and load scenes to and from the hard drive.</p>
+<p>As a scene is just a big dictionary, we can save it in Godot’s native text format. We use the GDScript built-in function <code>str2var()</code> to convert a file’s content into a dictionary.</p>
+<p>We can then use its complementary function <code>var2str()</code> to load and convert the data back into a GDScript dictionary.</p>
+<p><em>For more information on these functions, you can check our savegames guide in the best practices chapter. It covers the various approaches you can take to save and export data in Godot.</em></p>
+<p>Open <code>ScenePlayer.gd</code> and add the following functions.</p>
+<pre style="color:#f8f8f2;background-color:#272822"><span style="color:#75715e">## Loads a scene from `file_path`.</span>
+<span style="color:#66d9ef">func</span> load_scene(file_path: <span style="color:#a6e22e">String</span>) <span style="color:#f92672">-&gt;</span> void:
+    <span style="color:#66d9ef">var</span> file :<span style="color:#f92672">=</span> <span style="color:#a6e22e">File</span><span style="color:#f92672">.</span>new()
+    file<span style="color:#f92672">.</span>open(file_path, <span style="color:#a6e22e">File</span><span style="color:#f92672">.</span>READ)
+    _scene_data <span style="color:#f92672">=</span> str2var(file<span style="color:#f92672">.</span>get_as_text())
+    file<span style="color:#f92672">.</span>close()
+
+
+<span style="color:#75715e">## Saves a dictionary representing a scene to the disk using `var2str`.</span>
+<span style="color:#66d9ef">func</span> _store_scene_data(data: <span style="color:#a6e22e">Dictionary</span>, path: <span style="color:#a6e22e">String</span>) <span style="color:#f92672">-&gt;</span> void:
+    <span style="color:#66d9ef">var</span> file :<span style="color:#f92672">=</span> <span style="color:#a6e22e">File</span><span style="color:#f92672">.</span>new()
+    file<span style="color:#f92672">.</span>open(path, <span style="color:#a6e22e">File</span><span style="color:#f92672">.</span>WRITE)
+    file<span style="color:#f92672">.</span>store_string(var2str(data))
+    file<span style="color:#f92672">.</span>close()
+</pre>
+<p>The code above allows you to alter the scene data directly in a GDScript file, which will give you a compilation error if the data is incorrect, and save the result in Godot’s text format.</p>
+<p>You can write a scene’s data directly in the <code>_scene_data</code> variable and save it by calling <code>_store_scene_data()</code> in the <code>_ready()</code> function.</p>
+<pre style="color:#f8f8f2;background-color:#272822"><span style="color:#66d9ef">func</span> _ready() <span style="color:#f92672">-&gt;</span> void:
+    _store_scene_data(_scene_data, <span style="color:#e6db74">&quot;res://Scenes/1.scene&quot;</span>)
+</pre>
+<p>Doing so creates a file directly in your project upon running the scene.</p>
+<p>Create two scene files like that by making sure that you change the file path between the two calls to <code>_store_scene_data()</code>.</p>
+<p>Here are two minimal scenes that test all our system’s features. To follow along, you can save those directly as new <code>1.scene</code> and <code>2.scene</code> files inside of the <code>Scenes/</code> folder. Note you’ll need a text editor external to Godot to do so, as the editor doesn’t allow you to edit arbitrary text files.</p>
+<p>Here’s the first file, <code>1.scene</code>.</p>
+<pre style="color:#f8f8f2;background-color:#272822">{
+<span style="color:#ae81ff">0</span><span style="color:#f92672">:</span> {
+<span style="color:#e6db74">&quot;next&quot;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">1</span>,
+<span style="color:#e6db74">&quot;transition&quot;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&quot;fade_in&quot;</span>
+},
+<span style="color:#ae81ff">1</span><span style="color:#f92672">:</span> {
+<span style="color:#e6db74">&quot;animation&quot;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&quot;enter&quot;</span>,
+<span style="color:#e6db74">&quot;character&quot;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&quot;dani&quot;</span>,
+<span style="color:#e6db74">&quot;next&quot;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">2</span>,
+<span style="color:#e6db74">&quot;side&quot;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&quot;right&quot;</span>
+},
+<span style="color:#ae81ff">2</span><span style="color:#f92672">:</span> {
+<span style="color:#e6db74">&quot;animation&quot;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&quot;enter&quot;</span>,
+<span style="color:#e6db74">&quot;character&quot;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&quot;sophia&quot;</span>,
+<span style="color:#e6db74">&quot;line&quot;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&quot;Hey Dani!&quot;</span>,
+<span style="color:#e6db74">&quot;next&quot;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">3</span>,
+<span style="color:#e6db74">&quot;side&quot;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&quot;left&quot;</span>
+},
+<span style="color:#ae81ff">3</span><span style="color:#f92672">:</span> {
+<span style="color:#e6db74">&quot;choices&quot;</span><span style="color:#f92672">:</span> [ {
+<span style="color:#e6db74">&quot;label&quot;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&quot;Hi Sophia!&quot;</span>,
+<span style="color:#e6db74">&quot;target&quot;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">6</span>
+}, {
+<span style="color:#e6db74">&quot;label&quot;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&quot;Do I know you?&quot;</span>,
+<span style="color:#e6db74">&quot;target&quot;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">4</span>
+} ]
+},
+<span style="color:#ae81ff">4</span><span style="color:#f92672">:</span> {
+<span style="color:#e6db74">&quot;character&quot;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&quot;sophia&quot;</span>,
+<span style="color:#e6db74">&quot;line&quot;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&quot;Of course, you do! I&#39;m your sister, duh.&quot;</span>,
+<span style="color:#e6db74">&quot;next&quot;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">5</span>
+},
+<span style="color:#ae81ff">5</span><span style="color:#f92672">:</span> {
+<span style="color:#e6db74">&quot;character&quot;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&quot;dani&quot;</span>,
+<span style="color:#e6db74">&quot;line&quot;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&quot;Oh...&quot;</span>,
+<span style="color:#e6db74">&quot;next&quot;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">6</span>
+},
+<span style="color:#ae81ff">6</span><span style="color:#f92672">:</span> {
+<span style="color:#e6db74">&quot;character&quot;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&quot;sophia&quot;</span>,
+<span style="color:#e6db74">&quot;line&quot;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&quot;What&#39;s up?&quot;</span>,
+<span style="color:#e6db74">&quot;next&quot;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">7</span>
+},
+<span style="color:#ae81ff">7</span><span style="color:#f92672">:</span> {
+<span style="color:#e6db74">&quot;next&quot;</span><span style="color:#f92672">:</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>,
+<span style="color:#e6db74">&quot;transition&quot;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&quot;fade_out&quot;</span>
+}
+}}
+</pre>
+<p>Here’s the second file’s content, <code>2.scene</code>.</p>
+<pre style="color:#f8f8f2;background-color:#272822">{
+<span style="color:#ae81ff">0</span><span style="color:#f92672">:</span> {
+<span style="color:#e6db74">&quot;next&quot;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">1</span>,
+<span style="color:#e6db74">&quot;transition&quot;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&quot;fade_in&quot;</span>
+},
+<span style="color:#ae81ff">1</span><span style="color:#f92672">:</span> {
+<span style="color:#e6db74">&quot;animation&quot;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&quot;enter&quot;</span>,
+<span style="color:#e6db74">&quot;character&quot;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&quot;dani&quot;</span>,
+<span style="color:#e6db74">&quot;next&quot;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">2</span>,
+<span style="color:#e6db74">&quot;side&quot;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&quot;left&quot;</span>
+},
+<span style="color:#ae81ff">2</span><span style="color:#f92672">:</span> {
+<span style="color:#e6db74">&quot;animation&quot;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&quot;enter&quot;</span>,
+<span style="color:#e6db74">&quot;character&quot;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&quot;sophia&quot;</span>,
+<span style="color:#e6db74">&quot;next&quot;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">3</span>,
+<span style="color:#e6db74">&quot;side&quot;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&quot;right&quot;</span>
+},
+<span style="color:#ae81ff">3</span><span style="color:#f92672">:</span> {
+<span style="color:#e6db74">&quot;character&quot;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&quot;dani&quot;</span>,
+<span style="color:#e6db74">&quot;line&quot;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&quot;Hey, what&#39;s ...
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">...&quot;</span>,
+<span style="color:#e6db74">&quot;next&quot;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">4</span>
+},
+<span style="color:#ae81ff">4</span><span style="color:#f92672">:</span> {
+<span style="color:#e6db74">&quot;line&quot;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&quot;Dani felt he had already lived this scene.&quot;</span>,
+<span style="color:#e6db74">&quot;next&quot;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">5</span>
+},
+<span style="color:#ae81ff">5</span><span style="color:#f92672">:</span> {
+<span style="color:#e6db74">&quot;character&quot;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&quot;sophia&quot;</span>,
+<span style="color:#e6db74">&quot;line&quot;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&quot;What&#39;s going on?&quot;</span>,
+<span style="color:#e6db74">&quot;next&quot;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">6</span>
+},
+<span style="color:#ae81ff">6</span><span style="color:#f92672">:</span> {
+<span style="color:#e6db74">&quot;character&quot;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&quot;dani&quot;</span>,
+<span style="color:#e6db74">&quot;line&quot;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&quot;I&#39;m having a deja-vu.&quot;</span>,
+<span style="color:#e6db74">&quot;next&quot;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">7</span>
+},
+<span style="color:#ae81ff">7</span><span style="color:#f92672">:</span> {
+<span style="color:#e6db74">&quot;next&quot;</span><span style="color:#f92672">:</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>,
+<span style="color:#e6db74">&quot;transition&quot;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&quot;fade_out&quot;</span>
+}
+}
+</pre>
+<h2 id="sequencing-scenes-with-the-main-game-node">Sequencing scenes with the main game node</h2>
+<p>We will now create the <code>Main</code> scene that will serve as the entry point for our game.</p>
+<p>It stores a list of scene files to play in sequence and defines a function to play scenes.</p>
+<p>It will also have the responsibility of restarting a scene if the scene player emitted the <code>restart_requested</code> signal.</p>
+<p>Create a new scene with a plain <img src="data:image/svg+xml;base64,PHN2ZyBoZWlnaHQ9IjE2IiB2aWV3Qm94PSIwIDAgMTYgMTYiIHdpZHRoPSIxNiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJtOCAyYTYgNiAwIDAgMCAtNiA2IDYgNiAwIDAgMCA2IDYgNiA2IDAgMCAwIDYtNiA2IDYgMCAwIDAgLTYtNnptMCAyYTQgNCAwIDAgMSA0IDQgNCA0IDAgMCAxIC00IDQgNCA0IDAgMCAxIC00LTQgNCA0IDAgMCAxIDQtNHoiIGZpbGw9IiNlMGUwZTAiLz48L3N2Zz4K" class="node-icon" /><code>Node</code> at the root named <em>Main</em>. Save the scene at the root of your project and attach a script to the node.</p>
+<p>We start with the <em>Main</em> node’s state.</p>
+<p>We preload the <code>ScenePlayer</code> scene to instantiate it from the code. We also write the sequence of scenes to load and play in a constant.</p>
+<p>And to keep track of which scene played last and of the active <code>ScenePlayer</code> instance, we create two pseudo-private variables.</p>
+<pre style="color:#f8f8f2;background-color:#272822"><span style="color:#75715e"># The main node runs the game by instantiating scene players, one for each scene</span>
+<span style="color:#75715e"># that will play.</span>
+<span style="color:#75715e"># Creating new instances for each scene allows us to start clean every time,</span>
+<span style="color:#75715e"># with the text box and the different game components reinitialized.</span>
+<span style="color:#66d9ef">extends</span> <span style="color:#a6e22e">Node</span>
+
+<span style="color:#66d9ef">const</span> ScenePlayer :<span style="color:#f92672">=</span> preload(<span style="color:#e6db74">&quot;res://ScenePlayer.tscn&quot;</span>)
+
+<span style="color:#75715e"># We play scenes in a sequence defined in this array. In this demo, it is a</span>
+<span style="color:#75715e"># simple as it gets: we use a list of paths to the scene files.</span>
+<span style="color:#66d9ef">const</span> SCENES :<span style="color:#f92672">=</span> [<span style="color:#e6db74">&quot;res://Scenes/1.scene&quot;</span>, <span style="color:#e6db74">&quot;res://Scenes/2.scene&quot;</span>]
+
+<span style="color:#75715e"># This variable keeps track of the currently playing scene&#39;s index. This allows</span>
+<span style="color:#75715e"># us to restart the current scene if need be.</span>
+<span style="color:#75715e"># At the start of the game, nothing&#39;s playing yet, so I initialized the value to</span>
+<span style="color:#75715e"># `-1` to reflect that.</span>
+<span style="color:#66d9ef">var</span> _current_index :<span style="color:#f92672">=</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>
+<span style="color:#66d9ef">var</span> _scene_player: ScenePlayer
+</pre>
+<p>Here comes the heart of our script.</p>
+<p>We define a <code>_play_scene()</code> function that updates the <code>_current_index</code>, frees any existing scene player, and instantiates a new one.</p>
+<p>There, we also load the next scene, connect to the <code>ScenePlayer</code>’s signals, and run the scene.</p>
+<p>When we receive a signal, we play the next scene until we have none left, in which case we end the game.</p>
+<pre style="color:#f8f8f2;background-color:#272822"><span style="color:#75715e"># At the start of the game, we play the first scene</span>
+<span style="color:#66d9ef">func</span> _ready() <span style="color:#f92672">-&gt;</span> void:
+    _play_scene(<span style="color:#ae81ff">0</span>)
+
+
+<span style="color:#75715e">## Plays the scene by instantiating as seen player and adding it as a child. The</span>
+<span style="color:#75715e">## scene player handles loading and running the scene.</span>
+<span style="color:#66d9ef">func</span> _play_scene(index: <span style="color:#a6e22e">int</span>) <span style="color:#f92672">-&gt;</span> void:
+    <span style="color:#75715e"># We update the index and ensure it&#39;s valid.</span>
+    _current_index <span style="color:#f92672">=</span> <span style="color:#a6e22e">int</span>(clamp(index, <span style="color:#ae81ff">0.0</span>, SCENES<span style="color:#f92672">.</span>size() <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>))
+
+    <span style="color:#75715e"># If a scene just ended, we free it.</span>
+    <span style="color:#66d9ef">if</span> _scene_player:
+        _scene_player<span style="color:#f92672">.</span>queue_free()
+
+    <span style="color:#75715e"># We instantiate a new ScenePlayer, load a scene, and connect to its signals.</span>
+    _scene_player <span style="color:#f92672">=</span> ScenePlayer<span style="color:#f92672">.</span>instance()
+    add_child(_scene_player)
+    _scene_player<span style="color:#f92672">.</span>load_scene(SCENES[_current_index])
+
+    _scene_player<span style="color:#f92672">.</span>connect(<span style="color:#e6db74">&quot;scene_finished&quot;</span>, self, <span style="color:#e6db74">&quot;_on_ScenePlayer_scene_finished&quot;</span>)
+    _scene_player<span style="color:#f92672">.</span>connect(<span style="color:#e6db74">&quot;restart_requested&quot;</span>, self, <span style="color:#e6db74">&quot;_on_ScenePlayer_restart_requested&quot;</span>)
+    <span style="color:#75715e"># And we run the scene.</span>
+    _scene_player<span style="color:#f92672">.</span>run_scene()
+
+
+<span style="color:#75715e"># When the ScenePlayer emits the `scene_finished` signal, we play the next scene</span>
+<span style="color:#75715e"># or end the game.</span>
+<span style="color:#66d9ef">func</span> _on_ScenePlayer_scene_finished() <span style="color:#f92672">-&gt;</span> void:
+    <span style="color:#75715e"># If the scene that ended is the last one, we&#39;re done playing the game.</span>
+    <span style="color:#66d9ef">if</span> _current_index <span style="color:#f92672">==</span> SCENES<span style="color:#f92672">.</span>size() <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>:
+        <span style="color:#66d9ef">return</span>
+
+    _play_scene(_current_index <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>)
+
+
+<span style="color:#66d9ef">func</span> _on_ScenePlayer_restart_requested() <span style="color:#f92672">-&gt;</span> void:
+    _play_scene(_current_index)
+</pre>
+<p>You can press <kbd>F5</kbd> to run the project’s main scene, and set it to <code>Main.tscn</code>.</p>
+<p>You should see the two scenes play in sequence and end with a black screen.</p>
+<p>Creating a separation between the main node in the scene player may not seem necessary. But there are at least three reasons to do so:</p>
+<ol type="1">
+<li>It creates a clear separation of concern between what plays one scene and what sequences them.</li>
+<li>By deleting <code>ScenePlayer</code> instances and creating fresh ones every time we start a scene, we ensure that our <code>TextBox</code>, <code>CharacterDisplayer</code>, and other components always spawn in the same state.</li>
+<li>When we delete a <code>ScenePlayer</code>, the main node is still there, and it keeps track of the game state.</li>
+</ol>
+<p>In our demo, the three benefits above are already present, and they’ll become even clearer as your codebase grows in size.</p>
+<h2 id="closing-thoughts">Closing thoughts</h2>
+<p>We’re getting to the end of this series. You already have the foundations to build either a complete dialogue system or a visual novel game.</p>
+<p>The system we wrote isn’t <em>perfect</em>. There are edge cases it doesn’t handle, like trying to display a character’s name along with a choice. Right now, if you try that, the game will freeze. You may also want to automatically fade in and out at the start and the end of a scene, instead of writing the transitions manually, those sorts of things.</p>
+<p>These features are just unsupported in our demo. In production, you would want to create an interface that prevents your teammates from using any unintended combination or unsupported feature.</p>
+<p>Here, you’ve learned the foundations, and the essentials. The core techniques you need to build about any kind of dialogue system. And you can apply them to any game.</p>
+<p>If you would like to work with an existing editor, the main difference will be that you have to work with the data it outputs rather than define your own.</p>
+<p>Or you could translate the data your editor exports into the format your game expects, whichever feels best to you.</p>
+<p>Another option, if you’re not interested in coding a completely custom and unique dialogue system, is to use a premade one, like the one that ships with <a href="https://github.com/coppolaemilio/dialogic">Dialogic</a>.</p>
+<p>It will save you time, but you won’t be able to make it stand out. Like any premade game system, it’s a tradeoff.</p>
+<p>I want to thank you for getting to this point and hope you enjoyed the series. </p>
+<p>What did you learn? Did you enjoy it?</p>
+<p>I would love to hear your feedback on it, which you can write using the “ask a question” form below the lesson on Mavenseed.</p>
+<h2 id="code-reference">Code reference</h2>
+<p><code>ScenePlayer.gd</code></p>
+<pre style="color:#f8f8f2;background-color:#272822">class_name ScenePlayer
+<span style="color:#66d9ef">extends</span> <span style="color:#a6e22e">Node</span>
+
+<span style="color:#66d9ef">signal</span> scene_finished
+<span style="color:#66d9ef">signal</span> transition_finished
+<span style="color:#66d9ef">signal</span> restart_requested
+
+<span style="color:#66d9ef">const</span> KEY_END_OF_SCENE :<span style="color:#f92672">=</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>
+<span style="color:#66d9ef">const</span> KEY_RESTART_SCENE :<span style="color:#f92672">=</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">2</span>
+
+<span style="color:#66d9ef">const</span> TRANSITIONS :<span style="color:#f92672">=</span> {
+    fade_in <span style="color:#f92672">=</span> <span style="color:#e6db74">&quot;_appear_async&quot;</span>,
+    fade_out <span style="color:#f92672">=</span> <span style="color:#e6db74">&quot;_disappear_async&quot;</span>,
+}
+
+<span style="color:#66d9ef">var</span> _scene_data :<span style="color:#f92672">=</span> {}
+
+<span style="color:#66d9ef">onready</span> <span style="color:#66d9ef">var</span> _text_box :<span style="color:#f92672">=</span> <span style="color:#f92672">$</span>TextBox
+<span style="color:#66d9ef">onready</span> <span style="color:#66d9ef">var</span> _character_displayer :<span style="color:#f92672">=</span> <span style="color:#f92672">$</span>CharacterDisplayer
+<span style="color:#66d9ef">onready</span> <span style="color:#66d9ef">var</span> _background :<span style="color:#f92672">=</span> <span style="color:#f92672">$</span>Background
+<span style="color:#66d9ef">onready</span> <span style="color:#66d9ef">var</span> _anim_player: <span style="color:#a6e22e">AnimationPlayer</span> <span style="color:#f92672">=</span> <span style="color:#f92672">$</span>FadeAnimationPlayer
+
+
+<span style="color:#66d9ef">func</span> run_scene() <span style="color:#f92672">-&gt;</span> void:
+    <span style="color:#66d9ef">var</span> key <span style="color:#f92672">=</span> _scene_data<span style="color:#f92672">.</span>keys()[<span style="color:#ae81ff">0</span>]
+    <span style="color:#66d9ef">while</span> key <span style="color:#f92672">!=</span> KEY_END_OF_SCENE:
+        <span style="color:#66d9ef">var</span> node: <span style="color:#a6e22e">Dictionary</span> <span style="color:#f92672">=</span> _scene_data[key]
+
+        <span style="color:#66d9ef">var</span> character: Character <span style="color:#f92672">=</span> (
+            ResourceDB<span style="color:#f92672">.</span>get_character(node<span style="color:#f92672">.</span>character)
+            <span style="color:#66d9ef">if</span> <span style="color:#e6db74">&quot;character&quot;</span> <span style="color:#f92672">in</span> node
+            <span style="color:#66d9ef">else</span> ResourceDB<span style="color:#f92672">.</span>get_narrator()
+        )
+
+        <span style="color:#66d9ef">if</span> <span style="color:#e6db74">&quot;background&quot;</span> <span style="color:#f92672">in</span> node:
+            <span style="color:#66d9ef">var</span> bg: Background <span style="color:#f92672">=</span> ResourceDB<span style="color:#f92672">.</span>get_background(node<span style="color:#f92672">.</span>background)
+            _background<span style="color:#f92672">.</span>texture <span style="color:#f92672">=</span> bg<span style="color:#f92672">.</span>texture
+
+        <span style="color:#66d9ef">if</span> <span style="color:#e6db74">&quot;character&quot;</span> <span style="color:#f92672">in</span> node:
+            <span style="color:#66d9ef">var</span> side: <span style="color:#a6e22e">String</span> <span style="color:#f92672">=</span> node<span style="color:#f92672">.</span>side <span style="color:#66d9ef">if</span> <span style="color:#e6db74">&quot;side&quot;</span> <span style="color:#f92672">in</span> node <span style="color:#66d9ef">else</span> CharacterDisplayer<span style="color:#f92672">.</span>SIDE<span style="color:#f92672">.</span>LEFT
+            <span style="color:#66d9ef">var</span> animation: <span style="color:#a6e22e">String</span> <span style="color:#f92672">=</span> node<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&quot;animation&quot;</span>, <span style="color:#e6db74">&quot;&quot;</span>)
+            <span style="color:#66d9ef">var</span> expression: <span style="color:#a6e22e">String</span> <span style="color:#f92672">=</span> node<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&quot;expression&quot;</span>, <span style="color:#e6db74">&quot;&quot;</span>)
+            _character_displayer<span style="color:#f92672">.</span>display(character, side, expression, animation)
+            <span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> <span style="color:#e6db74">&quot;line&quot;</span> <span style="color:#f92672">in</span> node:
+                yield(_character_displayer, <span style="color:#e6db74">&quot;display_finished&quot;</span>)
+
+        <span style="color:#66d9ef">if</span> <span style="color:#e6db74">&quot;line&quot;</span> <span style="color:#f92672">in</span> node:
+            _text_box<span style="color:#f92672">.</span>display(node<span style="color:#f92672">.</span>line, character<span style="color:#f92672">.</span>display_name)
+            yield(_text_box, <span style="color:#e6db74">&quot;next_requested&quot;</span>)
+            key <span style="color:#f92672">=</span> node<span style="color:#f92672">.</span>next
+        <span style="color:#66d9ef">elif</span> <span style="color:#e6db74">&quot;transition&quot;</span> <span style="color:#f92672">in</span> node:
+            call(TRANSITIONS[node<span style="color:#f92672">.</span>transition])
+            yield(self, <span style="color:#e6db74">&quot;transition_finished&quot;</span>)
+            key <span style="color:#f92672">=</span> node<span style="color:#f92672">.</span>next
+
+        <span style="color:#66d9ef">elif</span> <span style="color:#e6db74">&quot;choices&quot;</span> <span style="color:#f92672">in</span> node:
+            _text_box<span style="color:#f92672">.</span>display_choice(node<span style="color:#f92672">.</span>choices)
+            key <span style="color:#f92672">=</span> yield(_text_box, <span style="color:#e6db74">&quot;choice_made&quot;</span>)
+            <span style="color:#66d9ef">if</span> key <span style="color:#f92672">==</span> KEY_RESTART_SCENE:
+                emit_signal(<span style="color:#e6db74">&quot;restart_requested&quot;</span>)
+                <span style="color:#66d9ef">return</span>
+        <span style="color:#66d9ef">else</span>:
+            key <span style="color:#f92672">=</span> node<span style="color:#f92672">.</span>next
+
+    _character_displayer<span style="color:#f92672">.</span>hide()
+    emit_signal(<span style="color:#e6db74">&quot;scene_finished&quot;</span>)
+
+
+<span style="color:#66d9ef">func</span> load_scene(file_path: <span style="color:#a6e22e">String</span>) <span style="color:#f92672">-&gt;</span> void:
+    <span style="color:#66d9ef">var</span> file :<span style="color:#f92672">=</span> <span style="color:#a6e22e">File</span><span style="color:#f92672">.</span>new()
+    file<span style="color:#f92672">.</span>open(file_path, <span style="color:#a6e22e">File</span><span style="color:#f92672">.</span>READ)
+    _scene_data <span style="color:#f92672">=</span> str2var(file<span style="color:#f92672">.</span>get_as_text())
+    file<span style="color:#f92672">.</span>close()
+
+
+<span style="color:#66d9ef">func</span> _appear_async() <span style="color:#f92672">-&gt;</span> void:
+    _anim_player<span style="color:#f92672">.</span>play(<span style="color:#e6db74">&quot;fade_in&quot;</span>)
+    yield(_anim_player, <span style="color:#e6db74">&quot;animation_finished&quot;</span>)
+    yield(_text_box<span style="color:#f92672">.</span>fade_in_async(), <span style="color:#e6db74">&quot;completed&quot;</span>)
+    emit_signal(<span style="color:#e6db74">&quot;transition_finished&quot;</span>)
+
+
+<span style="color:#66d9ef">func</span> _disappear_async() <span style="color:#f92672">-&gt;</span> void:
+    yield(_text_box<span style="color:#f92672">.</span>fade_out_async(), <span style="color:#e6db74">&quot;completed&quot;</span>)
+    _anim_player<span style="color:#f92672">.</span>play(<span style="color:#e6db74">&quot;fade_out&quot;</span>)
+    yield(_anim_player, <span style="color:#e6db74">&quot;animation_finished&quot;</span>)
+    emit_signal(<span style="color:#e6db74">&quot;transition_finished&quot;</span>)
+
+
+<span style="color:#66d9ef">func</span> _store_scene_data(data: <span style="color:#a6e22e">Dictionary</span>, path: <span style="color:#a6e22e">String</span>) <span style="color:#f92672">-&gt;</span> void:
+    <span style="color:#66d9ef">var</span> file :<span style="color:#f92672">=</span> <span style="color:#a6e22e">File</span><span style="color:#f92672">.</span>new()
+    file<span style="color:#f92672">.</span>open(path, <span style="color:#a6e22e">File</span><span style="color:#f92672">.</span>WRITE)
+    file<span style="color:#f92672">.</span>store_string(var2str(data))
+    file<span style="color:#f92672">.</span>close()
+</pre>
+<p><code>Main.gd</code></p>
+<pre style="color:#f8f8f2;background-color:#272822"><span style="color:#66d9ef">extends</span> <span style="color:#a6e22e">Node</span>
+
+<span style="color:#66d9ef">const</span> ScenePlayer :<span style="color:#f92672">=</span> preload(<span style="color:#e6db74">&quot;res://ScenePlayer.tscn&quot;</span>)
+
+<span style="color:#66d9ef">const</span> SCENES :<span style="color:#f92672">=</span> [<span style="color:#e6db74">&quot;res://Scenes/1.scene&quot;</span>, <span style="color:#e6db74">&quot;res://Scenes/2.scene&quot;</span>]
+
+<span style="color:#66d9ef">var</span> _current_index :<span style="color:#f92672">=</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>
+<span style="color:#66d9ef">var</span> _scene_player: ScenePlayer
+
+
+<span style="color:#66d9ef">func</span> _ready() <span style="color:#f92672">-&gt;</span> void:
+    _play_scene(<span style="color:#ae81ff">0</span>)
+
+
+<span style="color:#66d9ef">func</span> _play_scene(index: <span style="color:#a6e22e">int</span>) <span style="color:#f92672">-&gt;</span> void:
+    _current_index <span style="color:#f92672">=</span> <span style="color:#a6e22e">int</span>(clamp(index, <span style="color:#ae81ff">0.0</span>, SCENES<span style="color:#f92672">.</span>size() <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>))
+
+    <span style="color:#66d9ef">if</span> _scene_player:
+        _scene_player<span style="color:#f92672">.</span>queue_free()
+
+    _scene_player <span style="color:#f92672">=</span> ScenePlayer<span style="color:#f92672">.</span>instance()
+    add_child(_scene_player)
+    _scene_player<span style="color:#f92672">.</span>load_scene(SCENES[_current_index])
+    _scene_player<span style="color:#f92672">.</span>connect(<span style="color:#e6db74">&quot;scene_finished&quot;</span>, self, <span style="color:#e6db74">&quot;_on_ScenePlayer_scene_finished&quot;</span>)
+    _scene_player<span style="color:#f92672">.</span>connect(<span style="color:#e6db74">&quot;restart_requested&quot;</span>, self, <span style="color:#e6db74">&quot;_on_ScenePlayer_restart_requested&quot;</span>)
+    _scene_player<span style="color:#f92672">.</span>run_scene()
+
+
+<span style="color:#66d9ef">func</span> _on_ScenePlayer_scene_finished() <span style="color:#f92672">-&gt;</span> void:
+    <span style="color:#66d9ef">if</span> _current_index <span style="color:#f92672">==</span> SCENES<span style="color:#f92672">.</span>size() <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>:
+        <span style="color:#66d9ef">return</span>
+    _play_scene(_current_index <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>)
+
+
+<span style="color:#66d9ef">func</span> _on_ScenePlayer_restart_requested() <span style="color:#f92672">-&gt;</span> void:
+    _play_scene(_current_index)
+</pre>
+</body>
+</html>

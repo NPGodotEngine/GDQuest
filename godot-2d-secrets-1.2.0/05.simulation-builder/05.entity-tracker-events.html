@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>&#39;entity tracker events&#39;</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <link rel="stylesheet" href="data:text/css,%3Aroot%20%7B%2D%2Dcolor%2Dcaption%3A%20grey%3B%2D%2Dcolor%2Dblue%3A%20%2326bfe3%3B%2D%2Dcolor%2Dgreen%3A%20%2302e180%3B%2D%2Dcolor%2Dorange%3A%20%23f2971a%3B%2D%2Dcolor%2Dpink%3A%20%23e3266f%3B%2D%2Dcolor%2Dbg%3A%20%23fff%3B%2D%2Dcolor%2Dbg%2Dalt%3A%20%23f5f5f5%3B%2D%2Dcolor%2Dtext%2Dheader%3A%20%23fff%3B%2D%2Dcolor%2Dtext%2Dbody%3A%20%2395989a%3B%2D%2Dpadding%3A%2020px%3B%2D%2Dpadding%2Dinv%3A%20calc%28%2D1%20%2A%20var%28%2D%2Dpadding%29%29%3B%2D%2Dfonts%3A%20%27Open%20Sans%27%2C%20%2Dapple%2Dsystem%2C%20system%2Dui%2C%20%27Segoe%20UI%27%2C%20%27Roboto%27%2C%27Helvetica%20Neue%27%2C%20Arial%2C%20sans%2Dserif%3B%2D%2Dfont%2Dsize%3A%201%2E1rem%3B%7Dhtml%20%7Bfont%2Dsize%3A%20100%25%3B%7Dbody%20%7Bcolor%3A%20%23444%3Bfont%2Dfamily%3A%20var%28%2D%2Dfonts%29%3Bfont%2Dsize%3A%20var%28%2D%2Dfont%2Dsize%29%3Bline%2Dheight%3A%201%2E7%3Bpadding%3A%201em%3Bmargin%3A%20auto%3Bmax%2Dwidth%3A%20800px%3Bbackground%3A%20%23fefefe%3B%7Da%20%7Bcolor%3A%20%230645ad%3Btext%2Ddecoration%3A%20none%3B%7Da%3Avisited%20%7Bcolor%3A%20%230b0080%3B%7Da%3Ahover%20%7Bcolor%3A%20%2306e%3B%7Da%3Aactive%20%7Bcolor%3A%20%23faa700%3B%7Da%3Afocus%20%7Boutline%3A%20thin%20dotted%3B%7Da%3A%3Aselection%20%7Bbackground%3A%20rgba%28255%2C%20255%2C%200%2C%200%2E3%29%3Bcolor%3A%20%230645ad%3B%7D%2A%3A%3Aselection%20%7Bbackground%3A%20rgba%28255%2C%20255%2C%200%2C%200%2E3%29%3Bcolor%3A%20%23000%3B%7Dp%20%7Bmargin%3A%201em%200%3B%7D%2Ecaption%20%7Btext%2Dalign%3A%20center%3Bcolor%3A%20var%28%2D%2Dcolor%2Dcaption%29%3Bfont%2Dstyle%3A%20italic%3B%7D%2Enote%2C%2Etips%2C%2Ewarning%20%7Bdisplay%3A%20block%3Bwidth%3A%20calc%28100%25%20%2D%20var%28%2D%2Dpadding%29%20%2A%202%29%3Bpadding%3A%200%20var%28%2D%2Dpadding%29%3Bpadding%2Dbottom%3A%20var%28%2D%2Dpadding%29%3Bbackground%2Dcolor%3A%20var%28%2D%2Dcolor%2Dbg%2Dalt%29%3B%7D%2Enote%3Abefore%2C%2Etips%3Abefore%2C%2Ewarning%3Abefore%20%7Bdisplay%3A%20block%3Bmargin%3A%200%20var%28%2D%2Dpadding%2Dinv%29%2010px%20var%28%2D%2Dpadding%2Dinv%29%3Bpadding%2Dleft%3A%20var%28%2D%2Dpadding%29%3Bfont%2Dstyle%3A%20bold%3Bcolor%3A%20white%3B%7D%2Enote%3Abefore%20%7Bcontent%3A%20%27Note%27%3Bbackground%2Dcolor%3A%20var%28%2D%2Dcolor%2Dblue%29%3B%7D%2Etips%3Abefore%20%7Bcontent%3A%20%27Tips%27%3Bbackground%2Dcolor%3A%20var%28%2D%2Dcolor%2Dpink%29%3B%7D%2Ewarning%3Abefore%20%7Bcontent%3A%20%27Warning%27%3Bbackground%2Dcolor%3A%20var%28%2D%2Dcolor%2Dorange%29%3B%7Dimg%20%7Bmax%2Dwidth%3A%20100%25%3B%7Dh1%2Ch2%2Ch3%2Ch4%2Ch5%2Ch6%20%7Bcolor%3A%20%23111%3Bline%2Dheight%3A%20125%25%3Bmargin%2Dtop%3A%202em%3Bfont%2Dweight%3A%20normal%3B%7Dh4%2Ch5%2Ch6%20%7Bfont%2Dweight%3A%20bold%3B%7Dh1%20%7Bfont%2Dsize%3A%202%2E5em%3B%7Dh2%20%7Bfont%2Dsize%3A%202em%3B%7Dh3%20%7Bfont%2Dsize%3A%201%2E5em%3B%7Dh4%20%7Bfont%2Dsize%3A%201%2E2em%3B%7Dblockquote%20%7Bcolor%3A%20%23666666%3Bmargin%3A%200%3Bpadding%2Dleft%3A%203em%3Bborder%2Dleft%3A%200%2E5em%20%23eee%20solid%3B%7Dhr%20%7Bdisplay%3A%20block%3Bheight%3A%202px%3Bborder%3A%200%3Bborder%2Dtop%3A%201px%20solid%20%23aaa%3Bborder%2Dbottom%3A%201px%20solid%20%23eee%3Bmargin%3A%201em%200%3Bpadding%3A%200%3B%7Dpre%2Ccode%2Ckbd%2Csamp%20%7Bcolor%3A%20%230084b8%3Bfont%2Dfamily%3A%20monospace%2C%20monospace%3B%7Dpre%20%7Bpadding%3A%201em%3Bfont%2Dsize%3A%2014px%3Bwhite%2Dspace%3A%20pre%2Dwrap%3Bword%2Dwrap%3A%20break%2Dword%3B%7Dcode%20%7Bwhite%2Dspace%3A%20pre%2Dwrap%3B%7Db%2Cstrong%20%7Bfont%2Dweight%3A%20bold%3B%7Ddfn%20%7Bfont%2Dstyle%3A%20italic%3Bcolor%3A%20var%28%2D%2Dcolor%2Dblue%29%3B%7Dins%20%7Bbackground%3A%20%23ff9%3Bcolor%3A%20%23000%3Btext%2Ddecoration%3A%20none%3B%7Dul%2Col%20%7Bmargin%3A%201em%200%3Bpadding%3A%200%200%200%202em%3B%7Dli%20p%3Alast%2Dchild%20%7Bmargin%2Dbottom%3A%200%3B%7Dul%20ul%2Col%20ol%20%7Bmargin%3A%200%2E3em%200%3B%7Ddl%20%7Bmargin%2Dbottom%3A%201em%3B%7Ddt%20%7Bfont%2Dweight%3A%20bold%3Bmargin%2Dbottom%3A%200%2E8em%3B%7Ddd%20%7Bmargin%3A%200%200%200%2E8em%202em%3B%7Ddd%3Alast%2Dchild%20%7Bmargin%2Dbottom%3A%200%3B%7Dimg%20%7Bborder%3A%200%3B%2Dms%2Dinterpolation%2Dmode%3A%20bicubic%3Bvertical%2Dalign%3A%20middle%3B%7Dfigure%20%7Bdisplay%3A%20block%3Btext%2Dalign%3A%20center%3Bmargin%3A%201em%200%3B%7Dfigure%20img%20%7Bborder%3A%20none%3Bmargin%3A%200%20auto%3B%7Dfigcaption%20%7Bfont%2Dsize%3A%200%2E8em%3Bfont%2Dstyle%3A%20italic%3Bmargin%3A%200%200%200%2E8em%3B%7D%2Eauthor%20%7Bfont%2Dsize%3A%201%2E2em%3Btext%2Dalign%3A%20center%3B%7Dtag%20%7Bmin%2Dwidth%3A%203%2E2em%3Btext%2Dalign%3A%20center%3Bborder%2Dradius%3A%208px%3Bpadding%3A%200%204px%3Bmargin%2Dbottom%3A%200%3Bmargin%2Dtop%3A%204px%3Bmargin%2Dright%3A%200%2E2em%3Bdisplay%3A%20inline%2Dblock%3Bcolor%3A%20white%3B%7Dtag%2Eupdate%20%7Bbackground%3A%20var%28%2D%2Dcolor%2Dblue%29%3B%7Dtag%2Enew%20%7Bbackground%3A%20var%28%2D%2Dcolor%2Dgreen%29%3B%7Dtag%2Eupdate%3Aafter%20%7Bcontent%3A%20%27update%27%3B%7Dtag%2Enew%3Aafter%20%7Bcontent%3A%20%27new%27%3B%7Dbutton%20%7Bbackground%2Dcolor%3A%20var%28%2D%2Dcolor%2Dblue%29%3Bcolor%3A%20white%3Bborder%3A%20none%3Bcursor%3A%20pointer%3Bline%2Dheight%3A%202rem%3Bfont%2Dsize%3A%201%2E2rem%3Bmargin%3A%200%2E75rem%200%3Boverflow%3A%20visible%3Bpadding%3A%200%2E75rem%201%2E5rem%3Bborder%2Dradius%3A%201rem%3Btransition%3A%20background%2Dcolor%200%2E5%3Bwhite%2Dspace%3A%20nowrap%3B%7D%2Enode%2Dicon%20%7Bposition%3A%20relative%3Bbottom%3A%201%2E3px%3Bpadding%2Dright%3A%203px%3Bheight%3A%2018px%3B%7D%2Evideo%2Dyoutube%20%7Bbackground%2Dcolor%3A%20%23000%3Bposition%3A%20relative%3Bcursor%3A%20pointer%3B%7D%2Evideo%2Dyoutube%20%3E%20%2Eplaybutton%20%7Bpointer%2Devents%3A%20none%3Bwidth%3A%2090px%3Bheight%3A%2060px%3Bbackground%2Dcolor%3A%20%23333%3Bbox%2Dshadow%3A%200%200%2018px%20rgba%280%2C%200%2C%200%2C%200%2E6%29%3Bz%2Dindex%3A%201%3Bopacity%3A%200%2E8%3Bborder%2Dradius%3A%206px%3B%7D%2Eplaybutton%3Abefore%20%7Bcontent%3A%20%27%27%3Bborder%2Dstyle%3A%20solid%3Bborder%2Dwidth%3A%2015px%200%2015px%2026px%3Bborder%2Dcolor%3A%20transparent%20transparent%20transparent%20%23fff%3B%7D%2Evideo%2Dyoutube%20%3E%20img%2C%2Evideo%2Dyoutube%20%3E%20%2Eplaybutton%20%7Bcursor%3A%20pointer%3B%7D%2Evideo%2Dyoutube%20%3E%20img%2C%2Evideo%2Dyoutube%20%3E%20%2Eplaybutton%2C%2Evideo%2Dyoutube%20%3E%20%2Eplaybutton%3Abefore%20%7Bposition%3A%20absolute%3B%7D%2Eplaybutton%2C%2Eplaybutton%3Abefore%20%7Btop%3A%2050%25%3Bleft%3A%2050%25%3Btransform%3A%20translate3d%28%2D50%25%2C%20%2D50%25%2C%200%29%3B%7D" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<h1 id="implementing-the-events-singleton-and-entitytracker">Implementing the Events singleton and EntityTracker</h1>
+<p>We don’t want entities to be aware of each other. A Stirling engine should never hold a reference to another engine, battery, or wire.</p>
+<p>Yet, we need a way for entities to work with each other. We also need to manage the game grid so the player can only put one entity per cell.</p>
+<p>To do so, we’re going to code two tools:</p>
+<ol type="1">
+<li>A singleton that allows any node to emit and receive signals globally. We call this the <code>Events</code> bus pattern, and you can find a lesson dedicated to it in the design pattern chapter.</li>
+<li>A helper object that will keep track of which grid cells are occupied by an entity, the <code>EntityTracker</code>.</li>
+</ol>
+<h2 id="the-events-bus-singleton">The Events bus singleton</h2>
+<p>Entities are in a layer with the player, some in a layer beneath the player, and systems and the GUI will be in different branches of the scene tree. All these can be involved in the creation of an entity and need to work in concert. For example, in the final game, we want the player to be able to take an item in their inventory, select it, and place it or drop it in the world.</p>
+<p>Connecting them all individually or bubbling every signal up the scene tree chain would be prohibitively messy and connect every entity.</p>
+<p>Our goal, as programmers, is to limit connection and communication between objects to the minimum. We want every entity to be uniquely <strong>unaware</strong> of any of its neighbors. As a result, we will use a global object to emit events: an autoload.</p>
+<p><em>To learn more about our recommended “best practices” regarding signals, see the Best Practices chapter.</em></p>
+<p>We create an <code>/Autoload/Events.gd</code> script in the <code>Autoloads</code> folder that we add to the list of <em>Autoloads</em> in the <em>Project Settings… -&gt; Autoload</em> tab.</p>
+<p>Every signal that may need to transcend the hierarchy can go here. We will add more in future lessons, but for now, we add two signals related to placing and removing entities.</p>
+<pre style="color:#f8f8f2;background-color:#272822"><span style="color:#66d9ef">extends</span> <span style="color:#a6e22e">Node</span>
+
+<span style="color:#75715e">## Signal emitted when the player places an entity, passing the entity and its</span>
+<span style="color:#75715e">## position in map coordinates</span>
+<span style="color:#66d9ef">signal</span> entity_placed(entity, cellv)
+
+<span style="color:#75715e">## Signal emitted when the player removes an entity, passing the entity and its</span>
+<span style="color:#75715e">## position in map coordinates</span>
+<span style="color:#66d9ef">signal</span> entity_removed(entity, cellv)
+</pre>
+<h2 id="the-entitytracker">The EntityTracker</h2>
+<p>The <code>EntityTracker</code> is a helper object that belongs to the <code>Simulation</code>. Its purpose is to help the <code>EntityPlacer</code> figure out if an entity already occupies the current cell and is the one who emits signals when the player places or removes entities.</p>
+<p>Create a new script, <code>/Systems/EntityTracker.gd</code>, in the <em>FileSystem</em> dock and have it inherit from <code>Reference</code>. References are lighter than <img src="data:image/svg+xml;base64,PHN2ZyBoZWlnaHQ9IjE2IiB2aWV3Qm94PSIwIDAgMTYgMTYiIHdpZHRoPSIxNiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJtOCAyYTYgNiAwIDAgMCAtNiA2IDYgNiAwIDAgMCA2IDYgNiA2IDAgMCAwIDYtNiA2IDYgMCAwIDAgLTYtNnptMCAyYTQgNCAwIDAgMSA0IDQgNCA0IDAgMCAxIC00IDQgNCA0IDAgMCAxIC00LTQgNCA0IDAgMCAxIDQtNHoiIGZpbGw9IiNlMGUwZTAiLz48L3N2Zz4K" class="node-icon" /><code>Node</code>s and get erased by Godot when they are no longer referred to by anyone. That makes them ideal for little helpers like this.</p>
+<p>The class provides methods to register, remove, and get a reference to an entity in the game grid. A fourth function allows us to check if a cell already has an entity in it.</p>
+<pre style="color:#f8f8f2;background-color:#272822"><span style="color:#75715e">## Sub-class of the simulation that keeps track of all entities and their location</span>
+<span style="color:#75715e">## using dictionary keys. Emits signals when the player places or removes entities.</span>
+class_name EntityTracker
+<span style="color:#66d9ef">extends</span> <span style="color:#a6e22e">Reference</span>
+
+<span style="color:#75715e">## A Dictionary of entities, keyed using `Vector2` tilemap coordinates.</span>
+<span style="color:#66d9ef">var</span> entities :<span style="color:#f92672">=</span> {}
+
+<span style="color:#75715e">## Adds an entity to the dictionary so we can prevent other entities from taking</span>
+<span style="color:#75715e">## the same location.</span>
+<span style="color:#66d9ef">func</span> place_entity(entity, cellv: <span style="color:#a6e22e">Vector2</span>) <span style="color:#f92672">-&gt;</span> void:
+    <span style="color:#75715e"># If the cell is already taken, refuse to add it again.</span>
+    <span style="color:#66d9ef">if</span> entities<span style="color:#f92672">.</span>has(cellv):
+        <span style="color:#66d9ef">return</span>
+
+    <span style="color:#75715e"># Add the entity keyed by its coordinates on the map.</span>
+    entities[cellv] <span style="color:#f92672">=</span> entity
+    <span style="color:#75715e"># Emit the signal about the new entity.</span>
+    Events<span style="color:#f92672">.</span>emit_signal(<span style="color:#e6db74">&quot;entity_placed&quot;</span>, entity, cellv)
+
+
+<span style="color:#75715e">## Removes an entity from the dictionary so other entities can take its place</span>
+<span style="color:#75715e">## in its location on the map.</span>
+<span style="color:#66d9ef">func</span> remove_entity(cellv: <span style="color:#a6e22e">Vector2</span>) <span style="color:#f92672">-&gt;</span> void:
+    <span style="color:#75715e"># Refuse to function if the entity does not exist.</span>
+    <span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> entities<span style="color:#f92672">.</span>has(cellv):
+        <span style="color:#66d9ef">return</span>
+
+    <span style="color:#75715e"># Get the entity, queue it for deletion, and emit a signal about</span>
+    <span style="color:#75715e"># its removal.</span>
+    <span style="color:#66d9ef">var</span> entity <span style="color:#f92672">=</span> entities[cellv]
+    <span style="color:#66d9ef">var</span> _result :<span style="color:#f92672">=</span> entities<span style="color:#f92672">.</span>erase(cellv)
+    Events<span style="color:#f92672">.</span>emit_signal(<span style="color:#e6db74">&quot;entity_removed&quot;</span>, entity, cellv)
+    entity<span style="color:#f92672">.</span>queue_free()
+
+
+<span style="color:#75715e">## Returns true if there is an entity at the given location.</span>
+<span style="color:#66d9ef">func</span> is_cell_occupied(cellv: <span style="color:#a6e22e">Vector2</span>) <span style="color:#f92672">-&gt;</span> <span style="color:#a6e22e">bool</span>:
+    <span style="color:#66d9ef">return</span> entities<span style="color:#f92672">.</span>has(cellv)
+
+
+<span style="color:#75715e">## Returns the entity at the given location, if it exists, or null otherwise.</span>
+<span style="color:#66d9ef">func</span> get_entity_at(cellv: <span style="color:#a6e22e">Vector2</span>) <span style="color:#f92672">-&gt;</span> <span style="color:#a6e22e">Node2D</span>:
+    <span style="color:#66d9ef">if</span> entities<span style="color:#f92672">.</span>has(cellv):
+        <span style="color:#66d9ef">return</span> entities[cellv]
+    <span style="color:#66d9ef">else</span>:
+        <span style="color:#66d9ef">return</span> null
+</pre>
+<h2 id="simulation-and-delegation">Simulation and delegation</h2>
+<p>The <code>Simulation</code> class itself will not do much processing. Instead, we want it to delegate its duties to other classes and systems.</p>
+<p>In the <code>/Systems/Simulation.gd</code> script, we create an instance of our new <code>EntityTracker</code> class. We’ll pass it to the <code>EntityPlacer</code> in the next lesson so it can inform it of new entities.</p>
+<pre style="color:#f8f8f2;background-color:#272822"><span style="color:#75715e"># ...</span>
+<span style="color:#75715e"># const INVISIBLE_BARRIER_ID := 2</span>
+
+<span style="color:#66d9ef">var</span> _tracker :<span style="color:#f92672">=</span> EntityTracker<span style="color:#f92672">.</span>new()
+
+<span style="color:#75715e"># onready var _ground := $GameWorld/GroundTiles</span>
+<span style="color:#75715e"># ...</span>
+</pre>
+<h2 id="code-reference">Code reference</h2>
+<p>Here are complete scripts after adding changes in this lesson.</p>
+<p>First, <code>/Autoload/Events.gd</code>.</p>
+<pre style="color:#f8f8f2;background-color:#272822"><span style="color:#66d9ef">extends</span> <span style="color:#a6e22e">Node</span>
+
+<span style="color:#66d9ef">signal</span> entity_placed(entity, cellv)
+<span style="color:#66d9ef">signal</span> entity_removed(entity, cellv)
+</pre>
+<p>Second, <code>/Systems/EntityTracker.gd</code>.</p>
+<pre style="color:#f8f8f2;background-color:#272822">class_name EntityTracker
+<span style="color:#66d9ef">extends</span> <span style="color:#a6e22e">Reference</span>
+
+<span style="color:#66d9ef">var</span> entities :<span style="color:#f92672">=</span> {}
+
+<span style="color:#66d9ef">func</span> place_entity(entity, cellv: <span style="color:#a6e22e">Vector2</span>) <span style="color:#f92672">-&gt;</span> void:
+    <span style="color:#66d9ef">if</span> entities<span style="color:#f92672">.</span>has(cellv):
+        <span style="color:#66d9ef">return</span>
+
+    entities[cellv] <span style="color:#f92672">=</span> entity
+    Events<span style="color:#f92672">.</span>emit_signal(<span style="color:#e6db74">&quot;entity_placed&quot;</span>, entity, cellv)
+
+
+<span style="color:#66d9ef">func</span> remove_entity(cellv: <span style="color:#a6e22e">Vector2</span>) <span style="color:#f92672">-&gt;</span> void:
+    <span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> entities<span style="color:#f92672">.</span>has(cellv):
+        <span style="color:#66d9ef">return</span>
+
+    <span style="color:#66d9ef">var</span> entity <span style="color:#f92672">=</span> entities[cellv]
+    <span style="color:#66d9ef">var</span> _result :<span style="color:#f92672">=</span> entities<span style="color:#f92672">.</span>erase(cellv)
+    Events<span style="color:#f92672">.</span>emit_signal(<span style="color:#e6db74">&quot;entity_removed&quot;</span>, entity, cellv)
+    entity<span style="color:#f92672">.</span>queue_free()
+
+
+<span style="color:#66d9ef">func</span> is_cell_occupied(cellv: <span style="color:#a6e22e">Vector2</span>) <span style="color:#f92672">-&gt;</span> <span style="color:#a6e22e">bool</span>:
+    <span style="color:#66d9ef">return</span> entities<span style="color:#f92672">.</span>has(cellv)
+
+
+<span style="color:#66d9ef">func</span> get_entity_at(cellv: <span style="color:#a6e22e">Vector2</span>) <span style="color:#f92672">-&gt;</span> <span style="color:#a6e22e">Node2D</span>:
+    <span style="color:#66d9ef">if</span> entities<span style="color:#f92672">.</span>has(cellv):
+        <span style="color:#66d9ef">return</span> entities[cellv]
+    <span style="color:#66d9ef">else</span>:
+        <span style="color:#66d9ef">return</span> null
+</pre>
+<p>Finally, <code>/Systems/Simulation.gd</code>.</p>
+<pre style="color:#f8f8f2;background-color:#272822"><span style="color:#66d9ef">extends</span> <span style="color:#a6e22e">Node</span>
+
+<span style="color:#66d9ef">const</span> BARRIER_ID :<span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+<span style="color:#66d9ef">const</span> INVISIBLE_BARRIER_ID :<span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>
+
+<span style="color:#66d9ef">var</span> _tracker :<span style="color:#f92672">=</span> EntityTracker<span style="color:#f92672">.</span>new()
+
+<span style="color:#66d9ef">onready</span> <span style="color:#66d9ef">var</span> _ground :<span style="color:#f92672">=</span> <span style="color:#f92672">$</span>GameWorld<span style="color:#f92672">/</span>GroundTiles
+
+
+<span style="color:#66d9ef">func</span> _ready() <span style="color:#f92672">-&gt;</span> void:
+    <span style="color:#66d9ef">var</span> barriers: <span style="color:#a6e22e">Array</span> <span style="color:#f92672">=</span> _ground<span style="color:#f92672">.</span>get_used_cells_by_id(BARRIER_ID)
+
+    <span style="color:#66d9ef">for</span> cellv <span style="color:#f92672">in</span> barriers:
+        _ground<span style="color:#f92672">.</span>set_cellv(cellv, INVISIBLE_BARRIER_ID)
+</pre>
+</body>
+</html>

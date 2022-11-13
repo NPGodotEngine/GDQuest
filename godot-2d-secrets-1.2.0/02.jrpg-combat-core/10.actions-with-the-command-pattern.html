@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>&#39;actions with the command pattern&#39;</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <link rel="stylesheet" href="data:text/css,%3Aroot%20%7B%2D%2Dcolor%2Dcaption%3A%20grey%3B%2D%2Dcolor%2Dblue%3A%20%2326bfe3%3B%2D%2Dcolor%2Dgreen%3A%20%2302e180%3B%2D%2Dcolor%2Dorange%3A%20%23f2971a%3B%2D%2Dcolor%2Dpink%3A%20%23e3266f%3B%2D%2Dcolor%2Dbg%3A%20%23fff%3B%2D%2Dcolor%2Dbg%2Dalt%3A%20%23f5f5f5%3B%2D%2Dcolor%2Dtext%2Dheader%3A%20%23fff%3B%2D%2Dcolor%2Dtext%2Dbody%3A%20%2395989a%3B%2D%2Dpadding%3A%2020px%3B%2D%2Dpadding%2Dinv%3A%20calc%28%2D1%20%2A%20var%28%2D%2Dpadding%29%29%3B%2D%2Dfonts%3A%20%27Open%20Sans%27%2C%20%2Dapple%2Dsystem%2C%20system%2Dui%2C%20%27Segoe%20UI%27%2C%20%27Roboto%27%2C%27Helvetica%20Neue%27%2C%20Arial%2C%20sans%2Dserif%3B%2D%2Dfont%2Dsize%3A%201%2E1rem%3B%7Dhtml%20%7Bfont%2Dsize%3A%20100%25%3B%7Dbody%20%7Bcolor%3A%20%23444%3Bfont%2Dfamily%3A%20var%28%2D%2Dfonts%29%3Bfont%2Dsize%3A%20var%28%2D%2Dfont%2Dsize%29%3Bline%2Dheight%3A%201%2E7%3Bpadding%3A%201em%3Bmargin%3A%20auto%3Bmax%2Dwidth%3A%20800px%3Bbackground%3A%20%23fefefe%3B%7Da%20%7Bcolor%3A%20%230645ad%3Btext%2Ddecoration%3A%20none%3B%7Da%3Avisited%20%7Bcolor%3A%20%230b0080%3B%7Da%3Ahover%20%7Bcolor%3A%20%2306e%3B%7Da%3Aactive%20%7Bcolor%3A%20%23faa700%3B%7Da%3Afocus%20%7Boutline%3A%20thin%20dotted%3B%7Da%3A%3Aselection%20%7Bbackground%3A%20rgba%28255%2C%20255%2C%200%2C%200%2E3%29%3Bcolor%3A%20%230645ad%3B%7D%2A%3A%3Aselection%20%7Bbackground%3A%20rgba%28255%2C%20255%2C%200%2C%200%2E3%29%3Bcolor%3A%20%23000%3B%7Dp%20%7Bmargin%3A%201em%200%3B%7D%2Ecaption%20%7Btext%2Dalign%3A%20center%3Bcolor%3A%20var%28%2D%2Dcolor%2Dcaption%29%3Bfont%2Dstyle%3A%20italic%3B%7D%2Enote%2C%2Etips%2C%2Ewarning%20%7Bdisplay%3A%20block%3Bwidth%3A%20calc%28100%25%20%2D%20var%28%2D%2Dpadding%29%20%2A%202%29%3Bpadding%3A%200%20var%28%2D%2Dpadding%29%3Bpadding%2Dbottom%3A%20var%28%2D%2Dpadding%29%3Bbackground%2Dcolor%3A%20var%28%2D%2Dcolor%2Dbg%2Dalt%29%3B%7D%2Enote%3Abefore%2C%2Etips%3Abefore%2C%2Ewarning%3Abefore%20%7Bdisplay%3A%20block%3Bmargin%3A%200%20var%28%2D%2Dpadding%2Dinv%29%2010px%20var%28%2D%2Dpadding%2Dinv%29%3Bpadding%2Dleft%3A%20var%28%2D%2Dpadding%29%3Bfont%2Dstyle%3A%20bold%3Bcolor%3A%20white%3B%7D%2Enote%3Abefore%20%7Bcontent%3A%20%27Note%27%3Bbackground%2Dcolor%3A%20var%28%2D%2Dcolor%2Dblue%29%3B%7D%2Etips%3Abefore%20%7Bcontent%3A%20%27Tips%27%3Bbackground%2Dcolor%3A%20var%28%2D%2Dcolor%2Dpink%29%3B%7D%2Ewarning%3Abefore%20%7Bcontent%3A%20%27Warning%27%3Bbackground%2Dcolor%3A%20var%28%2D%2Dcolor%2Dorange%29%3B%7Dimg%20%7Bmax%2Dwidth%3A%20100%25%3B%7Dh1%2Ch2%2Ch3%2Ch4%2Ch5%2Ch6%20%7Bcolor%3A%20%23111%3Bline%2Dheight%3A%20125%25%3Bmargin%2Dtop%3A%202em%3Bfont%2Dweight%3A%20normal%3B%7Dh4%2Ch5%2Ch6%20%7Bfont%2Dweight%3A%20bold%3B%7Dh1%20%7Bfont%2Dsize%3A%202%2E5em%3B%7Dh2%20%7Bfont%2Dsize%3A%202em%3B%7Dh3%20%7Bfont%2Dsize%3A%201%2E5em%3B%7Dh4%20%7Bfont%2Dsize%3A%201%2E2em%3B%7Dblockquote%20%7Bcolor%3A%20%23666666%3Bmargin%3A%200%3Bpadding%2Dleft%3A%203em%3Bborder%2Dleft%3A%200%2E5em%20%23eee%20solid%3B%7Dhr%20%7Bdisplay%3A%20block%3Bheight%3A%202px%3Bborder%3A%200%3Bborder%2Dtop%3A%201px%20solid%20%23aaa%3Bborder%2Dbottom%3A%201px%20solid%20%23eee%3Bmargin%3A%201em%200%3Bpadding%3A%200%3B%7Dpre%2Ccode%2Ckbd%2Csamp%20%7Bcolor%3A%20%230084b8%3Bfont%2Dfamily%3A%20monospace%2C%20monospace%3B%7Dpre%20%7Bpadding%3A%201em%3Bfont%2Dsize%3A%2014px%3Bwhite%2Dspace%3A%20pre%2Dwrap%3Bword%2Dwrap%3A%20break%2Dword%3B%7Dcode%20%7Bwhite%2Dspace%3A%20pre%2Dwrap%3B%7Db%2Cstrong%20%7Bfont%2Dweight%3A%20bold%3B%7Ddfn%20%7Bfont%2Dstyle%3A%20italic%3Bcolor%3A%20var%28%2D%2Dcolor%2Dblue%29%3B%7Dins%20%7Bbackground%3A%20%23ff9%3Bcolor%3A%20%23000%3Btext%2Ddecoration%3A%20none%3B%7Dul%2Col%20%7Bmargin%3A%201em%200%3Bpadding%3A%200%200%200%202em%3B%7Dli%20p%3Alast%2Dchild%20%7Bmargin%2Dbottom%3A%200%3B%7Dul%20ul%2Col%20ol%20%7Bmargin%3A%200%2E3em%200%3B%7Ddl%20%7Bmargin%2Dbottom%3A%201em%3B%7Ddt%20%7Bfont%2Dweight%3A%20bold%3Bmargin%2Dbottom%3A%200%2E8em%3B%7Ddd%20%7Bmargin%3A%200%200%200%2E8em%202em%3B%7Ddd%3Alast%2Dchild%20%7Bmargin%2Dbottom%3A%200%3B%7Dimg%20%7Bborder%3A%200%3B%2Dms%2Dinterpolation%2Dmode%3A%20bicubic%3Bvertical%2Dalign%3A%20middle%3B%7Dfigure%20%7Bdisplay%3A%20block%3Btext%2Dalign%3A%20center%3Bmargin%3A%201em%200%3B%7Dfigure%20img%20%7Bborder%3A%20none%3Bmargin%3A%200%20auto%3B%7Dfigcaption%20%7Bfont%2Dsize%3A%200%2E8em%3Bfont%2Dstyle%3A%20italic%3Bmargin%3A%200%200%200%2E8em%3B%7D%2Eauthor%20%7Bfont%2Dsize%3A%201%2E2em%3Btext%2Dalign%3A%20center%3B%7Dtag%20%7Bmin%2Dwidth%3A%203%2E2em%3Btext%2Dalign%3A%20center%3Bborder%2Dradius%3A%208px%3Bpadding%3A%200%204px%3Bmargin%2Dbottom%3A%200%3Bmargin%2Dtop%3A%204px%3Bmargin%2Dright%3A%200%2E2em%3Bdisplay%3A%20inline%2Dblock%3Bcolor%3A%20white%3B%7Dtag%2Eupdate%20%7Bbackground%3A%20var%28%2D%2Dcolor%2Dblue%29%3B%7Dtag%2Enew%20%7Bbackground%3A%20var%28%2D%2Dcolor%2Dgreen%29%3B%7Dtag%2Eupdate%3Aafter%20%7Bcontent%3A%20%27update%27%3B%7Dtag%2Enew%3Aafter%20%7Bcontent%3A%20%27new%27%3B%7Dbutton%20%7Bbackground%2Dcolor%3A%20var%28%2D%2Dcolor%2Dblue%29%3Bcolor%3A%20white%3Bborder%3A%20none%3Bcursor%3A%20pointer%3Bline%2Dheight%3A%202rem%3Bfont%2Dsize%3A%201%2E2rem%3Bmargin%3A%200%2E75rem%200%3Boverflow%3A%20visible%3Bpadding%3A%200%2E75rem%201%2E5rem%3Bborder%2Dradius%3A%201rem%3Btransition%3A%20background%2Dcolor%200%2E5%3Bwhite%2Dspace%3A%20nowrap%3B%7D%2Enode%2Dicon%20%7Bposition%3A%20relative%3Bbottom%3A%201%2E3px%3Bpadding%2Dright%3A%203px%3Bheight%3A%2018px%3B%7D%2Evideo%2Dyoutube%20%7Bbackground%2Dcolor%3A%20%23000%3Bposition%3A%20relative%3Bcursor%3A%20pointer%3B%7D%2Evideo%2Dyoutube%20%3E%20%2Eplaybutton%20%7Bpointer%2Devents%3A%20none%3Bwidth%3A%2090px%3Bheight%3A%2060px%3Bbackground%2Dcolor%3A%20%23333%3Bbox%2Dshadow%3A%200%200%2018px%20rgba%280%2C%200%2C%200%2C%200%2E6%29%3Bz%2Dindex%3A%201%3Bopacity%3A%200%2E8%3Bborder%2Dradius%3A%206px%3B%7D%2Eplaybutton%3Abefore%20%7Bcontent%3A%20%27%27%3Bborder%2Dstyle%3A%20solid%3Bborder%2Dwidth%3A%2015px%200%2015px%2026px%3Bborder%2Dcolor%3A%20transparent%20transparent%20transparent%20%23fff%3B%7D%2Evideo%2Dyoutube%20%3E%20img%2C%2Evideo%2Dyoutube%20%3E%20%2Eplaybutton%20%7Bcursor%3A%20pointer%3B%7D%2Evideo%2Dyoutube%20%3E%20img%2C%2Evideo%2Dyoutube%20%3E%20%2Eplaybutton%2C%2Evideo%2Dyoutube%20%3E%20%2Eplaybutton%3Abefore%20%7Bposition%3A%20absolute%3B%7D%2Eplaybutton%2C%2Eplaybutton%3Abefore%20%7Btop%3A%2050%25%3Bleft%3A%2050%25%3Btransform%3A%20translate3d%28%2D50%25%2C%20%2D50%25%2C%200%29%3B%7D" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<h1 id="actions-with-the-command-pattern">Actions with the command pattern</h1>
+<p>This lesson uses the command programming pattern to code actions battlers can take during encounters. An action could be anything like a basic attack, a spell, using an item, and more.</p>
+<p>In this part, we’re only going to write the base <code>Action</code> class. We will code concrete attacks later because to do so, we need the battler’s animations and combat formulas in place.</p>
+<p>The command pattern consists of turning an action into an object. In other words, it’s a way of representing function calls as objects. Doing so lets you store them in memory, pass them around your code, change their properties, and execute them later. We use the command pattern in object-oriented languages like C++ or GDScript because we can’t easily store references to functions in variables. In GDScript’s case, we can’t nest functions either, an alternative to commands in languages like Python and JavaScript.</p>
+<p class="note">
+In Godot 4.0, GDScript is getting first-class functions. This feature allows you to store references to functions in variables, like any other value. This improvement will reduce the command pattern’s need, although, with a command object, you can sometimes do more than with functions.
+</p>
+<p>There are many ways to implement commands. The general idea is to have a class with a method named something like <code>execute()</code> or <code>apply()</code>, regardless of what it does. Extended classes override the function to make it do something specific like attacking a target, moving, consuming an item, or anything you could imagine.</p>
+<p>Let’s get to code to see one way to implement commands in practice. We’re going to write four classes. We have code to define actions on the one hand, and two resource types to store data:</p>
+<ol type="1">
+<li><code>Action</code>, an abstract base class<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> so all specific commands, like an <code>AttackAction</code> or a <code>ConsumeItemAction</code> share the same interface<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>.</li>
+<li><code>AttackAction</code>, a concrete action type for battler attacks. It can be anything that deals damage or inflicts a status effect.</li>
+<li><code>ActionData</code>, a resource that stores the data an action requires, like how much energy it costs to use.</li>
+<li><code>AttackActionData</code>, a resource that holds attack-specific data, like how much base damage it inflicts.</li>
+</ol>
+<p>We need the two resource classes because we’re using resources to create and edit data in Godot, using the inspector.</p>
+<h2 id="creating-an-abstract-action-class">Creating an abstract Action class</h2>
+<p>Create a new GDScript file named <code>Action.gd</code> and open it in the script editor.</p>
+<p>The <code>Action</code> class takes a battler that performs the action, an array of targets, some data, and applies the action to each target in the array.</p>
+<pre style="color:#f8f8f2;background-color:#272822">class_name Action
+<span style="color:#75715e"># Reference is the default type you extend in Godot, even if you omit this line.</span>
+<span style="color:#75715e"># Godot allocates and frees instances of a Reference from memory for you.</span>
+<span style="color:#66d9ef">extends</span> <span style="color:#a6e22e">Reference</span>
+
+<span style="color:#75715e"># Emitted when the action finished playing.</span>
+<span style="color:#66d9ef">signal</span> finished
+
+<span style="color:#66d9ef">var</span> _data: ActionData
+<span style="color:#66d9ef">var</span> _actor
+<span style="color:#66d9ef">var</span> _targets :<span style="color:#f92672">=</span> []
+
+
+<span style="color:#75715e"># The constructor allows you to create actions from code like so:</span>
+<span style="color:#75715e"># var action := Action.new(data, battler, targets)</span>
+<span style="color:#66d9ef">func</span> _init(data: ActionData, actor, targets: <span style="color:#a6e22e">Array</span>) <span style="color:#f92672">-&gt;</span> void:
+    _data <span style="color:#f92672">=</span> data
+    _actor <span style="color:#f92672">=</span> actor
+    _targets <span style="color:#f92672">=</span> targets
+</pre>
+<p>Before we add methods to the class, let’s write <code>ActionData</code>. Create a new GDScript file for it. I’m including all the properties we’ll need for the rest of the course to avoid future round-trips to this file.</p>
+<pre style="color:#f8f8f2;background-color:#272822">class_name ActionData
+<span style="color:#66d9ef">extends</span> <span style="color:#a6e22e">Resource</span>
+
+<span style="color:#75715e"># We will define this enum several times in our codebase.</span>
+<span style="color:#75715e"># Having it in the file allows us to use it as an export hint and to have a</span>
+<span style="color:#75715e"># drop-down menu in the inspector. See `element` below.</span>
+<span style="color:#66d9ef">enum</span> Elements { NONE, CODE, DESIGN, ART, BUG }
+
+<span style="color:#75715e"># The following two properties are for the user interface.</span>
+<span style="color:#75715e"># We will use them to represent the action in menus.</span>
+<span style="color:#66d9ef">export</span> <span style="color:#66d9ef">var</span> icon: <span style="color:#a6e22e">Texture</span>
+<span style="color:#66d9ef">export</span> <span style="color:#66d9ef">var</span> label :<span style="color:#f92672">=</span> <span style="color:#e6db74">&quot;Base combat action&quot;</span>
+
+<span style="color:#75715e"># Amount of energy the action costs to perform.</span>
+<span style="color:#66d9ef">export</span> <span style="color:#66d9ef">var</span> energy_cost :<span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+<span style="color:#75715e"># Elemental type of the action. We&#39;ll use it later to add bonus damage if</span>
+<span style="color:#75715e"># the action&#39;s target is weak to the element.</span>
+<span style="color:#66d9ef">export</span> (Elements) <span style="color:#66d9ef">var</span> element :<span style="color:#f92672">=</span> Elements<span style="color:#f92672">.</span>NONE
+
+<span style="color:#75715e"># The following properties help us filter potential targets on a battler&#39;s turn.</span>
+<span style="color:#66d9ef">export</span> <span style="color:#66d9ef">var</span> is_targeting_self :<span style="color:#f92672">=</span> false
+<span style="color:#66d9ef">export</span> <span style="color:#66d9ef">var</span> is_targeting_all :<span style="color:#f92672">=</span> false
+
+<span style="color:#75715e"># The amount of readiness left to the battler after acting.</span>
+<span style="color:#75715e"># You can use it to design weak attacks that allow you to take turn fast.</span>
+<span style="color:#66d9ef">export</span> <span style="color:#66d9ef">var</span> readiness_saved :<span style="color:#f92672">=</span> <span style="color:#ae81ff">0.0</span>
+
+
+<span style="color:#75715e"># Returns `true` if the `battler` has enough energy to use the action.</span>
+<span style="color:#66d9ef">func</span> can_be_used_by(battler) <span style="color:#f92672">-&gt;</span> <span style="color:#a6e22e">bool</span>:
+    <span style="color:#66d9ef">return</span> energy_cost <span style="color:#f92672">&lt;=</span> battler<span style="color:#f92672">.</span>stats<span style="color:#f92672">.</span>energy
+</pre>
+<p>One advantage of using resources in Godot is defining methods on them, like <code>can_be_used_by()</code> above. You can use them to validate or constrain their data.</p>
+<p>Back to <code>Action.gd</code>, let’s add the one method that makes it a command:</p>
+<pre style="color:#f8f8f2;background-color:#272822"><span style="color:#75715e"># Applies the action on the targets, using the actor&#39;s stats.</span>
+<span style="color:#75715e"># Returns `true` if the action succeeded.</span>
+<span style="color:#66d9ef">func</span> apply_async() <span style="color:#f92672">-&gt;</span> <span style="color:#a6e22e">bool</span>:
+    <span style="color:#75715e"># Ok, I lied, there are two methods here.</span>
+    <span style="color:#75715e"># You don&#39;t have to add this indirection, but the convention for abstract</span>
+    <span style="color:#75715e"># methods in Godot is they should start with an underscore, but public</span>
+    <span style="color:#75715e"># methods should not. That&#39;s why I separated the two.</span>
+    <span style="color:#66d9ef">return</span> _apply_async()
+
+
+<span style="color:#75715e"># Notice that the function&#39;s name includes the suffix &quot;async&quot;.</span>
+<span style="color:#75715e"># This indicates the function should be a coroutine. That&#39;s because in our case,</span>
+<span style="color:#75715e"># finishing an action involves animation.</span>
+<span style="color:#66d9ef">func</span> _apply_async() <span style="color:#f92672">-&gt;</span> <span style="color:#a6e22e">bool</span>:
+    <span style="color:#75715e"># In the abstract base Action class, we don&#39;t do anything!</span>
+    emit_signal(<span style="color:#e6db74">&quot;finished&quot;</span>)
+    <span style="color:#66d9ef">return</span> true
+</pre>
+<p>That’s one implementation of the command pattern for you. And as explained above, you only need one function if you prefer.</p>
+<p>Let’s add one method to define whether the action targets opponents or party members:</p>
+<pre style="color:#f8f8f2;background-color:#272822"><span style="color:#75715e"># Returns `true` if the action should target opponents by default.</span>
+<span style="color:#66d9ef">func</span> targets_opponents() <span style="color:#f92672">-&gt;</span> <span style="color:#a6e22e">bool</span>:
+    <span style="color:#66d9ef">return</span> true
+</pre>
+<p>To access important values in the pseudo-private <code>_data</code> from the outside, I’ve decided to define public methods.</p>
+<pre style="color:#f8f8f2;background-color:#272822"><span style="color:#75715e"># The battler needs to know how much readiness they should retain after </span>
+<span style="color:#75715e"># performing the action.</span>
+<span style="color:#66d9ef">func</span> get_readiness_saved() <span style="color:#f92672">-&gt;</span> <span style="color:#a6e22e">float</span>:
+    <span style="color:#66d9ef">return</span> _data<span style="color:#f92672">.</span>readiness_saved
+
+
+<span style="color:#75715e"># Exposing the energy cost will allow us to highlight energy points an action</span>
+<span style="color:#75715e"># will use in the energy bar.</span>
+<span style="color:#66d9ef">func</span> get_energy_cost() <span style="color:#f92672">-&gt;</span> <span style="color:#a6e22e">int</span>:
+    <span style="color:#66d9ef">return</span> _data<span style="color:#f92672">.</span>energy_cost
+</pre>
+<p>Alternatively, you could use properties.</p>
+<p>The next logical step would be to implement attacks, but we’re going to implement damage formulas first, on which they depend.</p>
+<section class="footnotes" role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1" role="doc-endnote"><p>An <strong>abstract class</strong> is a class you’re not meant to instantiate directly. Instead, it’s here only to define the intended behavior of derived types, that is to say, methods and properties. We use them as a base to create extended classes that share the same interface.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2" role="doc-endnote"><p>In a programming language like GDScript, an <strong>interface</strong> is the functions and properties intended for you to access on an object. In general, in programming, an interface is a collection of public methods and properties you can access on a given object.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+</body>
+</html>

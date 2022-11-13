@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>&#39;item stacks and mouse drag preview&#39;</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <link rel="stylesheet" href="data:text/css,%3Aroot%20%7B%2D%2Dcolor%2Dcaption%3A%20grey%3B%2D%2Dcolor%2Dblue%3A%20%2326bfe3%3B%2D%2Dcolor%2Dgreen%3A%20%2302e180%3B%2D%2Dcolor%2Dorange%3A%20%23f2971a%3B%2D%2Dcolor%2Dpink%3A%20%23e3266f%3B%2D%2Dcolor%2Dbg%3A%20%23fff%3B%2D%2Dcolor%2Dbg%2Dalt%3A%20%23f5f5f5%3B%2D%2Dcolor%2Dtext%2Dheader%3A%20%23fff%3B%2D%2Dcolor%2Dtext%2Dbody%3A%20%2395989a%3B%2D%2Dpadding%3A%2020px%3B%2D%2Dpadding%2Dinv%3A%20calc%28%2D1%20%2A%20var%28%2D%2Dpadding%29%29%3B%2D%2Dfonts%3A%20%27Open%20Sans%27%2C%20%2Dapple%2Dsystem%2C%20system%2Dui%2C%20%27Segoe%20UI%27%2C%20%27Roboto%27%2C%27Helvetica%20Neue%27%2C%20Arial%2C%20sans%2Dserif%3B%2D%2Dfont%2Dsize%3A%201%2E1rem%3B%7Dhtml%20%7Bfont%2Dsize%3A%20100%25%3B%7Dbody%20%7Bcolor%3A%20%23444%3Bfont%2Dfamily%3A%20var%28%2D%2Dfonts%29%3Bfont%2Dsize%3A%20var%28%2D%2Dfont%2Dsize%29%3Bline%2Dheight%3A%201%2E7%3Bpadding%3A%201em%3Bmargin%3A%20auto%3Bmax%2Dwidth%3A%20800px%3Bbackground%3A%20%23fefefe%3B%7Da%20%7Bcolor%3A%20%230645ad%3Btext%2Ddecoration%3A%20none%3B%7Da%3Avisited%20%7Bcolor%3A%20%230b0080%3B%7Da%3Ahover%20%7Bcolor%3A%20%2306e%3B%7Da%3Aactive%20%7Bcolor%3A%20%23faa700%3B%7Da%3Afocus%20%7Boutline%3A%20thin%20dotted%3B%7Da%3A%3Aselection%20%7Bbackground%3A%20rgba%28255%2C%20255%2C%200%2C%200%2E3%29%3Bcolor%3A%20%230645ad%3B%7D%2A%3A%3Aselection%20%7Bbackground%3A%20rgba%28255%2C%20255%2C%200%2C%200%2E3%29%3Bcolor%3A%20%23000%3B%7Dp%20%7Bmargin%3A%201em%200%3B%7D%2Ecaption%20%7Btext%2Dalign%3A%20center%3Bcolor%3A%20var%28%2D%2Dcolor%2Dcaption%29%3Bfont%2Dstyle%3A%20italic%3B%7D%2Enote%2C%2Etips%2C%2Ewarning%20%7Bdisplay%3A%20block%3Bwidth%3A%20calc%28100%25%20%2D%20var%28%2D%2Dpadding%29%20%2A%202%29%3Bpadding%3A%200%20var%28%2D%2Dpadding%29%3Bpadding%2Dbottom%3A%20var%28%2D%2Dpadding%29%3Bbackground%2Dcolor%3A%20var%28%2D%2Dcolor%2Dbg%2Dalt%29%3B%7D%2Enote%3Abefore%2C%2Etips%3Abefore%2C%2Ewarning%3Abefore%20%7Bdisplay%3A%20block%3Bmargin%3A%200%20var%28%2D%2Dpadding%2Dinv%29%2010px%20var%28%2D%2Dpadding%2Dinv%29%3Bpadding%2Dleft%3A%20var%28%2D%2Dpadding%29%3Bfont%2Dstyle%3A%20bold%3Bcolor%3A%20white%3B%7D%2Enote%3Abefore%20%7Bcontent%3A%20%27Note%27%3Bbackground%2Dcolor%3A%20var%28%2D%2Dcolor%2Dblue%29%3B%7D%2Etips%3Abefore%20%7Bcontent%3A%20%27Tips%27%3Bbackground%2Dcolor%3A%20var%28%2D%2Dcolor%2Dpink%29%3B%7D%2Ewarning%3Abefore%20%7Bcontent%3A%20%27Warning%27%3Bbackground%2Dcolor%3A%20var%28%2D%2Dcolor%2Dorange%29%3B%7Dimg%20%7Bmax%2Dwidth%3A%20100%25%3B%7Dh1%2Ch2%2Ch3%2Ch4%2Ch5%2Ch6%20%7Bcolor%3A%20%23111%3Bline%2Dheight%3A%20125%25%3Bmargin%2Dtop%3A%202em%3Bfont%2Dweight%3A%20normal%3B%7Dh4%2Ch5%2Ch6%20%7Bfont%2Dweight%3A%20bold%3B%7Dh1%20%7Bfont%2Dsize%3A%202%2E5em%3B%7Dh2%20%7Bfont%2Dsize%3A%202em%3B%7Dh3%20%7Bfont%2Dsize%3A%201%2E5em%3B%7Dh4%20%7Bfont%2Dsize%3A%201%2E2em%3B%7Dblockquote%20%7Bcolor%3A%20%23666666%3Bmargin%3A%200%3Bpadding%2Dleft%3A%203em%3Bborder%2Dleft%3A%200%2E5em%20%23eee%20solid%3B%7Dhr%20%7Bdisplay%3A%20block%3Bheight%3A%202px%3Bborder%3A%200%3Bborder%2Dtop%3A%201px%20solid%20%23aaa%3Bborder%2Dbottom%3A%201px%20solid%20%23eee%3Bmargin%3A%201em%200%3Bpadding%3A%200%3B%7Dpre%2Ccode%2Ckbd%2Csamp%20%7Bcolor%3A%20%230084b8%3Bfont%2Dfamily%3A%20monospace%2C%20monospace%3B%7Dpre%20%7Bpadding%3A%201em%3Bfont%2Dsize%3A%2014px%3Bwhite%2Dspace%3A%20pre%2Dwrap%3Bword%2Dwrap%3A%20break%2Dword%3B%7Dcode%20%7Bwhite%2Dspace%3A%20pre%2Dwrap%3B%7Db%2Cstrong%20%7Bfont%2Dweight%3A%20bold%3B%7Ddfn%20%7Bfont%2Dstyle%3A%20italic%3Bcolor%3A%20var%28%2D%2Dcolor%2Dblue%29%3B%7Dins%20%7Bbackground%3A%20%23ff9%3Bcolor%3A%20%23000%3Btext%2Ddecoration%3A%20none%3B%7Dul%2Col%20%7Bmargin%3A%201em%200%3Bpadding%3A%200%200%200%202em%3B%7Dli%20p%3Alast%2Dchild%20%7Bmargin%2Dbottom%3A%200%3B%7Dul%20ul%2Col%20ol%20%7Bmargin%3A%200%2E3em%200%3B%7Ddl%20%7Bmargin%2Dbottom%3A%201em%3B%7Ddt%20%7Bfont%2Dweight%3A%20bold%3Bmargin%2Dbottom%3A%200%2E8em%3B%7Ddd%20%7Bmargin%3A%200%200%200%2E8em%202em%3B%7Ddd%3Alast%2Dchild%20%7Bmargin%2Dbottom%3A%200%3B%7Dimg%20%7Bborder%3A%200%3B%2Dms%2Dinterpolation%2Dmode%3A%20bicubic%3Bvertical%2Dalign%3A%20middle%3B%7Dfigure%20%7Bdisplay%3A%20block%3Btext%2Dalign%3A%20center%3Bmargin%3A%201em%200%3B%7Dfigure%20img%20%7Bborder%3A%20none%3Bmargin%3A%200%20auto%3B%7Dfigcaption%20%7Bfont%2Dsize%3A%200%2E8em%3Bfont%2Dstyle%3A%20italic%3Bmargin%3A%200%200%200%2E8em%3B%7D%2Eauthor%20%7Bfont%2Dsize%3A%201%2E2em%3Btext%2Dalign%3A%20center%3B%7Dtag%20%7Bmin%2Dwidth%3A%203%2E2em%3Btext%2Dalign%3A%20center%3Bborder%2Dradius%3A%208px%3Bpadding%3A%200%204px%3Bmargin%2Dbottom%3A%200%3Bmargin%2Dtop%3A%204px%3Bmargin%2Dright%3A%200%2E2em%3Bdisplay%3A%20inline%2Dblock%3Bcolor%3A%20white%3B%7Dtag%2Eupdate%20%7Bbackground%3A%20var%28%2D%2Dcolor%2Dblue%29%3B%7Dtag%2Enew%20%7Bbackground%3A%20var%28%2D%2Dcolor%2Dgreen%29%3B%7Dtag%2Eupdate%3Aafter%20%7Bcontent%3A%20%27update%27%3B%7Dtag%2Enew%3Aafter%20%7Bcontent%3A%20%27new%27%3B%7Dbutton%20%7Bbackground%2Dcolor%3A%20var%28%2D%2Dcolor%2Dblue%29%3Bcolor%3A%20white%3Bborder%3A%20none%3Bcursor%3A%20pointer%3Bline%2Dheight%3A%202rem%3Bfont%2Dsize%3A%201%2E2rem%3Bmargin%3A%200%2E75rem%200%3Boverflow%3A%20visible%3Bpadding%3A%200%2E75rem%201%2E5rem%3Bborder%2Dradius%3A%201rem%3Btransition%3A%20background%2Dcolor%200%2E5%3Bwhite%2Dspace%3A%20nowrap%3B%7D%2Enode%2Dicon%20%7Bposition%3A%20relative%3Bbottom%3A%201%2E3px%3Bpadding%2Dright%3A%203px%3Bheight%3A%2018px%3B%7D%2Evideo%2Dyoutube%20%7Bbackground%2Dcolor%3A%20%23000%3Bposition%3A%20relative%3Bcursor%3A%20pointer%3B%7D%2Evideo%2Dyoutube%20%3E%20%2Eplaybutton%20%7Bpointer%2Devents%3A%20none%3Bwidth%3A%2090px%3Bheight%3A%2060px%3Bbackground%2Dcolor%3A%20%23333%3Bbox%2Dshadow%3A%200%200%2018px%20rgba%280%2C%200%2C%200%2C%200%2E6%29%3Bz%2Dindex%3A%201%3Bopacity%3A%200%2E8%3Bborder%2Dradius%3A%206px%3B%7D%2Eplaybutton%3Abefore%20%7Bcontent%3A%20%27%27%3Bborder%2Dstyle%3A%20solid%3Bborder%2Dwidth%3A%2015px%200%2015px%2026px%3Bborder%2Dcolor%3A%20transparent%20transparent%20transparent%20%23fff%3B%7D%2Evideo%2Dyoutube%20%3E%20img%2C%2Evideo%2Dyoutube%20%3E%20%2Eplaybutton%20%7Bcursor%3A%20pointer%3B%7D%2Evideo%2Dyoutube%20%3E%20img%2C%2Evideo%2Dyoutube%20%3E%20%2Eplaybutton%2C%2Evideo%2Dyoutube%20%3E%20%2Eplaybutton%3Abefore%20%7Bposition%3A%20absolute%3B%7D%2Eplaybutton%2C%2Eplaybutton%3Abefore%20%7Btop%3A%2050%25%3Bleft%3A%2050%25%3Btransform%3A%20translate3d%28%2D50%25%2C%20%2D50%25%2C%200%29%3B%7D" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<h1 id="item-stacks-and-mouse-drag-preview">Item Stacks and Mouse Drag Preview</h1>
+<p>We can now refer to any blueprint-entity combination by their proper, pascal case name.</p>
+<p>Now, we have what we need to store any blueprint inside an inventory panel and find the associated entity. Let’s do that and finally get rid of all the temporary test code we used to spawn machines in the previous chapter.</p>
+<p>In this lesson, we’ll replace <code>EntityPlacer</code>’s blueprint property for previewing the entity we’re placing with the mouse holding the current item. In the upcoming lessons, changing what item the player is holding will entail replacing that inventory item from the mouse.</p>
+<h2 id="stacks-of-blueprints">Stacks of blueprints</h2>
+<p>Let’s start by adding support for stacks of items.</p>
+<p>Each inventory slot should be able to hold more than one instance of the same item, depending on the maximum allowed stack size for a given item.</p>
+<p>Whether you subscribe to Minecraft’s 64-based stack count or prefer Factorio’s 100 to 200, stacks are common to this kind of grid-based inventory system.</p>
+<p>Go back to <code>/Entities/Blueprints/BlueprintEntity.gd</code> and add the following variables:</p>
+<pre style="color:#f8f8f2;background-color:#272822"><span style="color:#75715e">## How many items can be in a stack of the given blueprint type.</span>
+<span style="color:#66d9ef">export</span> <span style="color:#66d9ef">var</span> stack_size :<span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+
+<span style="color:#75715e">## How many items are actually in the stack of the current stack.</span>
+<span style="color:#66d9ef">var</span> stack_count :<span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+</pre>
+<p>Visit each of <code>/Entities/Blueprints/BatteryBlueprint.tscn</code>, <code>/Entities/Blueprints/StirlingEngineBlueprint.tscn</code>, and <code>/Entities/Blueprints/WireBlueprint.tscn</code> and set their <em>Stack Size</em> properties.</p>
+<p>I chose <code>8</code> for the Battery and Stirling Engine and <code>50</code> for wires. The amount is arbitrary. How many of each you want them to hold is up to your game’s balance.</p>
+<p>Now head back to <code>/GUI/InventoryPanel.tscn</code> and add a <img src="data:image/svg+xml;base64,PHN2ZyBoZWlnaHQ9IjE2IiB2aWV3Qm94PSIwIDAgMTYgMTYiIHdpZHRoPSIxNiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJtNiAzYTEuMDAwMSAxLjAwMDEgMCAwIDAgLS43MDcwMy4yOTI5N2wtNCA0YTEuMDAwMSAxLjAwMDEgMCAwIDAgMCAxLjQxNDFsNCA0YTEuMDAwMSAxLjAwMDEgMCAwIDAgLjcwNzAzLjI5Mjk3aDhhMS4wMDAxIDEuMDAwMSAwIDAgMCAxLTF2LThhMS4wMDAxIDEuMDAwMSAwIDAgMCAtMS0xaC04em0tMSA0YTEgMSAwIDAgMSAxIDEgMSAxIDAgMCAxIC0xIDEgMSAxIDAgMCAxIC0xLTEgMSAxIDAgMCAxIDEtMXoiIGZpbGw9IiNhNWVmYWMiIGZpbGwtcnVsZT0iZXZlbm9kZCIvPjwvc3ZnPgo=" class="node-icon" /><code>Label</code> as a child and set its <em>Text</em> to “1”.</p>
+<p>This will be the indicator that lets us see how many items are in the stack at present. Click on the <em>👁</em> eye icon in the <em>Scene</em> dock to hide it. By default, when there are no items, it should not be visible.</p>
+<p>The mouse needs an inventory slot, too, so let’s add that next.</p>
+<h2 id="giving-the-mouse-an-inventory">Giving the mouse an inventory</h2>
+<p>Right now, when we move an object, we display a sprite that lives under the <code>EntityPlacer</code>. But since it’s a big part of inventory management, we can instead make it be part of the GUI and move that functionality out of <code>EntityPlacer</code>, separating concerns.</p>
+<p>Back in <code>/GUI/GUI.tscn</code>, add a new <img src="data:image/svg+xml;base64,PHN2ZyBoZWlnaHQ9IjE2IiB2aWV3Qm94PSIwIDAgMTYgMTYiIHdpZHRoPSIxNiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJtOCAyYTYgNiAwIDAgMCAtNiA2IDYgNiAwIDAgMCA2IDYgNiA2IDAgMCAwIDYtNiA2IDYgMCAwIDAgLTYtNnptMCAyYTQgNCAwIDAgMSA0IDQgNCA0IDAgMCAxIC00IDQgNCA0IDAgMCAxIC00LTQgNCA0IDAgMCAxIDQtNHoiIGZpbGw9IiNhNWVmYWMiLz48L3N2Zz4K" class="node-icon" /><code>Control</code> node as a child of <code>GUI</code> called <code>DragPreview</code>. Set its <em>Mouse Filter</em> to <em>Ignore</em>. This is doubly important as this control glues itself to the mouse at all times.</p>
+<p>Right-click on <code>DragPreview</code> and select <em>Save Branch as Scene</em> and open its scene. Add a <img src="data:image/svg+xml;base64,PHN2ZyBoZWlnaHQ9IjE2IiB2aWV3Qm94PSIwIDAgMTYgMTYiIHdpZHRoPSIxNiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJtNiAzYTEuMDAwMSAxLjAwMDEgMCAwIDAgLS43MDcwMy4yOTI5N2wtNCA0YTEuMDAwMSAxLjAwMDEgMCAwIDAgMCAxLjQxNDFsNCA0YTEuMDAwMSAxLjAwMDEgMCAwIDAgLjcwNzAzLjI5Mjk3aDhhMS4wMDAxIDEuMDAwMSAwIDAgMCAxLTF2LThhMS4wMDAxIDEuMDAwMSAwIDAgMCAtMS0xaC04em0tMSA0YTEgMSAwIDAgMSAxIDEgMSAxIDAgMCAxIC0xIDEgMSAxIDAgMCAxIC0xLTEgMSAxIDAgMCAxIDEtMXoiIGZpbGw9IiNhNWVmYWMiIGZpbGwtcnVsZT0iZXZlbm9kZCIvPjwvc3ZnPgo=" class="node-icon" /><code>Label</code> node as a child of <code>DragPreview</code> to display the number of items stacked in a slot.</p>
+<p>Assign a new script, <code>/GUI/DragPreview.gd</code>, to the <code>DragPreview</code> node so we can code the mouse’s inventory.</p>
+<p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAATsAAAA8CAMAAAAucO35AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAVFBMVEUmLDtscHtGS1itr7bg4OCTlp47QE5/hJEzO0+l76zNz9MsMkHIys7Bw8kxOkVUW2Weoam7vcK0tbh4fIZhZXGOkZre3t6AhI2U1ZxTcWOEvI5+s4lDS597AAADk0lEQVR42u3aCXPqIBAAYI6ChiOQQEzU//8/35KARz1Sfe2Mxt3paLrJaP3KBgTIGuPZIOsVxnOR7AjGM4F2aId2aId2GGiHdmj3BsFEo75StA7tHoyOq+Zrwjs/QblSnP7Ibrsfhv328+xaQJvsvk7TstmM0bBZu3pXjbGrS0YoZRrBbr8pXGDP/y8n4eN720mzMVHKCE9yzm5XDdu63g7V7kAjJHPe3L4JpAuCuWFE2TvZpTjP2o0ZW1FtNnbGblsN06VDVcpWdOMjvCZ3nQmEeWsFXKSFaUJH8wVC5NN6NZ7mAZLRktQgc8r3hDgFxr1/UbuLgiVxs4nEtdB9wBG9tHNRw+eLY8PaF7JttT+zY4oR3q6YJDKuZZLpWsaEKXadz6d7zqT3JPBUsKvR7iTVNXDxzQJ/PTu42UnSbjYtkXDLu7SLgWpNw1h0Q5Xvc3U1nNlpaDD80F6CJzpVsc52Opp8WhuWoLVUEto5S04lxYwmDW2m39/Hrr5nB24UfvRdO6Jcbi9MtK31gLFOb5jslFENzc2JKQsBjdQHQtsxeUhZx6y2zFnyNnZ0pmYTXqabqVk6djxwaUh2STmloK8YwbMdkxAkwQHfZJdTIgQBD714QTiIa3bEHPsKc7Wv0DHqub6CZxyXXkLkmiWWHhrmdFqXDhcKNvXqY83mFPUwYoEH+pKN7rodU2WMothTYxTpvGWHhuXqCDUL43AmV+a7HekbJ1k68pznZEkxa2sirZVvZAd/9DQ2tk+PjTt5wAnWCAd2tTA28As7kDJNn7ogRUuypJrUm/DmBW92wt/4QvaH38lec7jxpxMBvzUXoI0jHxj/bUfhFioajXZPRGyN9YygHQbaoR3afYidRA+0Qzu0QzsMtEO75dhdzEAtZUrqF+zKRGhVFi/KNCfazdnVQ3UItHvITp/QnduVrQE8eNOMKzyrnEC7i1b3za5sDeA2ypimjvPK/wLt6muHs3Zwr3Puds2GRJV3opSV/+XZheMGMCbC9XkUeRH37PLWgGnDTuDHlf/F2THRl8P+yDg7B3W7ZsvWgBO7vPK/vJrtxfSRND0q/mD+rr7VV5StASc1Gxfaz+peiJ7VNUvP+ud2Zx3tlOk8S1G2Bhz7irzyvzy70INair4Pj9hdGRsrCHPYGsBdHqOUlf/l1azWxAUhgktHj9hh5CYj7ozvMJ4fG2OgHdqhHdphoB3aoR3afbTdP6FVTmI8ydA7AAAAAElFTkSuQmCC" /></p>
+<pre style="color:#f8f8f2;background-color:#272822"><span style="color:#75715e">## A control that follows the mouse at all times to control the position of the</span>
+<span style="color:#75715e">## blueprint sprite.</span>
+<span style="color:#66d9ef">extends</span> <span style="color:#a6e22e">Control</span>
+
+<span style="color:#75715e">## The blueprint object held by the drag preview. We use a setter function to</span>
+<span style="color:#75715e">## ensure it&#39;s displayed on-screen.</span>
+<span style="color:#66d9ef">var</span> blueprint: BlueprintEntity <span style="color:#66d9ef">setget</span> _set_blueprint
+
+<span style="color:#75715e">## We need access to the label to display the stack count on-screen.</span>
+<span style="color:#66d9ef">onready</span> <span style="color:#66d9ef">var</span> count_label :<span style="color:#f92672">=</span> <span style="color:#f92672">$</span><span style="color:#a6e22e">Label</span>
+
+
+<span style="color:#66d9ef">func</span> _ready() <span style="color:#f92672">-&gt;</span> void:
+    <span style="color:#75715e"># The control will always stick to the mouse at all times. We don&#39;t want it</span>
+    <span style="color:#75715e"># to be controlled by the GUI&#39;s CenterContainer. Otherwise, every frame, it</span>
+    <span style="color:#75715e"># will be sent back to the middle of the screen.</span>
+    <span style="color:#75715e"># Setting the node as `toplevel` makes its transform independent from its</span>
+    <span style="color:#75715e"># parents.</span>
+    set_as_toplevel(true)
+
+
+<span style="color:#75715e">## Events in `_input()` happen regardless of the state of the GUI and they</span>
+<span style="color:#75715e">## happen first so this callback is ideal for global events like matching the</span>
+<span style="color:#75715e">## mouse position on the screen.</span>
+<span style="color:#66d9ef">func</span> _input(event: <span style="color:#a6e22e">InputEvent</span>) <span style="color:#f92672">-&gt;</span> void:
+    <span style="color:#66d9ef">if</span> event is <span style="color:#a6e22e">InputEventMouseMotion</span>:
+        <span style="color:#75715e"># If the mouse moved, we set the control&#39;s global position to the</span>
+        <span style="color:#75715e"># mouse&#39;s position on the screen.</span>
+        rect_global_position <span style="color:#f92672">=</span> event<span style="color:#f92672">.</span>global_position
+
+
+<span style="color:#75715e">## A helper function to keep the label up-to-date with the stack count. We can</span>
+<span style="color:#75715e">## call this whenever the stack&#39;s amount changes.</span>
+<span style="color:#66d9ef">func</span> update_label() <span style="color:#f92672">-&gt;</span> void:
+    <span style="color:#75715e"># If we have a blueprint and there is more than 1 item in the stack, we set</span>
+    <span style="color:#75715e"># the text to the amount and show the label.</span>
+    <span style="color:#66d9ef">if</span> blueprint <span style="color:#f92672">and</span> blueprint<span style="color:#f92672">.</span>stack_count <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">1</span>:
+        count_label<span style="color:#f92672">.</span>text <span style="color:#f92672">=</span> str(blueprint<span style="color:#f92672">.</span>stack_count)
+        count_label<span style="color:#f92672">.</span>show()
+    <span style="color:#75715e"># If there&#39;s only one item in the stack, we hide the label.</span>
+    <span style="color:#66d9ef">else</span>:
+        count_label<span style="color:#f92672">.</span>hide()
+
+
+<span style="color:#75715e">## This function both removes the blueprint from the scene tree, but also frees</span>
+<span style="color:#75715e">## it and calls `update_label()`.</span>
+<span style="color:#66d9ef">func</span> destroy_blueprint() <span style="color:#f92672">-&gt;</span> void:
+    <span style="color:#66d9ef">if</span> blueprint:
+        remove_child(blueprint)
+        blueprint<span style="color:#f92672">.</span>queue_free()
+        blueprint <span style="color:#f92672">=</span> null
+        update_label()
+
+
+<span style="color:#75715e">## Whenever we change the blueprint, we need to make sure it&#39;s in the scene tree</span>
+<span style="color:#75715e">## to display it on the screen.</span>
+<span style="color:#66d9ef">func</span> _set_blueprint(value: BlueprintEntity) <span style="color:#f92672">-&gt;</span> void:
+    <span style="color:#66d9ef">if</span> blueprint <span style="color:#f92672">and</span> blueprint<span style="color:#f92672">.</span>get_parent() <span style="color:#f92672">==</span> self:
+        <span style="color:#75715e"># If we already are holding a blueprint and its parent is this control,</span>
+        <span style="color:#75715e"># we remove it from the scene tree. The panel will take care of cleaning</span>
+        <span style="color:#75715e"># it up if it needs it.</span>
+        remove_child(blueprint)
+
+    <span style="color:#75715e"># We set the new blueprint and if it&#39;s not null, we add it as a child of</span>
+    <span style="color:#75715e"># this control so it is displayed.</span>
+    blueprint <span style="color:#f92672">=</span> value
+    <span style="color:#66d9ef">if</span> blueprint:
+        add_child(blueprint)
+        move_child(blueprint, <span style="color:#ae81ff">0</span>)
+
+    <span style="color:#75715e"># We make sure its label is up to date with its stack size.</span>
+    update_label()
+</pre>
+<p>That does introduce a minor problem.</p>
+<p>If we want the inventory to interact with the mouse’s inventory, we need to pass <code>DragPreview</code> to the entity placer or somewhere else. Keeping track of all these oblique references and who <em>should</em> get <em>what</em> can get out of hand.</p>
+<p>Instead, we can make one node responsible for forwarding calls, our <code>GUI</code> node. It already serves as a mediator between the interface and the game world. We can provide all the references and functions systems need on either side of the node so they only ever need to know about <code>GUI</code> and themselves.</p>
+<p>Go back to <code>/GUI/GUI.tscn</code> and add a <code>/GUI/GUI.gd</code> script to the <code>GUI</code> node.</p>
+<pre style="color:#f8f8f2;background-color:#272822"><span style="color:#66d9ef">extends</span> <span style="color:#a6e22e">CenterContainer</span>
+
+<span style="color:#75715e">## A reference to the inventory that belongs to the &#39;mouse&#39;. It is a property</span>
+<span style="color:#75715e">## that gives indirect access to DragPreview&#39;s blueprint through its getter</span>
+<span style="color:#75715e">## function. No one needs to know that it is stored outside of the GUI class.</span>
+<span style="color:#66d9ef">var</span> blueprint: BlueprintEntity <span style="color:#66d9ef">setget</span> _set_blueprint, _get_blueprint
+
+<span style="color:#66d9ef">onready</span> <span style="color:#66d9ef">var</span> player_inventory :<span style="color:#f92672">=</span> <span style="color:#f92672">$</span><span style="color:#a6e22e">HBoxContainer</span><span style="color:#f92672">/</span>InventoryWindow
+<span style="color:#75715e">## We use the reference to the drag preview in the setter and getter functions.</span>
+<span style="color:#66d9ef">onready</span> <span style="color:#66d9ef">var</span> _drag_preview :<span style="color:#f92672">=</span> <span style="color:#f92672">$</span>DragPreview
+
+
+<span style="color:#66d9ef">func</span> _ready() <span style="color:#f92672">-&gt;</span> void:
+    <span style="color:#75715e"># Here, we&#39;ll set up any GUI systems that require knowledge of the GUI node.</span>
+    <span style="color:#75715e"># We&#39;ll define `InventoryWindow.setup()` in the next lesson.</span>
+    player_inventory<span style="color:#f92672">.</span>setup(self)
+
+
+<span style="color:#75715e">## Forwards the `destroy_blueprint()` call to the drag preview.</span>
+<span style="color:#66d9ef">func</span> destroy_blueprint() <span style="color:#f92672">-&gt;</span> void:
+    _drag_preview<span style="color:#f92672">.</span>destroy_blueprint()
+
+
+<span style="color:#75715e">## Forwards the `update_label()` call to the drag preview.</span>
+<span style="color:#66d9ef">func</span> update_label() <span style="color:#f92672">-&gt;</span> void:
+    _drag_preview<span style="color:#f92672">.</span>update_label()
+
+
+<span style="color:#75715e">## Setter that forwards setting the blueprint to `DragPreview.blueprint`.</span>
+<span style="color:#66d9ef">func</span> _set_blueprint(value: BlueprintEntity) <span style="color:#f92672">-&gt;</span> void:
+    <span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> is_inside_tree():
+        yield(self, <span style="color:#e6db74">&quot;ready&quot;</span>)
+    _drag_preview<span style="color:#f92672">.</span>blueprint <span style="color:#f92672">=</span> value
+
+
+<span style="color:#75715e">## Getter that returns the DragPreview&#39;s blueprint.</span>
+<span style="color:#66d9ef">func</span> _get_blueprint() <span style="color:#f92672">-&gt;</span> BlueprintEntity:
+    <span style="color:#66d9ef">return</span> _drag_preview<span style="color:#f92672">.</span>blueprint
+</pre>
+<p>Now, whenever we set <code>GUI</code>’s blueprint, we are actually setting <code>DragPreview</code>’s without the user needing to know that.</p>
+<p>At the moment, the code above will cause an error because we haven’t defined <code>InventoryWindow.setup()</code>. We’ll do this in the next lesson.</p>
+<h2 id="code-reference">Code reference</h2>
+<p>Here are the new scripts we wrote in this lesson.</p>
+<p><code>/GUI/DragPreview.gd</code></p>
+<pre style="color:#f8f8f2;background-color:#272822"><span style="color:#66d9ef">extends</span> <span style="color:#a6e22e">Control</span>
+
+<span style="color:#66d9ef">var</span> blueprint: BlueprintEntity <span style="color:#66d9ef">setget</span> _set_blueprint
+
+<span style="color:#66d9ef">onready</span> <span style="color:#66d9ef">var</span> count_label :<span style="color:#f92672">=</span> <span style="color:#f92672">$</span><span style="color:#a6e22e">Label</span>
+
+
+<span style="color:#66d9ef">func</span> _ready() <span style="color:#f92672">-&gt;</span> void:
+    set_as_toplevel(true)
+
+
+<span style="color:#66d9ef">func</span> _input(event: <span style="color:#a6e22e">InputEvent</span>) <span style="color:#f92672">-&gt;</span> void:
+    <span style="color:#66d9ef">if</span> event is <span style="color:#a6e22e">InputEventMouseMotion</span>:
+        rect_global_position <span style="color:#f92672">=</span> event<span style="color:#f92672">.</span>global_position
+
+
+<span style="color:#66d9ef">func</span> update_label() <span style="color:#f92672">-&gt;</span> void:
+    <span style="color:#66d9ef">if</span> blueprint <span style="color:#f92672">and</span> blueprint<span style="color:#f92672">.</span>stack_count <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">1</span>:
+        count_label<span style="color:#f92672">.</span>text <span style="color:#f92672">=</span> str(blueprint<span style="color:#f92672">.</span>stack_count)
+        count_label<span style="color:#f92672">.</span>show()
+    <span style="color:#66d9ef">else</span>:
+        count_label<span style="color:#f92672">.</span>hide()
+
+
+<span style="color:#66d9ef">func</span> destroy_blueprint() <span style="color:#f92672">-&gt;</span> void:
+    <span style="color:#66d9ef">if</span> blueprint:
+        remove_child(blueprint)
+        blueprint<span style="color:#f92672">.</span>queue_free()
+        blueprint <span style="color:#f92672">=</span> null
+        update_label()
+
+
+<span style="color:#66d9ef">func</span> _set_blueprint(value: BlueprintEntity) <span style="color:#f92672">-&gt;</span> void:
+    <span style="color:#66d9ef">if</span> blueprint <span style="color:#f92672">and</span> blueprint<span style="color:#f92672">.</span>get_parent() <span style="color:#f92672">==</span> self:
+        remove_child(blueprint)
+
+    blueprint <span style="color:#f92672">=</span> value
+    <span style="color:#66d9ef">if</span> blueprint:
+        add_child(blueprint)
+        move_child(blueprint, <span style="color:#ae81ff">0</span>)
+
+    update_label()
+</pre>
+<p><code>/GUI/GUI.gd</code></p>
+<pre style="color:#f8f8f2;background-color:#272822"><span style="color:#66d9ef">extends</span> <span style="color:#a6e22e">CenterContainer</span>
+
+<span style="color:#66d9ef">var</span> blueprint: BlueprintEntity <span style="color:#66d9ef">setget</span> _set_blueprint, _get_blueprint
+
+<span style="color:#66d9ef">onready</span> <span style="color:#66d9ef">var</span> player_inventory :<span style="color:#f92672">=</span> <span style="color:#f92672">$</span><span style="color:#a6e22e">HBoxContainer</span><span style="color:#f92672">/</span>InventoryWindow
+<span style="color:#66d9ef">onready</span> <span style="color:#66d9ef">var</span> _drag_preview :<span style="color:#f92672">=</span> <span style="color:#f92672">$</span>DragPreview
+
+
+<span style="color:#66d9ef">func</span> _ready() <span style="color:#f92672">-&gt;</span> void:
+    player_inventory<span style="color:#f92672">.</span>setup(self)
+
+
+<span style="color:#66d9ef">func</span> destroy_blueprint() <span style="color:#f92672">-&gt;</span> void:
+    _drag_preview<span style="color:#f92672">.</span>destroy_blueprint()
+
+
+<span style="color:#66d9ef">func</span> update_label() <span style="color:#f92672">-&gt;</span> void:
+    _drag_preview<span style="color:#f92672">.</span>update_label()
+
+
+<span style="color:#66d9ef">func</span> _set_blueprint(value: BlueprintEntity) <span style="color:#f92672">-&gt;</span> void:
+    <span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> is_inside_tree():
+        yield(self, <span style="color:#e6db74">&quot;ready&quot;</span>)
+    _drag_preview<span style="color:#f92672">.</span>blueprint <span style="color:#f92672">=</span> value
+
+
+<span style="color:#66d9ef">func</span> _get_blueprint() <span style="color:#f92672">-&gt;</span> BlueprintEntity:
+    <span style="color:#66d9ef">return</span> _drag_preview<span style="color:#f92672">.</span>blueprint
+</pre>
+</body>
+</html>
