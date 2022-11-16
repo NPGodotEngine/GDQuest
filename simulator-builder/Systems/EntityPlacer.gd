@@ -3,6 +3,9 @@ extends TileMap
 ## Distance from the player when the mouse stops being able to interacte
 const MAXIMUM_WORK_DISTANCE := 275.0
 
+## Duration for deconstruction of an entity
+const DECONSTRUCTION_TIME := 3.0
+
 ## When using `world_to_map()` or `map_to_world()`, `TileMap` reports values from the
 ## top-left corner of the tile. In isometric perspective, it's the top corner
 ## from the middle. Since we want our entities to be in the middle of the tile,
@@ -24,6 +27,10 @@ var _ground: TileMap
 ## the player from interacting with entities that are too far away.
 var _player: KinematicBody2D
 
+## The variable below keeps track of the current deconstruction target cell. If the mouse moves
+## to another cell, we can abort the operation by checking against this value.
+var _current_deconstruction_location := Vector2.ZERO
+
 ## Temporary variable to store references to entities and blueprint scenes.
 ## We split it in two: blueprints keyed by their names and entities keyed by their blueprints.
 ## See the `_ready()` function below for an example of how we map a blueprint to a scene.
@@ -31,6 +38,9 @@ var _player: KinematicBody2D
 onready var Library := {
 	"StirlingEngine": preload("res://Entities/Blueprints/StirlingEngineBlueprint/StirlingEngineBlueprint.tscn").instance(),
 }
+
+# Deconstruction timer
+onready var _deconstruction_timer := $Timer
 
 func _ready() -> void:
 	Library[Library.StirlingEngine] = preload("res://Entities/Entities/StirlingEngineEntity/StirlingEngineEntity.tscn")	
@@ -47,6 +57,9 @@ func setup(tracker:EntityTracker, ground:TileMap, player:KinematicBody2D) -> voi
 		if child is Entity:
 			# convert child node from world position to map position
 			var map_position := world_to_map(child.global_position)
+			
+			# fix position for pre-placed
+			child.global_position = map_to_world(map_position) + POSITION_OFFSET
 			
 			# add child to tracker
 			_tracker.place_entity(child, map_position)
@@ -76,27 +89,53 @@ func _unhandled_input(event: InputEvent) -> void:
 	# if cell is a ground
 	var is_on_ground := _ground.get_cellv(cellv) == 0
 	
+	if event.is_action_released("right_click"):
+		_abort_deconstruct()
+	
+	if event is InputEventMouseButton:
+		_abort_deconstruct()
+	
 	# if placing entity happend
 	if event.is_action_pressed("left_click"):
 		if has_placeable_blueprint:
 			if not is_cell_occupied and is_closer_to_player and is_on_ground:
 				_place_entity(cellv)
+	elif event.is_action_pressed("right_click") and not has_placeable_blueprint:
+		if is_cell_occupied and is_closer_to_player:
+			_deconstruct(global_mouse_position, cellv)
 	# if mouse is draging				
 	elif event is InputEventMouseMotion:
+		if cellv != _current_deconstruction_location:
+			_abort_deconstruct()
 		if has_placeable_blueprint:
 			_move_blueprint_in_world(cellv)
 	# if drop action happend
 	elif event.is_action_pressed("drop") and _blueprint:
 		remove_child(_blueprint)
 		_blueprint = null
-	# if quickbar 1 action happend
+	# if quickbar 1 action happend we add blueprint
 	elif event.is_action_pressed("quickbar_1"):
 		if _blueprint:
+			# remove previous blueprint
 			remove_child(_blueprint)
 		_blueprint = Library.StirlingEngine
 		add_child(_blueprint)
 		_move_blueprint_in_world(cellv)
-		
+
+func _deconstruct(event_position:Vector2, cellv:Vector2) -> void:
+	_deconstruction_timer.connect("timeout", self, "_on_finish_deconstruct", [cellv], CONNECT_ONESHOT)
+	_deconstruction_timer.start(DECONSTRUCTION_TIME)
+	_current_deconstruction_location = cellv
+
+func _on_finish_deconstruct(cellv:Vector2) -> void:
+	var entity := _tracker.get_entity_at(cellv)
+	_tracker.remove_entity(cellv)
+	
+func _abort_deconstruct() -> void:
+	if _deconstruction_timer.is_connected("timeout", self, "_on_finish_deconstruct"):
+		_deconstruction_timer.disconnect("timeout", self, "_on_finish_deconstruct")
+	_deconstruction_timer.stop()
+			
 func _place_entity(cellv:Vector2) -> void:
 	var new_entity = Library[_blueprint].instance()
 	
