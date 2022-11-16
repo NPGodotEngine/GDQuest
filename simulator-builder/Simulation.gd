@@ -8,6 +8,7 @@ var _tracker := EntityTracker.new()
 onready var _ground_tile := $GameWorld/GroundTiles
 onready var _player := $GameWorld/YSort/Player
 onready var _entity_placer := $GameWorld/YSort/EntityPlacer
+onready var _flat_entities := $GameWorld/GameWorld/FlatEntities
 
 func _ready() -> void:
 	# replace barriers with invisible barrier
@@ -16,4 +17,4 @@ func _ready() -> void:
 		_ground_tile.set_cellv(cellv, INVISIBLE_BARRIER)
 	
 	# setup entity placer
-	_entity_placer.setup(_tracker, _ground_tile, _player)
+	_entity_placer.setup(_tracker, _ground_tile, _flat_entities _player)

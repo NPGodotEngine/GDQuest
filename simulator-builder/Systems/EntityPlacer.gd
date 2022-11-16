@@ -23,6 +23,8 @@ var _tracker: EntityTracker
 ## to see if the mouse is over the tilemap.
 var _ground: TileMap
 
+var _flat_entities: YSort
+
 ## The player entity. We can use it to check the distance from the mouse to prevent
 ## the player from interacting with entities that are too far away.
 var _player: KinematicBody2D
@@ -48,9 +50,10 @@ func _ready() -> void:
 func _exit_tree() -> void:
 	Library.StirlingEngine.queue_free()
 	
-func setup(tracker:EntityTracker, ground:TileMap, player:KinematicBody2D) -> void:
+func setup(tracker:EntityTracker, ground:TileMap, flat_entities:YSort, player:KinematicBody2D) -> void:
 	_tracker = tracker
 	_ground = ground
+	_flat_entities = flat_entities
 	_player = player
 	
 	for child in get_children():
