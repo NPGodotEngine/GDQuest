@@ -33,13 +33,19 @@ _global_script_classes=[ {
 "class": "WireBlueprint",
 "language": "GDScript",
 "path": "res://Entities/Blueprints/WireBlueprint/WireBlutprint.gd"
+}, {
+"base": "Entity",
+"class": "WireEntity",
+"language": "GDScript",
+"path": "res://Entities/Entities/WireEntity/WireEntity.gd"
 } ]
 _global_script_class_icons={
 "BlueprintEntity": "",
 "Entity": "",
 "EntityTracker": "",
 "Types": "",
-"WireBlueprint": ""
+"WireBlueprint": "",
+"WireEntity": ""
 }
 
 [application]
