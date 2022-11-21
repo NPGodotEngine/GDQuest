@@ -15,7 +15,7 @@ var power_receivers := {}
 ## position. Used exclusively to create a path from a source to receiver(s).
 var power_movers := {}
 
-## An array of 'power paths'. Those arrays are map positions with [0] being
+## Each element is an array of 'power paths'. Those arrays are map positions with [0] being
 ## the location of a power source and the rest being receivers.
 ## We use these power paths in the update loop to calculate the amount of power
 ## in any given path (which has one source and one or more receivers) and inform
@@ -49,7 +49,7 @@ func _get_power_receiver_from(entity:Node) -> PowerReceiver:
 			return child
 	return null
 
-func _on_entity_placed(entity, cellv:Vector2) -> void:
+func _on_entity_placed(entity:Node, cellv:Vector2) -> void:
 	var retrace := false
 	
 	if entity.is_in_group(Types.POWER_SOURCES):
@@ -67,7 +67,7 @@ func _on_entity_placed(entity, cellv:Vector2) -> void:
 	if retrace:
 		_retrace_paths()
 	
-func _on_entity_removed(entity, cellv:Vector2) -> void:
+func _on_entity_removed(entity:Node, cellv:Vector2) -> void:
 	var retrace := power_sources.erase(cellv)
 	retrace = power_receivers.erase(cellv)
 	retrace = power_movers.erase(cellv)
@@ -76,4 +76,90 @@ func _on_entity_removed(entity, cellv:Vector2) -> void:
 		_retrace_paths()
 		
 func _retrace_paths() -> void:
-	pass
+	paths.clear()
+	
+	for source in power_sources:
+		cells_travelled.clear()
+		var path := _trace_path_from(source, [source])
+		paths.push_back(path)
+
+func _trace_path_from(cellv:Vector2, path:Array) -> Array:
+	cells_travelled.push_back(cellv)
+	
+	var source_output_direction := 15
+	if power_sources.has(cellv):
+		source_output_direction = power_sources[cellv].output_direction
+	
+	# check for power receivers
+	var receivers := _find_neighbors_in(cellv, power_receivers, source_output_direction)
+	for receiver in receivers:
+		if not receiver in cells_travelled and not receiver in path:
+			# power flow direction from power source
+			# to receiver
+			var combined_direction := _combine_directions(receiver, cellv)
+			var power_receiver: PowerReceiver = power_receivers[receiver]
+			# If the current direction does not match any of the receiver's possible
+			# directions (using the binary and operator, &, to check if the number fits
+			# inside the other), skip this receiver and move on to the next one.
+			if (
+				(
+					combined_direction & Types.Direction.RIGHT != 0
+					and power_receiver.input_direction & Types.Direction.LEFT == 0
+				)
+				or (
+					combined_direction & Types.Direction.DOWN != 0
+					and power_receiver.input_direction & Types.Direction.UP == 0
+				)
+				or (
+					combined_direction & Types.Direction.LEFT != 0
+					and power_receiver.input_direction & Types.Direction.RIGHT == 0
+				)
+				or (
+					combined_direction & Types.Direction.UP != 0
+					and power_receiver.input_direction & Types.Direction.DOWN == 0
+				)
+			):
+				continue
+				
+			# Otherwise, add it to the path.
+			path.push_back(receiver)
+			
+	# We've done the receivers. Now, we check for any possible wires so we can keep
+	# traveling.
+	var movers := _find_neighbors_in(cellv, power_movers, source_output_direction)
+
+	# Call this same function again from the new cell position for any wire that
+	# found and travel from there, and return the result, so long as we
+	# did not visit it already.
+	# This is what makes the function recursive, that is to say, calling itself.
+	for mover in movers:
+		if not mover in cells_travelled:
+			path = _trace_path_from(mover, path)
+
+	# Return the final array
+	return path
+	
+## Compare a source to a target map position and return a direction integer
+## that indicates the direction power is traveling in.
+func _combine_directions(receiver: Vector2, cellv: Vector2) -> int:
+	if receiver.x < cellv.x:
+		return Types.Direction.LEFT
+	elif receiver.x > cellv.x:
+		return Types.Direction.RIGHT
+	elif receiver.y < cellv.y:
+		return Types.Direction.UP
+	elif receiver.y > cellv.y:
+		return Types.Direction.DOWN
+
+	return 0
+
+## For each neighbor in the given direction, check if it exists in the collection we specify,
+## and return an array of map positions with those that do.	
+func _find_neighbors_in(cellv:Vector2, collection:Dictionary, output_direction:int=15) -> Array:
+	var neighbors := []
+	for neighbor in Types.NEIGHBORS.keys():
+		if neighbor & output_direction != 0:
+			var neighbor_cellv = cellv + Types.NEIGHBORS[neighbor]
+			if collection.has(neighbor_cellv):
+				neighbors.push_back(neighbor_cellv)
+	return neighbors
