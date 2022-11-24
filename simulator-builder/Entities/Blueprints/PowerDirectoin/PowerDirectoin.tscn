@@ -7,25 +7,25 @@
 script = ExtResource( 2 )
 
 [node name="N" type="Sprite" parent="."]
-position = Vector2( 38, -30 )
+position = Vector2( 48, -28 )
 texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 950, 134, 31, 17 )
 
 [node name="S" type="Sprite" parent="."]
-position = Vector2( -35, 31 )
+position = Vector2( -42, 38 )
 texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 899, 179, 31, 17 )
 
 [node name="E" type="Sprite" parent="."]
-position = Vector2( 38, 27 )
+position = Vector2( 46, 41 )
 texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 950, 179, 31, 17 )
 
 [node name="W" type="Sprite" parent="."]
-position = Vector2( -42, -32 )
+position = Vector2( -44, -31 )
 texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 899, 134, 31, 17 )
