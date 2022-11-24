@@ -74,6 +74,59 @@ func _on_entity_removed(entity:Node, cellv:Vector2) -> void:
 	
 	if retrace:
 		_retrace_paths()
+
+func _on_system_ticked(delta:float) -> void:
+	receivers_already_provided.clear()
+	
+	for path in paths:
+		# get power source
+		var power_source: PowerSource = power_sources[path[0]]
+		
+		# amount of power the power source provied
+		var source_power := power_source.get_effective_power()
+		
+		# remaining power equal to source power
+		var remaining_power := source_power
+		
+		# amount of power power receivers has drawn
+		var power_draw := 0.0
+		
+		for cell in path.slice(1, path.size()-1):
+			# if cell in path is not power receiver
+			# then skip it
+			if power_receivers.has(cell):
+				continue
+			
+			# get power receiver	
+			var power_receiver: PowerReceiver = power_receivers[cell]
+			
+			# amount of power the power receiver required
+			var power_required := power_receiver.get_effective_power()
+			
+			if receivers_already_provided.has(cell):
+				var receiver_total: float = receivers_already_provided[cell]
+				if receiver_total >= power_required:
+					continue
+				else:
+					power_required -= receiver_total
+			
+			power_receiver.emit_signal(
+				"received_power", min(remaining_power, power_required), delta
+				)
+				
+			power_draw = min(source_power, power_draw + power_required)
+			
+			if not receivers_already_provided.has(cell):
+				receivers_already_provided[cell] = min(remaining_power, power_required)
+			else:
+				receivers_already_provided[cell] += min(remaining_power, power_required) 
+			
+			remaining_power = max(0, remaining_power - power_required)
+			
+			if remaining_power == 0:
+				break;
+		
+		power_source.emit_signal("power_update", power_draw, delta)
 		
 func _retrace_paths() -> void:
 	paths.clear()

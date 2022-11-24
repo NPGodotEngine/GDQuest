@@ -36,3 +36,5 @@ position = Vector2( 1402, 571 )
 
 [node name="Player" parent="GameWorld/YSort" instance=ExtResource( 2 )]
 position = Vector2( 1287, 554 )
+
+[node name="Timer" type="Timer" parent="."]
