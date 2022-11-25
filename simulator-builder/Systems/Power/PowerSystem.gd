@@ -79,6 +79,10 @@ func _on_system_ticked(delta:float) -> void:
 	receivers_already_provided.clear()
 	
 	for path in paths:
+		# if we don't have power source
+		if not power_sources.has(path[0]):
+			continue
+			
 		# get power source
 		var power_source: PowerSource = power_sources[path[0]]
 		
