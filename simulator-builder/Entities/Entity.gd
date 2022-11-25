@@ -7,5 +7,5 @@ export var deconstructor_filter: String
 # Number of item drop after this entity is deconstructed
 export var pickup_count := 1
 
-func _setup(_blueprint) -> void:
+func _setup(_blueprint:BlueprintEntity) -> void:
 	pass

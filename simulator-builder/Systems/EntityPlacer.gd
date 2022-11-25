@@ -40,6 +40,7 @@ var _current_deconstruction_location := Vector2.ZERO
 onready var Library := {
 	"StirlingEngine": preload("res://Entities/Blueprints/StirlingEngineBlueprint/StirlingEngineBlueprint.tscn").instance(),
 	"Wire": preload("res://Entities/Blueprints/WireBlueprint/WireBlutprint.tscn").instance(),
+	"Battery": preload("res://Entities/Blueprints/BatteryBlueprint/BatteryBlueprint.tscn").instance()
 }
 
 # Deconstruction timer
@@ -47,11 +48,13 @@ onready var _deconstruction_timer := $Timer
 
 func _ready() -> void:
 	Library[Library.StirlingEngine] = preload("res://Entities/Entities/StirlingEngineEntity/StirlingEngineEntity.tscn")
-	Library[Library.Wire] = preload("res://Entities/Entities/WireEntity/WireEntity.tscn")	
+	Library[Library.Wire] = preload("res://Entities/Entities/WireEntity/WireEntity.tscn")
+	Library[Library.Battery] = preload("res://Entities/Entities/BatteryEntity/BatteryEntity.tscn")	
 	
 func _exit_tree() -> void:
 	Library.StirlingEngine.queue_free()
 	Library.Wire.queue_free()
+	Library.Battery.queue_free()
 	
 func setup(tracker:EntityTracker, ground:TileMap, flat_entities:YSort, player:KinematicBody2D) -> void:
 	_tracker = tracker
@@ -120,6 +123,8 @@ func _unhandled_input(event: InputEvent) -> void:
 	elif event.is_action_pressed("drop") and _blueprint:
 		remove_child(_blueprint)
 		_blueprint = null
+	elif event.is_action_pressed("rotate_blueprint") and _blueprint:
+		_blueprint.rotate_blueprint()
 	# if quickbar 1 action happend we add blueprint
 	elif event.is_action_pressed("quickbar_1"):
 		if _blueprint:
@@ -133,6 +138,13 @@ func _unhandled_input(event: InputEvent) -> void:
 			# remove previous blueprint
 			remove_child(_blueprint)
 		_blueprint = Library.Wire
+		add_child(_blueprint)
+		_move_blueprint_in_world(cellv)
+	# be sure to change the input action to `quickbar_3`.
+	elif event.is_action_pressed("quickbar_3"):
+		if _blueprint:
+			remove_child(_blueprint)
+		_blueprint = Library.Battery
 		add_child(_blueprint)
 		_move_blueprint_in_world(cellv)
 

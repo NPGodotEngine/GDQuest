@@ -94,7 +94,7 @@ func _on_system_ticked(delta:float) -> void:
 		for cell in path.slice(1, path.size()-1):
 			# if cell in path is not power receiver
 			# then skip it
-			if power_receivers.has(cell):
+			if not power_receivers.has(cell):
 				continue
 			
 			# get power receiver	

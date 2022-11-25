@@ -98,3 +98,4 @@ anims/work = SubResource( 2 )
 
 [node name="PowerSource" type="Node" parent="."]
 script = ExtResource( 3 )
+power_amount = 200.0
