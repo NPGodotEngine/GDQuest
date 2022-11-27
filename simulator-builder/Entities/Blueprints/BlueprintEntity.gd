@@ -1,3 +1,4 @@
+# Basic Blueprint entity
 class_name BlueprintEntity
 extends Node2D
 
