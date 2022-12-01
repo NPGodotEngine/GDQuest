@@ -33,28 +33,8 @@ var _player: KinematicBody2D
 ## to another cell, we can abort the operation by checking against this value.
 var _current_deconstruction_location := Vector2.ZERO
 
-## Temporary variable to store references to entities and blueprint scenes.
-## We split it in two: blueprints keyed by their names and entities keyed by their blueprints.
-## See the `_ready()` function below for an example of how we map a blueprint to a scene.
-## Replace the `preload()` resource paths below with the paths where you saved your scenes.
-onready var Library := {
-	"StirlingEngine": preload("res://Entities/Blueprints/StirlingEngineBlueprint/StirlingEngineBlueprint.tscn").instance(),
-	"Wire": preload("res://Entities/Blueprints/WireBlueprint/WireBlutprint.tscn").instance(),
-	"Battery": preload("res://Entities/Blueprints/BatteryBlueprint/BatteryBlueprint.tscn").instance()
-}
-
 # Deconstruction timer
 onready var _deconstruction_timer := $Timer
-
-func _ready() -> void:
-	Library[Library.StirlingEngine] = preload("res://Entities/Entities/StirlingEngineEntity/StirlingEngineEntity.tscn")
-	Library[Library.Wire] = preload("res://Entities/Entities/WireEntity/WireEntity.tscn")
-	Library[Library.Battery] = preload("res://Entities/Entities/BatteryEntity/BatteryEntity.tscn")	
-	
-func _exit_tree() -> void:
-	Library.StirlingEngine.queue_free()
-	Library.Wire.queue_free()
-	Library.Battery.queue_free()
 	
 func setup(tracker:EntityTracker, ground:TileMap, flat_entities:YSort, player:KinematicBody2D) -> void:
 	_tracker = tracker
@@ -130,21 +110,21 @@ func _unhandled_input(event: InputEvent) -> void:
 		if _blueprint:
 			# remove previous blueprint
 			remove_child(_blueprint)
-		_blueprint = Library.StirlingEngine
+		_blueprint = Library.blueprints.StirlingEngine.instance()
 		add_child(_blueprint)
 		_move_blueprint_in_world(cellv)
 	elif event.is_action_pressed("quickbar_2"):
 		if _blueprint:
 			# remove previous blueprint
 			remove_child(_blueprint)
-		_blueprint = Library.Wire
+		_blueprint = Library.blueprints.Wire.instance()
 		add_child(_blueprint)
 		_move_blueprint_in_world(cellv)
 	# be sure to change the input action to `quickbar_3`.
 	elif event.is_action_pressed("quickbar_3"):
 		if _blueprint:
 			remove_child(_blueprint)
-		_blueprint = Library.Battery
+		_blueprint = Library.blueprints.Battery.instance()
 		add_child(_blueprint)
 		_move_blueprint_in_world(cellv)
 
@@ -164,7 +144,8 @@ func _abort_deconstruct() -> void:
 	_deconstruction_timer.stop()
 			
 func _place_entity(cellv:Vector2) -> void:
-	var new_entity = Library[_blueprint].instance()
+	var entity_name = Library.get_entity_name_from(_blueprint)
+	var new_entity: Node2D = Library.entities[entity_name].instance()
 	
 	if new_entity is WireEntity:
 		var direction := _get_powered_neighbors(cellv)

@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Shared/Tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://Entities/Player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Simulation.gd" type="Script" id=3]
 [ext_resource path="res://Entities/Entities/StirlingEngineEntity/StirlingEngineEntity.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Systems/EntityPlacer.gd" type="Script" id=5]
+[ext_resource path="res://GUI/GUI.tscn" type="PackedScene" id=6]
 
 [node name="Simulation" type="Node"]
 script = ExtResource( 3 )
@@ -38,3 +39,8 @@ position = Vector2( 1402, 571 )
 position = Vector2( 1287, 554 )
 
 [node name="Timer" type="Timer" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="GUI" parent="CanvasLayer" instance=ExtResource( 6 )]

@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Shared/Theme/builder_theme.tres" type="Theme" id=1]
+
+[node name="Panel" type="Panel"]
+margin_right = 100.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 100, 100 )
+theme = ExtResource( 1 )
