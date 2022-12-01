@@ -41,6 +41,5 @@ position = Vector2( 1287, 554 )
 [node name="Timer" type="Timer" parent="."]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="GUI" parent="CanvasLayer" instance=ExtResource( 6 )]

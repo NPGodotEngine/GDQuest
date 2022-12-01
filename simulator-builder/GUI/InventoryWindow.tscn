@@ -4,6 +4,7 @@
 [ext_resource path="res://Shared/Theme/builder_theme.tres" type="Theme" id=2]
 
 [node name="InventoryWindow" type="MarginContainer"]
+mouse_filter = 2
 theme = ExtResource( 2 )
 custom_constants/margin_right = 25
 custom_constants/margin_top = 25
@@ -15,10 +16,12 @@ margin_left = 25.0
 margin_top = 25.0
 margin_right = 65.0
 margin_bottom = 75.0
+mouse_filter = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
 margin_right = 40.0
 margin_bottom = 50.0
+mouse_filter = 1
 custom_constants/margin_right = 20
 custom_constants/margin_top = 20
 custom_constants/margin_left = 20
