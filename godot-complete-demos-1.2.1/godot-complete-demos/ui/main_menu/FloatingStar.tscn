@@ -7,9 +7,6 @@
 texture = ExtResource( 1 )
 stretch_mode = 3
 script = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Tween" type="Tween" parent="."]
 repeat = true

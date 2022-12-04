@@ -394,6 +394,7 @@ script = ExtResource( 7 )
 
 [node name="OverviewCamera2D" type="Camera2D" parent="."]
 position = Vector2( 2219, -177 )
+current = true
 zoom = Vector2( 2, 2 )
 
 [node name="Course" parent="." instance=ExtResource( 8 )]
@@ -535,6 +536,8 @@ polygon = PoolVector2Array( 384, 864, 384, 1152, 640, 1152, 640, 992, 512, 992, 
 [node name="Info" type="Label" parent="UI"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_right = 1920.0
+margin_bottom = 1080.0
 rect_min_size = Vector2( 1920, 1080 )
 rect_scale = Vector2( 3, 3 )
 rect_pivot_offset = Vector2( 960, 540 )
