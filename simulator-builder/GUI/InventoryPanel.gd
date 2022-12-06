@@ -25,6 +25,7 @@ func _set_held_item(value:BlueprintEntity) -> void:
 
     if is_instance_valid(held_item):
         add_child(held_item)
+        held_item.display_as_inventory_icon()
         move_child(held_item, 0)
     
     _update_label()
