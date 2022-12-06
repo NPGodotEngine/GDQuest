@@ -7,10 +7,16 @@ extends Node2D
 # Aex is not placeable for example
 export var placeable := true
 
-## We use `find_node()` to search for a `PowerDirection` instance. If it does not exist,
-## then we don't worry about it: `find_node()` returns `null` if it finds nothing.
-## A faster method would be `get_node()`, which only tests one path.
+# How many items can be in a stack of the given blueprint type.
+export var stack_size := 1
+
+# We use `find_node()` to search for a `PowerDirection` instance. If it does not exist,
+# then we don't worry about it: `find_node()` returns `null` if it finds nothing.
+# A faster method would be `get_node()`, which only tests one path.
 onready var power_direction := find_node("PowerDirection")
+
+# How many items are actually in the stack of the current stack.
+var stack_count := 1
 
 
 ## Rotate the blueprint's direction, if it has one and it is relevant.
