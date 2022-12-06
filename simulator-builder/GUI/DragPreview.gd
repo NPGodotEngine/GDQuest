@@ -22,7 +22,7 @@ func _ready() -> void:
 # mouse position on the screen.
 func _input(event: InputEvent) -> void:
     if event is InputEventMouseMotion:
-        rect_global_position = event.global_position + preview_offset
+        rect_global_position = get_global_mouse_position() + preview_offset
 
 # A helper function to keep the label up-to-date with the stack count. We can
 # call this whenever the stack's amount changes.
