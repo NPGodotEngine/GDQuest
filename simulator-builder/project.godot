@@ -95,10 +95,6 @@ window/stretch/aspect="keep"
 
 inventory_size=75.0
 
-[game_ui]
-
-=false
-
 [global]
 
 version=false

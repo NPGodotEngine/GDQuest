@@ -14,13 +14,13 @@ script = ExtResource( 3 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 margin_left = 915.0
-margin_top = 490.0
+margin_top = 485.0
 margin_right = 1005.0
-margin_bottom = 590.0
+margin_bottom = 595.0
 mouse_filter = 2
 
 [node name="InventoryWindow" parent="HBoxContainer" instance=ExtResource( 2 )]
 margin_right = 90.0
-margin_bottom = 100.0
+margin_bottom = 110.0
 
 [node name="DragPreview" parent="." instance=ExtResource( 4 )]
