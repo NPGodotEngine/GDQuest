@@ -1,5 +1,7 @@
 extends Control
 
+export (Vector2) var preview_offset := Vector2.ZERO
+
 # The blueprint object held by the drag preview. We use a setter function to
 # ensure it's displayed on-screen.
 var blueprint: BlueprintEntity setget _set_blueprint
@@ -20,7 +22,7 @@ func _ready() -> void:
 # mouse position on the screen.
 func _input(event: InputEvent) -> void:
     if event is InputEventMouseMotion:
-        rect_global_position = event.global_position
+        rect_global_position = event.global_position + preview_offset
 
 # A helper function to keep the label up-to-date with the stack count. We can
 # call this whenever the stack's amount changes.
