@@ -1,3 +1,4 @@
+class_name InventoryPanel
 extends Panel
 
 # We emit this signal whenever the item on this panel changes. We'll bubble it up

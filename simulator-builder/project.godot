@@ -29,6 +29,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://GUI/InventoryBar.gd"
 }, {
+"base": "Panel",
+"class": "InventoryPanel",
+"language": "GDScript",
+"path": "res://GUI/InventoryPanel.gd"
+}, {
 "base": "Node",
 "class": "PowerReceiver",
 "language": "GDScript",
@@ -43,6 +48,11 @@ _global_script_classes=[ {
 "class": "PowerSystem",
 "language": "GDScript",
 "path": "res://Systems/Power/PowerSystem.gd"
+}, {
+"base": "InventoryBar",
+"class": "QuickBar",
+"language": "GDScript",
+"path": "res://GUI/QuickBar.gd"
 }, {
 "base": "Reference",
 "class": "Types",
@@ -64,9 +74,11 @@ _global_script_class_icons={
 "Entity": "",
 "EntityTracker": "",
 "InventoryBar": "",
+"InventoryPanel": "",
 "PowerReceiver": "",
 "PowerSource": "",
 "PowerSystem": "",
+"QuickBar": "",
 "Types": "",
 "WireBlueprint": "",
 "WireEntity": ""

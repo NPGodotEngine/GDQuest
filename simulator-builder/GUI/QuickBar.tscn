@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://GUI/QuickBar.gd" type="Script" id=1]
+[ext_resource path="res://GUI/QuickbarInventoryPanel.tscn" type="PackedScene" id=2]
+
+[node name="HBoxContainer" type="HBoxContainer"]
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 1 )
+inventory_panel_scene = ExtResource( 2 )
