@@ -17,11 +17,18 @@ func _ready() -> void:
     # parents.
     set_as_toplevel(true)
 
+    var panel_size: float = ProjectSettings.get_setting("game_gui/inventory_size")
+
+    rect_min_size = Vector2(panel_size, panel_size)
+    rect_size = rect_min_size
+
 # Events in `_input()` happen regardless of the state of the GUI and they
 # happen first so this callback is ideal for global events like matching the
 # mouse position on the screen.
 func _input(event: InputEvent) -> void:
     if event is InputEventMouseMotion:
+        if blueprint:
+            blueprint.display_as_inventory_icon()
         rect_global_position = get_global_mouse_position() + preview_offset
 
 # A helper function to keep the label up-to-date with the stack count. We can

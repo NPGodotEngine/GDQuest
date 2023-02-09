@@ -13,9 +13,6 @@ const DECONSTRUCTION_TIME := 3.0
 ## half the vertical height of our tiles, 25 pixels on the Y-axis here.
 const POSITION_OFFSET := Vector2(0, 25)
 
-## Temporary variable to hold the active blueprint
-var _blueprint: BlueprintEntity
-
 ## The simulation's entity tracker We use its functions to know if a cell is available or it
 var _tracker: EntityTracker
 
@@ -33,10 +30,14 @@ var _player: KinematicBody2D
 ## to another cell, we can abort the operation by checking against this value.
 var _current_deconstruction_location := Vector2.ZERO
 
+## Reference to GUI node
+var _gui: Control
+
 # Deconstruction timer
 onready var _deconstruction_timer := $Timer
 	
-func setup(tracker:EntityTracker, ground:TileMap, flat_entities:YSort, player:KinematicBody2D) -> void:
+func setup(gui:Control, tracker:EntityTracker, ground:TileMap, flat_entities:YSort, player:KinematicBody2D) -> void:
+	_gui = gui
 	_tracker = tracker
 	_ground = ground
 	_flat_entities = flat_entities
@@ -54,8 +55,8 @@ func setup(tracker:EntityTracker, ground:TileMap, flat_entities:YSort, player:Ki
 			_tracker.place_entity(child, map_position)
 
 func _process(delta: float) -> void:
-	var has_placeable_blueprint: bool = _blueprint and _blueprint.placeable
-	if has_placeable_blueprint:
+	var has_placeable_blueprint: bool = _gui.blueprint and _gui.blueprint.placeable
+	if has_placeable_blueprint and not _gui.mouse_in_gui:
 		_move_blueprint_in_world(world_to_map(get_global_mouse_position()))
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -63,7 +64,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	var global_mouse_position := get_global_mouse_position()
 	
 	# if we have blueprint and is placeable
-	var has_placeable_blueprint: bool = _blueprint and _blueprint.placeable
+	var has_placeable_blueprint: bool = _gui.blueprint and _gui.blueprint.placeable
 	
 	# if mouse position and player is closer enough to work
 	var is_closer_to_player := (global_mouse_position.distance_to(_player.global_position) 
@@ -100,33 +101,33 @@ func _unhandled_input(event: InputEvent) -> void:
 		if has_placeable_blueprint:
 			_move_blueprint_in_world(cellv)
 	# if drop action happend
-	elif event.is_action_pressed("drop") and _blueprint:
-		remove_child(_blueprint)
-		_blueprint = null
-	elif event.is_action_pressed("rotate_blueprint") and _blueprint:
-		_blueprint.rotate_blueprint()
-	# if quickbar 1 action happend we add blueprint
-	elif event.is_action_pressed("quickbar_1"):
-		if _blueprint:
-			# remove previous blueprint
-			remove_child(_blueprint)
-		_blueprint = Library.blueprints.StirlingEngine.instance()
-		add_child(_blueprint)
-		_move_blueprint_in_world(cellv)
-	elif event.is_action_pressed("quickbar_2"):
-		if _blueprint:
-			# remove previous blueprint
-			remove_child(_blueprint)
-		_blueprint = Library.blueprints.Wire.instance()
-		add_child(_blueprint)
-		_move_blueprint_in_world(cellv)
-	# be sure to change the input action to `quickbar_3`.
-	elif event.is_action_pressed("quickbar_3"):
-		if _blueprint:
-			remove_child(_blueprint)
-		_blueprint = Library.blueprints.Battery.instance()
-		add_child(_blueprint)
-		_move_blueprint_in_world(cellv)
+	elif event.is_action_pressed("drop") and _gui.blueprint:
+		remove_child(_gui.blueprint)
+		_gui.blueprint = null
+	elif event.is_action_pressed("rotate_blueprint") and _gui.blueprint:
+		_gui.blueprint.rotate_blueprint()
+	# # if quickbar 1 action happend we add blueprint
+	# elif event.is_action_pressed("quickbar_1"):
+	# 	if _blueprint:
+	# 		# remove previous blueprint
+	# 		remove_child(_blueprint)
+	# 	_blueprint = Library.blueprints.StirlingEngine.instance()
+	# 	add_child(_blueprint)
+	# 	_move_blueprint_in_world(cellv)
+	# elif event.is_action_pressed("quickbar_2"):
+	# 	if _blueprint:
+	# 		# remove previous blueprint
+	# 		remove_child(_blueprint)
+	# 	_blueprint = Library.blueprints.Wire.instance()
+	# 	add_child(_blueprint)
+	# 	_move_blueprint_in_world(cellv)
+	# # be sure to change the input action to `quickbar_3`.
+	# elif event.is_action_pressed("quickbar_3"):
+	# 	if _blueprint:
+	# 		remove_child(_blueprint)
+	# 	_blueprint = Library.blueprints.Battery.instance()
+	# 	add_child(_blueprint)
+	# 	_move_blueprint_in_world(cellv)
 
 func _deconstruct(event_position:Vector2, cellv:Vector2) -> void:
 	_deconstruction_timer.connect("timeout", self, "_on_finish_deconstruct", [cellv], CONNECT_ONESHOT)
@@ -144,7 +145,7 @@ func _abort_deconstruct() -> void:
 	_deconstruction_timer.stop()
 			
 func _place_entity(cellv:Vector2) -> void:
-	var entity_name = Library.get_entity_name_from(_blueprint)
+	var entity_name = Library.get_entity_name_from(_gui.blueprint)
 	var new_entity: Node2D = Library.entities[entity_name].instance()
 	
 	if new_entity is WireEntity:
@@ -154,25 +155,35 @@ func _place_entity(cellv:Vector2) -> void:
 	else:
 		add_child(new_entity)
 	new_entity.global_position = map_to_world(cellv) + POSITION_OFFSET
-	new_entity._setup(_blueprint)
+	new_entity._setup(_gui.blueprint)
 	_tracker.place_entity(new_entity, cellv)
 
+	if _gui.blueprint.stack_count == 1:
+		_gui.destroy_blueprint()
+	else:
+		_gui.blueprint.stack_count -= 1
+		_gui.update_label()
+
 func _move_blueprint_in_world(cellv:Vector2) -> void:
-	_blueprint.global_position = map_to_world(cellv) + POSITION_OFFSET
+	_gui.blueprint.display_as_world_entity()
+
+	_gui.blueprint.global_position = get_viewport_transform().xform(
+        map_to_world(cellv) + POSITION_OFFSET
+    )
 	
-	var is_closer_to_player = (_blueprint.global_position.distance_to(_player.global_position) 
+	var is_closer_to_player = (_gui.blueprint.global_position.distance_to(_player.global_position) 
 								< MAXIMUM_WORK_DISTANCE)
 	
 	var is_on_ground := _ground.get_cellv(cellv) == 0
 	var is_cell_occupied := _tracker.is_cell_occupied(cellv)
 	
 	if not is_cell_occupied and is_on_ground and is_closer_to_player:
-		_blueprint.modulate = Color.white
-		if _blueprint is WireBlueprint:
-			WireBlueprint.set_sprite_for_direction(_blueprint.sprite, 
+		_gui.blueprint.modulate = Color.white
+		if _gui.blueprint is WireBlueprint:
+			WireBlueprint.set_sprite_for_direction(_gui.blueprint.sprite, 
 				_get_powered_neighbors(cellv))
 	else:
-		_blueprint.modulate = Color.red
+		_gui.blueprint.modulate = Color.red
 		
 func _get_powered_neighbors(cellv:Vector2) -> int:
 		var direction := 0

@@ -14,6 +14,12 @@ var gui: Control
 # We'll keep track of the stack size using the label.
 onready var count_label := $Label
 
+func _ready() -> void:
+    var panel_size: float = ProjectSettings.get_setting("game_gui/inventory_size")
+
+    rect_min_size = Vector2(panel_size, panel_size)
+    rect_size = rect_min_size
+
 func setup(_gui:Control) -> void:
     gui = _gui
 

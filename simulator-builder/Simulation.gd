@@ -13,6 +13,7 @@ onready var _player := $GameWorld/YSort/Player
 onready var _entity_placer := $GameWorld/YSort/EntityPlacer
 onready var _flat_entities := $GameWorld/FlatEntities
 onready var _simulation_timer := $Timer
+onready var _gui := $CanvasLayer/GUI
 onready var _power_system := PowerSystem.new()
 
 func _ready() -> void:
@@ -26,7 +27,7 @@ func _ready() -> void:
 		_ground_tile.set_cellv(cellv, INVISIBLE_BARRIER)
 	
 	# setup entity placer
-	_entity_placer.setup(_tracker, _ground_tile, _flat_entities, _player)
+	_entity_placer.setup(_gui, _tracker, _ground_tile, _flat_entities, _player)
 
 func _on_Timer_timeout() -> void:
 	Events.emit_signal("system_ticked", simulation_speed)
