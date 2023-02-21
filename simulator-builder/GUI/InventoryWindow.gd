@@ -33,3 +33,7 @@ func setup(_gui: Control) -> void:
 # Whenever we receive the `inventory_changed` signal, bubble up the signal from the inventory bars.
 func _on_InventoryBar_inventory_changed(panel, held_item) -> void:
     emit_signal("inventory_changed", panel, held_item)
+
+func claim_quickbar(quickbar:Control) -> void:
+    quickbar.get_parent().remove_child(quickbar)
+    inventory_path.add_child(quickbar)

@@ -24,6 +24,7 @@ var mouse_in_gui: bool = false
 
 onready var player_inventory := $HBoxContainer/InventoryWindow
 onready var quickbar := $MarginContainer/QuickBar
+onready var quickbar_container := $MarginContainer
 
 # We use the reference to the drag preview in the setter and getter functions.
 onready var _drag_preview := $DragPreview
@@ -62,10 +63,16 @@ func _simulate_input(panel: InventoryPanel) -> void:
 func _open_inventories() -> void:
     is_open = true
     player_inventory.visible = true
+    player_inventory.claim_quickbar(quickbar)
 
 func _close_inventories() -> void:
     is_open = false
-    player_inventory.visible = false 
+    player_inventory.visible = false
+    _claim_quickbar()
+
+func _claim_quickbar() -> void:
+    quickbar.get_parent().remove_child(quickbar)
+    quickbar_container.add_child(quickbar)
 
 func destroy_blueprint() -> void:
     _drag_preview.destroy_blueprint()
