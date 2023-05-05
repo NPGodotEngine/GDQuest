@@ -13,6 +13,9 @@ const DECONSTRUCTION_TIME := 3.0
 ## half the vertical height of our tiles, 25 pixels on the Y-axis here.
 const POSITION_OFFSET := Vector2(0, 25)
 
+## The ground item packed scene we instance when dropping items
+var GroundItemScene := preload("res://Entities/GroundItem.tscn")
+
 ## The simulation's entity tracker We use its functions to know if a cell is available or it
 var _tracker: EntityTracker
 
@@ -102,32 +105,20 @@ func _unhandled_input(event: InputEvent) -> void:
 			_move_blueprint_in_world(cellv)
 	# if drop action happend
 	elif event.is_action_pressed("drop") and _gui.blueprint:
-		remove_child(_gui.blueprint)
-		_gui.blueprint = null
+		if is_on_ground:
+			_drop_entity(_gui.blueprint, global_mouse_position)
+			_gui.blueprint = null
 	elif event.is_action_pressed("rotate_blueprint") and _gui.blueprint:
 		_gui.blueprint.rotate_blueprint()
-	# # if quickbar 1 action happend we add blueprint
-	# elif event.is_action_pressed("quickbar_1"):
-	# 	if _blueprint:
-	# 		# remove previous blueprint
-	# 		remove_child(_blueprint)
-	# 	_blueprint = Library.blueprints.StirlingEngine.instance()
-	# 	add_child(_blueprint)
-	# 	_move_blueprint_in_world(cellv)
-	# elif event.is_action_pressed("quickbar_2"):
-	# 	if _blueprint:
-	# 		# remove previous blueprint
-	# 		remove_child(_blueprint)
-	# 	_blueprint = Library.blueprints.Wire.instance()
-	# 	add_child(_blueprint)
-	# 	_move_blueprint_in_world(cellv)
-	# # be sure to change the input action to `quickbar_3`.
-	# elif event.is_action_pressed("quickbar_3"):
-	# 	if _blueprint:
-	# 		remove_child(_blueprint)
-	# 	_blueprint = Library.blueprints.Battery.instance()
-	# 	add_child(_blueprint)
-	# 	_move_blueprint_in_world(cellv)
+
+
+## Creates a new ground item with the given blueprint and sets it up at the
+## deconstructed entity's location.
+func _drop_entity(entity: BlueprintEntity, location: Vector2) -> void:
+    # We instance a new ground item, add it, and set it up
+    var ground_item := GroundItemScene.instance()
+    add_child(ground_item)
+    ground_item.setup(entity, location)
 
 func _deconstruct(event_position:Vector2, cellv:Vector2) -> void:
 	_deconstruction_timer.connect("timeout", self, "_on_finish_deconstruct", [cellv], CONNECT_ONESHOT)
@@ -136,6 +127,15 @@ func _deconstruct(event_position:Vector2, cellv:Vector2) -> void:
 
 func _on_finish_deconstruct(cellv:Vector2) -> void:
 	var entity := _tracker.get_entity_at(cellv)
+
+	var entity_name := Library.get_entity_name_from(entity)
+	var location := map_to_world(cellv)
+
+	if Library.blueprints.has(entity_name):
+		var Blueprint: PackedScene = Library.blueprints[entity_name]
+
+		_drop_entity(Blueprint.instance(), location)
+
 	_tracker.remove_entity(cellv)
 	_update_neighboring_flat_entities(cellv)
 	

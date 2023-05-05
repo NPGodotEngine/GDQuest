@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Shared/Tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://Entities/Player/Player.tscn" type="PackedScene" id=2]
@@ -6,6 +6,8 @@
 [ext_resource path="res://Entities/Entities/StirlingEngineEntity/StirlingEngineEntity.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Systems/EntityPlacer.gd" type="Script" id=5]
 [ext_resource path="res://GUI/GUI.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Entities/Entities/BranchesEntity/BranchesEntity.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Entities/Entities/StoneEntity/StoneEntity.tscn" type="PackedScene" id=8]
 
 [node name="Simulation" type="Node"]
 script = ExtResource( 3 )
@@ -34,6 +36,18 @@ script = ExtResource( 5 )
 position = Vector2( 1402, 571 )
 
 [node name="Timer" type="Timer" parent="GameWorld/YSort/EntityPlacer"]
+
+[node name="BranchesEntity" parent="GameWorld/YSort/EntityPlacer" instance=ExtResource( 7 )]
+position = Vector2( 1353, 448 )
+
+[node name="BranchesEntity2" parent="GameWorld/YSort/EntityPlacer" instance=ExtResource( 7 )]
+position = Vector2( 1460, 401 )
+
+[node name="StoneEntity" parent="GameWorld/YSort/EntityPlacer" instance=ExtResource( 8 )]
+position = Vector2( 1252, 398 )
+
+[node name="StoneEntity2" parent="GameWorld/YSort/EntityPlacer" instance=ExtResource( 8 )]
+position = Vector2( 1351, 347 )
 
 [node name="Player" parent="GameWorld/YSort" instance=ExtResource( 2 )]
 position = Vector2( 1287, 554 )

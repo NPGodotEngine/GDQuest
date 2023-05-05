@@ -12,6 +12,11 @@ anchor_bottom = 1.0
 mouse_filter = 2
 theme = ExtResource( 1 )
 script = ExtResource( 3 )
+debug_items = {
+"Battery": 4,
+"Branches": 20,
+"StirlingEngine": 4
+}
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 margin_left = 960.0

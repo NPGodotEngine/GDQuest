@@ -9,3 +9,10 @@ func _physics_process(delta: float) -> void:
 	)
 	
 	move_and_slide(direction * movement_speed)
+
+
+func _on_PickupRadius_area_entered(area:Area2D) -> void:
+	var parent: GroundItem = area.get_parent()
+
+	if parent:
+		Events.emit_signal("entered_pickup_area", parent, self)
