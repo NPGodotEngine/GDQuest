@@ -10,6 +10,10 @@ export var placeable := true
 # How many items can be in a stack of the given blueprint type.
 export var stack_size := 1
 
+# Provide a field for information about the blueprint item
+# What is it and what is it used for
+export (String, MULTILINE) var description := ""
+
 # We use `find_node()` to search for a `PowerDirection` instance. If it does not exist,
 # then we don't worry about it: `find_node()` returns `null` if it finds nothing.
 # A faster method would be `get_node()`, which only tests one path.

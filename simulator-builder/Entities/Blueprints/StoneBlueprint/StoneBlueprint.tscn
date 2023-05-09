@@ -7,6 +7,7 @@
 script = ExtResource( 1 )
 placeable = false
 stack_size = 100
+description = "Material"
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 2 )

@@ -53,7 +53,9 @@ func _gui_input(event: InputEvent) -> void:
     var left_click := event.is_action_pressed("left_click")
     var right_click := event.is_action_pressed("right_click")
 
-    if not (left_click or right_click): return
+    if not (left_click or right_click):
+        if event is InputEventMouseMotion and is_instance_valid(held_item):
+            Events.emit_signal("hovered_over_entity", held_item)
 
     # We have three main cases to handle below:
     #
