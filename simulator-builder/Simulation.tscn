@@ -57,3 +57,9 @@ position = Vector2( 1287, 554 )
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="GUI" parent="CanvasLayer" instance=ExtResource( 6 )]
+debug_items = {
+"Battery": 4,
+"Branches": 20,
+"Ingot": 5,
+"StirlingEngine": 4
+}
